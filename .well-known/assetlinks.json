@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.seenstudio.store",
+      "sha256_cert_fingerprints": [
+        "85:88:91:91:DF:68:A1:6A:5B:A2:50:DD:CF:60:D8:0A:EF:B9:9E:A6:AF:85:B9:E5:D9:D1:34:B2:D9:65:B2:62"
+      ]
+    }
+  }
+]

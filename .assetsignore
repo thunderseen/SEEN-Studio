@@ -1,4 +1,4 @@
-# Exclude backend scripts, configs, local data, and docs from static asset uploads
+# Exclude backend scripts, configs, local data, Android build tree, AAB, and docs from static asset uploads
 server.ps1
 server.mjs
 start-store.bat
@@ -7,6 +7,10 @@ wrangler.jsonc
 cloud/
 data/
 functions/
+android-twa/
+*.keystore
+*.jks
+*.aab
 README.md
 HANDOVER-GUIDE.md
 DEPLOYMENT-GUIDE.md

@@ -3,6 +3,11 @@ data/catalog.json
 data/config.json
 .wrangler/
 .dev.vars
+android-twa/
+*.keystore
+*.jks
+*.apk
+*.aab
 .DS_Store
 Thumbs.db
 *.log
