@@ -1,0 +1,15 @@
+# Exclude backend scripts, configs, local data, and docs from static asset uploads
+server.ps1
+server.mjs
+start-store.bat
+wrangler.toml
+wrangler.jsonc
+cloud/
+data/
+functions/
+README.md
+HANDOVER-GUIDE.md
+DEPLOYMENT-GUIDE.md
+.git/
+.gitignore
+.assetsignore

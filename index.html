@@ -2113,12 +2113,14 @@ input,textarea,select{
       });
     } catch (_) {}
     if (serverBackendLive) {
+      const tasks = [];
       if (syncCatalog) {
-        fetch('/api/catalog', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(CATALOGS) }).catch(() => {});
+        tasks.push(fetch('/api/catalog', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(CATALOGS) }).catch(() => {}));
       }
       if (syncCfg) {
-        fetch('/api/config', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(STORE_CFG) }).catch(() => {});
+        tasks.push(fetch('/api/config', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(STORE_CFG) }).catch(() => {}));
       }
+      if (tasks.length) await Promise.all(tasks);
     }
   }
   async function loadStateFromDB() {
@@ -3179,7 +3181,8 @@ input,textarea,select{
     });
     const med = arr => { if (!arr.length) return 128; arr.sort((a,b) => a - b); return arr[Math.floor(arr.length / 2)]; };
     const hex = '#' + [med(rs), med(gs), med(bs)].map(v => v.toString(16).padStart(2, '0')).join('');
-    return { cleanCanvas: c, bbox: { x: x0, y: y0, w: bw, h: bh }, cardDataUrl: sq.toDataURL('image/png'), dominantHex: hex };
+    const cardUrl = (() => { try { const w = sq.toDataURL('image/webp', 0.90); if (w.startsWith('data:image/webp')) return w; } catch (_) {} return sq.toDataURL('image/png'); })();
+    return { cleanCanvas: c, bbox: { x: x0, y: y0, w: bw, h: bh }, cardDataUrl: cardUrl, dominantHex: hex };
   }
 
   async function generateAutoMockup(rawImg, targetGender = 'men', mode = 'full', baseHex = '#8a1826', stripBg = true, opts = {}) {
@@ -3198,6 +3201,7 @@ input,textarea,select{
         const sctx = sq.getContext('2d');
         const sc = Math.min(390 / rawImg.width, 390 / rawImg.height);
         sctx.drawImage(rawImg, (440 - rawImg.width * sc) / 2, (440 - rawImg.height * sc) / 2, rawImg.width * sc, rawImg.height * sc);
+        try { const w = sq.toDataURL('image/webp', 0.90); if (w.startsWith('data:image/webp')) return w; } catch (_) {}
         return sq.toDataURL('image/png');
       })(),
       dominantHex: baseHex
@@ -3257,15 +3261,22 @@ input,textarea,select{
     fctx.drawImage(shirtLayer, 0, 0);
     fctx.globalCompositeOperation = 'source-over';
 
+    const enc = (canvas) => {
+      try {
+        const w = canvas.toDataURL('image/webp', 0.90);
+        if (w.startsWith('data:image/webp')) return w;
+      } catch (_) {}
+      return canvas.toDataURL('image/png');
+    };
     let cardUrl = cleaned.cardDataUrl;
     if (mode === 'graphic') {
       const cardC = document.createElement('canvas');
       cardC.width = 440; cardC.height = 440;
       const cctx = cardC.getContext('2d');
       cctx.drawImage(shirtLayer, TORSO.x - 8, TORSO.y - 8, TORSO.w + 16, TORSO.h + 16, 36, 20, 368, 400);
-      cardUrl = cardC.toDataURL('image/png');
+      cardUrl = enc(cardC);
     }
-    return { modelDataUrl: finalC.toDataURL('image/png'), cardDataUrl: cardUrl, dominantHex: mode === 'graphic' ? baseHex : cleaned.dominantHex };
+    return { modelDataUrl: enc(finalC), cardDataUrl: cardUrl, dominantHex: mode === 'graphic' ? baseHex : cleaned.dominantHex };
   }
 
   function renderBatchQueue() {

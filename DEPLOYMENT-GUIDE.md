@@ -1,36 +1,37 @@
-# SEEN Studio — Custom Domain & Permanent Cloud Backend Deployment Guide
+# SEEN Studio — Live Cloudflare Pages + D1 Deployment & Custom Domain Guide
 
-This kit upgrades **SEEN Studio** from static GitHub Pages (`IndexedDB` browser-only storage) to a **24/7 Permanent Cloud E-Commerce Store** where every new T-shirt uploaded from Admin Studio and every customer order stays saved globally across all phones and browsers.
+**SEEN Studio** is deployed live on **Cloudflare Pages** with a permanent **Cloudflare D1 SQL Database** (APAC / Singapore region — free 5 GB tier).
 
----
-
-## Option A — Cloudflare Pages + D1 SQL Database (Recommended, Free Tier $0/mo + Auto SSL)
-
-All backend files are already prepared in this repository:
-- `functions/api/[[route]].js` — Full REST API (`/api/health`, `/api/catalog`, `/api/orders`, `/api/orders/status`, `/api/config`, `/api/webhook/payment`)
-- `cloud/schema.sql` — Permanent D1 SQL schema
-- `wrangler.toml` — Cloudflare deployment configuration
-
-### 5-Minute Go-Live Steps
-1. **Connect GitHub Repo to Cloudflare Pages:**
-   - Sign in at https://dash.cloudflare.com → **Workers & Pages** → **Create** → **Pages** → **Connect to Git** → select `thunderseen/SEEN-Studio` (branch `main`, build command: *empty*, output directory: `.`).
-2. **Create Permanent D1 Database:**
-   - In Cloudflare Dashboard → **Storage & Databases** → **D1 SQL Database** → Create database named `seen-studio-db`.
-   - Open the D1 Console and run the SQL inside `cloud/schema.sql` (or run `npx wrangler d1 execute seen-studio-db --remote --file=./cloud/schema.sql`).
-   - In your Cloudflare Pages project → **Settings → Bindings** → Add **D1 Database** with Variable Name **`DB`** → select `seen-studio-db` → Redeploy.
-3. **Connect Your Custom Domain + Auto SSL:**
-   - In Cloudflare Pages → **Custom domains** → Add your domain (e.g. `seenstudio.com` & `www.seenstudio.com`).
-   - If your domain was purchased outside Cloudflare (e.g. Namecheap/BTCL), point its **Nameservers** to Cloudflare or add the `CNAME` record Cloudflare displays.
-   - **SSL/TLS** activates automatically (`Full (Strict)` + HTTPS redirect).
-4. **Optional Live Payment Webhook & Telegram Alerts:**
-   - Set SSLCommerz IPN URL or bKash callback URL to: `https://yourdomain.com/api/webhook/payment`
-   - In Cloudflare Pages → **Settings → Variables & Secrets**, optionally add `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` for instant Telegram order alerts.
+- **Live Cloud Storefront (Free HTTPS Subdomain):** https://seen-studio-store.pages.dev/
+- **Cloud Database:** Cloudflare D1 `seen-studio-db` (`cae972b0-adb1-40f8-a6af-38176682aadb`)
+- **Live API Health Endpoint:** https://seen-studio-store.pages.dev/api/health
+- **Payment Webhook Endpoint (SSLCommerz IPN / bKash Callback):** https://seen-studio-store.pages.dev/api/webhook/payment
 
 ---
 
-## Option B — Universal Node.js Hosting (Render / Railway / VPS / cPanel)
+## Architecture Deployed
+- `functions/api/[[route]].js` — Full REST API (`/api/health`, `/api/catalog`, `/api/orders`, `/api/orders/status`, `/api/config`, `/api/webhook/payment`) storing every T-shirt and every order as its own row in D1.
+- `functions/_middleware.js` — Blocks public downloads of internal server scripts, configs, and docs (`404`).
+- `cloud/schema.sql` — Permanent D1 SQL schema (`orders`, `catalog_items`, `store_state`).
+- `wrangler.toml` — Cloudflare Pages + D1 configuration (`seen-studio-store`).
 
-Use the zero-dependency production server **`server.mjs`**:
-- **Start Command:** `node server.mjs`
-- **Persistent Disk Mount:** Set environment variable `DATA_DIR=/var/data` (mounted to a persistent volume so orders & uploaded tees survive restarts).
-- **Custom Domain + Auto SSL:** Add your domain in Render/Railway Dashboard → copy the `A` / `CNAME` DNS record into your domain registrar → free Let's Encrypt SSL provisions automatically.
+---
+
+## Re-deploy Future Updates (1 Command)
+```powershell
+npx wrangler pages deploy . --project-name seen-studio-store --branch main
+```
+
+---
+
+## Connect Your Own Custom Domain Later (5 Minutes, Free Auto-SSL)
+1. Buy your domain (e.g. `seenstudio.com`) via **Cloudflare Registrar**, **Namecheap**, or **BTCL/ExonHost**.
+2. Open **Cloudflare Dashboard → Workers & Pages → `seen-studio-store` → Custom domains → Set up a custom domain**.
+3. Enter `seenstudio.com` (and `www.seenstudio.com`).
+   - If bought on Cloudflare, DNS + HTTPS SSL activates automatically in ~1 minute.
+   - If bought elsewhere, point the domain's **Nameservers** to Cloudflare or add the `CNAME` record Cloudflare displays (`seen-studio-store.pages.dev`).
+4. Optional instant Telegram order alerts:
+   ```powershell
+   npx wrangler pages secret put TELEGRAM_BOT_TOKEN --project-name seen-studio-store
+   npx wrangler pages secret put TELEGRAM_CHAT_ID --project-name seen-studio-store
+   ```

@@ -1,6 +1,6 @@
 // SEEN Studio — Production Cloudflare Pages Functions API (/api/*)
-// Provides permanent cloud persistence via Cloudflare D1 (SQLite at the edge)
-// so new T-shirts uploaded from Admin Studio and customer orders never disappear.
+// Permanent cloud database backed by Cloudflare D1 (row-per-item catalog + orders).
+// New T-shirts uploaded from Admin Studio and customer orders persist globally across all devices.
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -24,6 +24,14 @@ async function ensureSchema(db) {
       payload TEXT NOT NULL,
       created_at TEXT NOT NULL DEFAULT (datetime('now')),
       updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+    )`),
+    db.prepare(`CREATE TABLE IF NOT EXISTS catalog_items (
+      gender TEXT NOT NULL,
+      sort_order INTEGER NOT NULL,
+      item_id TEXT NOT NULL,
+      payload TEXT NOT NULL,
+      updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+      PRIMARY KEY (gender, sort_order)
     )`),
     db.prepare(`CREATE TABLE IF NOT EXISTS store_state (
       key TEXT PRIMARY KEY,
@@ -74,11 +82,13 @@ export async function onRequest(context) {
     await ensureSchema(db);
 
     if (path === '/api/health' && method === 'GET') {
-      const row = await db.prepare('SELECT COUNT(*) AS cnt FROM orders').first();
+      const ordRow = await db.prepare('SELECT COUNT(*) AS cnt FROM orders').first();
+      const catRow = await db.prepare('SELECT COUNT(*) AS cnt FROM catalog_items').first();
       return jsonResponse({
         ok: true,
         mode: 'cloud-d1',
-        ordersCount: Number(row?.cnt || 0),
+        ordersCount: Number(ordRow?.cnt || 0),
+        catalogItemsCount: Number(catRow?.cnt || 0),
         serverTime: new Date().toISOString(),
       });
     }
@@ -129,21 +139,52 @@ export async function onRequest(context) {
     }
 
     if (path === '/api/catalog' && method === 'GET') {
-      const row = await db.prepare("SELECT value FROM store_state WHERE key = 'catalog'").first();
-      return new Response(row ? row.value : 'null', {
-        status: 200,
-        headers: { 'Content-Type': 'application/json; charset=utf-8', ...CORS_HEADERS },
-      });
+      const { results } = await db
+        .prepare('SELECT gender, payload FROM catalog_items ORDER BY gender ASC, sort_order ASC')
+        .all();
+      if (!results || results.length === 0) {
+        return new Response('null', {
+          status: 200,
+          headers: { 'Content-Type': 'application/json; charset=utf-8', ...CORS_HEADERS },
+        });
+      }
+      const catalog = { men: [], women: [] };
+      for (const row of results) {
+        if (row.gender === 'men' || row.gender === 'women') {
+          try { catalog[row.gender].push(JSON.parse(row.payload)); } catch (_) {}
+        }
+      }
+      return jsonResponse(catalog);
     }
 
     if (path === '/api/catalog' && method === 'POST') {
-      const bodyText = await request.text();
-      JSON.parse(bodyText); // validate JSON
-      await db.prepare(
-        `INSERT OR REPLACE INTO store_state (key, value, updated_at)
-         VALUES ('catalog', ?1, datetime('now'))`
-      ).bind(bodyText).run();
-      return jsonResponse({ ok: true });
+      const catalog = await request.json();
+      if (!catalog || !Array.isArray(catalog.men) || !Array.isArray(catalog.women)) {
+        return jsonResponse({ ok: false, error: 'Invalid catalog shape' }, 400);
+      }
+
+      // Clear and re-insert each T-shirt as its own D1 row (avoids single-row 1MB D1 limit)
+      await db.prepare('DELETE FROM catalog_items').run();
+
+      const insertStmt = db.prepare(
+        `INSERT INTO catalog_items (gender, sort_order, item_id, payload, updated_at)
+         VALUES (?1, ?2, ?3, ?4, datetime('now'))`
+      );
+
+      for (const gender of ['men', 'women']) {
+        const list = catalog[gender];
+        for (let i = 0; i < list.length; i++) {
+          const item = list[i];
+          const itemId = String(item?.id || `${gender}-${i}`);
+          await insertStmt.bind(gender, i, itemId, JSON.stringify(item)).run();
+        }
+      }
+
+      return jsonResponse({
+        ok: true,
+        menCount: catalog.men.length,
+        womenCount: catalog.women.length,
+      });
     }
 
     if (path === '/api/config' && method === 'GET') {
