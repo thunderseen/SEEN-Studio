@@ -1,0 +1,4122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>س · SEEN — Men &amp; Women Spatial Virtual T-Shirt Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@800;900&family=Inter:wght@400;500;600;700;800;900&display=swap">
+<style>
+:root{
+  --ease:cubic-bezier(.22,1,.36,1);
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+  --MH:min(62vh,43vw);
+  --CW:min(14.2vw,31vh);
+  --bkash:#E2136E;
+  --bkash-dark:#b80c57;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{
+  scroll-behavior:smooth;
+  overflow-x:clip;
+  overflow-y:scroll;
+  scrollbar-gutter:stable;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(255,255,255,.20) #06070a;
+}
+html.modal-open,body.modal-open{overflow:hidden}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:#06070a}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.20);border-radius:999px}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.36)}
+
+body{
+  min-height:100vh;
+  background:#06070a;
+  color:#fff;
+  font-family:var(--sans);
+  overflow-x:clip;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  user-select:none;
+  -webkit-user-select:none;
+}
+button,a{
+  font:inherit;
+  color:inherit;
+  background:none;
+  border:0;
+  text-decoration:none;
+  cursor:pointer;
+}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:2px solid rgba(255,255,255,.78);
+  outline-offset:2px;
+}
+input,textarea,select{
+  font:inherit;
+  color:#fff;
+  user-select:text;
+  -webkit-user-select:text;
+}
+
+/* =========================================================================
+   1. ULTRA-SHARP DARK LUXURY STUDIO BACKDROP (ZERO-LAG GPU COMPOSITED)
+   ========================================================================= */
+.studio-bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+  contain:strict;
+  background:
+    radial-gradient(50% 44% at 50% 24%,rgba(255,255,255,.11) 0%,rgba(175,198,235,.04) 40%,transparent 74%),
+    radial-gradient(36% 48% at 14% 52%,rgba(110,145,215,.065) 0%,transparent 70%),
+    radial-gradient(36% 48% at 86% 48%,rgba(218,188,150,.055) 0%,transparent 70%),
+    radial-gradient(70% 36% at 50% 100%,rgba(255,255,255,.05) 0%,transparent 70%),
+    linear-gradient(180deg,#08090d 0%,#0c0e15 48%,#050608 100%);
+}
+.studio-beam{
+  position:absolute;
+  left:50%;
+  top:-14vh;
+  width:min(88vw,1120px);
+  height:110vh;
+  transform:translateX(-50%);
+  background:conic-gradient(from 180deg at 50% 0%,transparent 142deg,rgba(255,255,255,.055) 168deg,rgba(242,247,255,.095) 180deg,rgba(255,255,255,.055) 192deg,transparent 218deg);
+}
+.studio-grid{
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.10) 1px,transparent 1px);
+  background-size:34px 34px;
+  -webkit-mask-image:radial-gradient(60% 56% at 50% 46%,#000 0%,rgba(0,0,0,.38) 55%,transparent 90%);
+  mask-image:radial-gradient(60% 56% at 50% 46%,#000 0%,rgba(0,0,0,.38) 55%,transparent 90%);
+  opacity:.48;
+}
+.studio-horizon{
+  position:absolute;
+  left:50%;
+  bottom:-26vh;
+  width:150vw;
+  height:52vh;
+  transform:translateX(-50%);
+  border-radius:50%;
+  border-top:1px solid rgba(255,255,255,.09);
+  background:radial-gradient(50% 50% at 50% 0%,rgba(255,255,255,.055),transparent 72%);
+}
+
+/* Hero Full-Screen Spatial Stage */
+.hero{
+  position:relative;
+  width:100%;
+  height:100vh;
+  min-height:670px;
+  overflow:hidden;
+  z-index:2;
+}
+
+/* =========================================================================
+   2. CLEARLY VISIBLE COMPACT ARABIC SEEN (س) MONOGRAM ABOVE MANNEQUIN
+   ========================================================================= */
+.ghost{
+  position:absolute;
+  left:50%;
+  top:9.5vh;
+  z-index:3;
+  transform:translate3d(-50%,0,0);
+  pointer-events:none;
+  will-change:transform;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.seen-svg{
+  width:min(33vw,370px);
+  height:auto;
+  overflow:visible;
+  display:block;
+  will-change:transform,opacity;
+  filter:drop-shadow(0 12px 36px rgba(255,255,255,.14));
+}
+
+/* =========================================================================
+   3. HUD GLASS SURFACES
+   ========================================================================= */
+.glass{
+  background:linear-gradient(155deg,rgba(255,255,255,.13),rgba(255,255,255,.055) 48%,rgba(255,255,255,.09));
+  backdrop-filter:blur(18px) saturate(1.55);
+  -webkit-backdrop-filter:blur(18px) saturate(1.55);
+  border:1px solid rgba(255,255,255,.20);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.32),0 20px 48px -22px rgba(0,0,0,.82);
+}
+.glass-dark{
+  background:linear-gradient(155deg,rgba(19,21,28,.94),rgba(11,12,17,.90) 52%,rgba(21,23,31,.94));
+  backdrop-filter:blur(22px) saturate(1.5);
+  -webkit-backdrop-filter:blur(22px) saturate(1.5);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 28px 72px -22px rgba(0,0,0,.92);
+}
+
+/* =========================================================================
+   4. TOP HEADER BAR: MEN / WOMEN SWITCHER (WITH ICONS) + COLLECTION TABS + PRICE PILL
+   ========================================================================= */
+.top-bar{
+  position:absolute;
+  left:0;
+  right:0;
+  top:2.4vh;
+  z-index:45;
+  padding:0 max(20px,2vw);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  pointer-events:none;
+}
+.top-bar > *{pointer-events:auto}
+
+/* Men / Women Switcher with Small Male & Female Icons */
+.gender-switch{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+  padding:4px;
+  border-radius:999px;
+  flex-shrink:0;
+}
+.gender-switch button{
+  position:relative;
+  z-index:1;
+  height:36px;
+  padding:0 15px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-size:13px;
+  font-weight:600;
+  color:rgba(255,255,255,.78);
+  transition:color .28s var(--ease),background .28s var(--ease),transform .2s var(--ease);
+  white-space:nowrap;
+}
+.gender-switch button:hover{color:#fff}
+.gender-switch button.on{
+  background:#fff;
+  color:#090a0e;
+  box-shadow:0 4px 16px -6px rgba(255,255,255,.45);
+}
+.gender-switch button:active{transform:scale(.95)}
+.gender-switch svg{width:15px;height:15px;display:block;flex-shrink:0}
+
+/* Collection Category Tabs */
+.tabs{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:2px;
+  padding:4px;
+  border-radius:999px;
+}
+.tabs .pill{
+  position:absolute;
+  top:4px;
+  left:0;
+  height:36px;
+  border-radius:999px;
+  background:#fff;
+  box-shadow:0 4px 16px -6px rgba(255,255,255,.4);
+  pointer-events:none;
+  z-index:0;
+  transition:transform .48s var(--ease),width .48s var(--ease);
+}
+.tabs button{
+  position:relative;
+  z-index:1;
+  height:36px;
+  padding:0 16px;
+  font-weight:500;
+  font-size:13px;
+  color:rgba(255,255,255,.76);
+  border-radius:999px;
+  white-space:nowrap;
+  transition:color .28s var(--ease);
+}
+.tabs button:hover{color:#fff}
+.tabs button.on{color:#090a0e;font-weight:600}
+
+/* Top-Right Live Price & Bag Pill */
+.price-pill{
+  height:44px;
+  padding:0 14px 0 16px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:#fff;
+  flex-shrink:0;
+  font-variant-numeric:tabular-nums;
+  transition:transform .24s var(--ease),border-color .24s var(--ease);
+}
+.price-pill:hover{border-color:rgba(255,255,255,.44);transform:translateY(-1px)}
+.price-pill .pp-usd{font-size:15.5px;font-weight:800;letter-spacing:-.02em}
+.price-pill .pp-bdt{font-size:12px;font-weight:600;color:rgba(255,255,255,.74)}
+.price-pill .pp-sep{width:1px;height:16px;background:rgba(255,255,255,.22)}
+.price-pill .pp-bag{
+  font-size:12px;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:999px;
+  background:#fff;
+  color:#090a0e;
+}
+
+/* 5. Left Glass Tool Rail */
+.rail{
+  position:absolute;
+  left:max(20px,2vw);
+  top:46%;
+  transform:translateY(-50%);
+  z-index:35;
+  display:flex;
+  flex-direction:column;
+  padding:7px;
+  gap:9px;
+  border-radius:999px;
+}
+.rail button{
+  position:relative;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:rgba(255,255,255,.82);
+  transition:background .28s var(--ease),color .28s var(--ease),transform .22s var(--ease);
+}
+.rail button:hover{background:rgba(255,255,255,.16);color:#fff}
+.rail button.on{background:#fff;color:#090a0e}
+.rail button:active{transform:scale(.9)}
+.rail svg{width:18px;height:18px;display:block}
+.rail .badge{
+  position:absolute;
+  top:1px;
+  right:1px;
+  min-width:17px;
+  height:17px;
+  padding:0 4px;
+  border-radius:999px;
+  background:#fff;
+  color:#090a0e;
+  font-size:10px;
+  font-weight:800;
+  display:grid;
+  place-items:center;
+  transform:scale(0);
+  transition:transform .32s var(--ease);
+}
+.rail .badge.show{transform:scale(1)}
+
+/* =========================================================================
+   5b. WOMEN-ONLY FAVORITE COLOR PALETTE WIDGET (BOTTOM-LEFT EMPTY CORNER!)
+   ========================================================================= */
+.women-palette{
+  position:absolute;
+  left:max(20px,2vw);
+  bottom:4.4vh;
+  z-index:55;
+  width:214px;
+  padding:12px 13px 13px;
+  border-radius:20px;
+  color:#fff;
+  opacity:0;
+  transform:translate3d(-18px,10px,0) scale(.96);
+  pointer-events:none;
+  transition:opacity .38s var(--ease),transform .42s var(--ease);
+}
+.women-palette.show{
+  opacity:1;
+  transform:translate3d(0,0,0) scale(1);
+  pointer-events:auto;
+}
+.wp-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6px;
+  margin-bottom:9px;
+}
+.wp-title{
+  font-size:10.5px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.86);
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.wp-reset{
+  font-size:10.5px;
+  font-weight:600;
+  color:rgba(255,255,255,.64);
+  padding:2px 7px;
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+  transition:background .2s var(--ease),color .2s var(--ease);
+}
+.wp-reset:hover{background:rgba(255,255,255,.18);color:#fff}
+.wp-swatches{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+  margin-bottom:8px;
+}
+.wp-swatches button{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  margin:0 auto;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.32),0 4px 12px -4px rgba(0,0,0,.6);
+  transition:transform .22s var(--ease),box-shadow .22s var(--ease);
+}
+.wp-swatches button:hover{transform:scale(1.14)}
+.wp-swatches button.on{
+  box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(255,255,255,.28);
+  transform:scale(1.1);
+}
+.wp-active-name{
+  font-size:11px;
+  font-weight:500;
+  color:rgba(255,255,255,.76);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.wp-active-name strong{color:#fff;font-weight:600}
+
+/* =========================================================================
+   6. 120FPS GPU-COMPOSITED 3D T-SHIRT ARC
+   ========================================================================= */
+.stage{
+  position:absolute;
+  inset:0;
+  z-index:10;
+  touch-action:pan-y;
+  cursor:grab;
+}
+.stage.is-dragging{cursor:grabbing}
+.arc{
+  position:absolute;
+  left:50%;
+  top:52%;
+  width:0;
+  height:0;
+}
+.card{
+  position:absolute;
+  width:var(--CW);
+  height:calc(var(--CW) * 1.40);
+  left:calc(var(--CW) * -.5);
+  top:calc(var(--CW) * -.70);
+  border-radius:24px;
+  overflow:hidden;
+  visibility:hidden;
+  opacity:0;
+  cursor:pointer;
+  will-change:transform,opacity;
+  contain:layout paint style;
+  background:
+    radial-gradient(76% 56% at 50% 36%,rgba(255,255,255,.17) 0%,rgba(255,255,255,.04) 55%,transparent 82%),
+    linear-gradient(158deg,rgba(46,51,64,.82) 0%,rgba(22,25,33,.78) 52%,rgba(34,38,48,.84) 100%);
+  border:1px solid rgba(255,255,255,.20);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.34),0 22px 46px -20px rgba(0,0,0,.88);
+  transition:border-color .26s var(--ease);
+}
+.card:hover{border-color:rgba(255,255,255,.55)}
+.card .g{
+  position:absolute;
+  left:8%;
+  right:8%;
+  top:7%;
+  bottom:24%;
+  background-repeat:no-repeat;
+  pointer-events:none;
+}
+.card .nm,.card .pr{
+  position:absolute;
+  left:8%;
+  right:8%;
+  text-align:center;
+  color:#fff;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  pointer-events:none;
+}
+.card .nm{
+  bottom:15.5%;
+  font-weight:500;
+  font-size:calc(var(--CW) * .067);
+  color:rgba(255,255,255,.88);
+}
+.card .pr{
+  bottom:6.8%;
+  font-weight:700;
+  font-size:calc(var(--CW) * .096);
+  font-variant-numeric:tabular-nums;
+}
+.card .sheen{
+  position:absolute;
+  inset:-25%;
+  background:linear-gradient(108deg,transparent 38%,rgba(255,255,255,.32) 50%,transparent 62%);
+  transform:translate3d(-115%,0,0);
+  opacity:0;
+  pointer-events:none;
+}
+
+/* =========================================================================
+   7. HEADLESS SCULPTURAL MANNEQUIN STAGE (520x680, BAKED WAIST DISSOLVE)
+   ========================================================================= */
+.model-aura{
+  position:absolute;
+  left:50%;
+  bottom:12.5vh;
+  transform:translateX(-50%);
+  width:min(38vw,440px);
+  height:var(--MH);
+  z-index:45;
+  pointer-events:none;
+  background:radial-gradient(50% 48% at 50% 46%,rgba(255,255,255,.11) 0%,rgba(165,195,255,.04) 46%,transparent 76%);
+}
+.model{
+  position:absolute;
+  left:50%;
+  bottom:12.4vh;
+  transform:translate3d(-50%,0,0);
+  height:var(--MH);
+  aspect-ratio:520 / 680;
+  z-index:50;
+  pointer-events:none;
+  contain:layout style;
+}
+#mCur,#mNext{
+  position:absolute;
+  inset:0;
+  background-repeat:no-repeat;
+  will-change:clip-path,transform;
+}
+#mCur{opacity:0}
+#mNext{clip-path:inset(0 0 100% 0)}
+.model .grid{
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(0deg,transparent 0 5px,rgba(255,255,255,.22) 5px 6px);
+  mix-blend-mode:screen;
+  clip-path:inset(0 0 100% 0);
+  pointer-events:none;
+}
+.model .scan{
+  position:absolute;
+  left:-16%;
+  right:-16%;
+  top:0;
+  height:2px;
+  opacity:0;
+  background:linear-gradient(90deg,transparent,#fff 18%,#fff 82%,transparent);
+  box-shadow:0 0 18px 4px rgba(255,255,255,.85),0 0 56px 10px rgba(175,220,255,.5);
+  pointer-events:none;
+  will-change:top,transform,opacity;
+}
+.model .scan::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:100%;
+  height:calc(var(--MH) * .13);
+  background:linear-gradient(to top,rgba(215,238,255,.32),transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);
+}
+
+/* 8. Arrows */
+.arrow{
+  position:absolute;
+  top:52%;
+  transform:translateY(-50%);
+  z-index:35;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  transition:transform .24s var(--ease),background .24s var(--ease),border-color .24s var(--ease);
+}
+.arrow:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.42)}
+.arrow.prev{left:calc(max(20px,2vw) + 68px)}
+.arrow.next{right:max(20px,2vw)}
+.arrow:active{transform:translateY(-50%) scale(.9)}
+.arrow svg{width:16px;height:16px;display:block}
+
+/* 8b. Slide-Out Side Pricing & Live Bag Drawer */
+.side-price{
+  position:absolute;
+  right:max(20px,2vw);
+  top:9.5vh;
+  z-index:65;
+  width:min(312px,calc(100vw - 40px));
+  padding:18px;
+  border-radius:24px;
+  color:#fff;
+  overscroll-behavior:contain;
+  transition:transform .42s var(--ease),opacity .32s var(--ease);
+}
+.side-price.collapsed{
+  opacity:0;
+  pointer-events:none;
+  transform:translate3d(26px,0,0) scale(.97);
+}
+.sp-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.sp-tag{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.sp-close{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.12);display:grid;place-items:center;font-size:15px}
+.sp-close:hover{background:rgba(255,255,255,.24)}
+.sp-price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+.sp-usd{font-size:32px;font-weight:800;letter-spacing:-.035em;line-height:1;font-variant-numeric:tabular-nums}
+.sp-bdt{font-size:12.5px;font-weight:600;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);font-variant-numeric:tabular-nums}
+.sp-meta{font-size:12px;color:rgba(255,255,255,.8);margin-bottom:10px;line-height:1.4}
+.sp-spec{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}
+.sp-chip{font-size:11px;font-weight:500;padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.9)}
+.sp-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn-solid{
+  height:36px;border-radius:999px;background:#fff;color:#090a0e;font-size:12px;font-weight:700;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 14px;
+  transition:transform .22s var(--ease),background .22s var(--ease);
+}
+.btn-solid:hover{background:#eceef2;transform:translateY(-1px)}
+.btn-solid:active{transform:scale(.95)}
+.btn-soft{
+  height:36px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+  color:#fff;font-size:12px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 12px;
+  transition:transform .22s var(--ease),background .22s var(--ease);
+}
+.btn-soft:hover{background:rgba(255,255,255,.22)}
+.btn-soft:active{transform:scale(.95)}
+.sp-cart{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.16);display:none}
+.sp-cart.has-items{display:block}
+.sp-cart-list{max-height:124px;overflow-y:auto;display:flex;flex-direction:column;gap:7px;margin-bottom:10px}
+.sp-item{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:11.5px;background:rgba(255,255,255,.07);padding:6px 8px;border-radius:10px}
+.sp-item-info{min-width:0;flex:1}
+.sp-item-title{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sp-item-sub{font-size:10px;opacity:.75}
+.sp-qty{display:flex;align-items:center;gap:4px}
+.sp-qty button{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.18);font-weight:700;font-size:12px;display:grid;place-items:center}
+.sp-total-row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;font-weight:700;margin-bottom:9px}
+.sp-checkout{width:100%;height:36px}
+
+/* 9. Floating Bottom Outfit Bar + Compact Brand Strip Directly Below Outfit */
+.buy{
+  position:absolute;
+  left:50%;
+  bottom:4.8vh;
+  transform:translateX(-50%);
+  z-index:60;
+  width:min(710px,calc(100vw - 32px));
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:9px 14px 9px 10px;
+  border-radius:26px;
+  color:#fff;
+}
+.buy .thumb{
+  position:relative;width:54px;height:54px;flex:0 0 54px;border-radius:14px;
+  background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.22),rgba(255,255,255,.06));
+  border:1px solid rgba(255,255,255,.20);overflow:hidden;
+}
+.buy .thumb .g{position:absolute;inset:4px;background-repeat:no-repeat;will-change:transform}
+.buy .info{flex:1 1 auto;min-width:130px;display:flex;flex-direction:column;gap:3px}
+.buy .ln{position:relative;height:1.18em;line-height:1.18;overflow:hidden}
+.buy .ln span{position:absolute;left:0;top:0;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;will-change:transform}
+.buy .bname{font-weight:600;font-size:15px;letter-spacing:-.01em}
+.buy .bprice{font-weight:500;font-size:13px;color:rgba(255,255,255,.82);font-variant-numeric:tabular-nums}
+.buy .grp{display:flex;flex-direction:column;gap:4px;flex:0 0 auto}
+.buy .lbl{font-weight:500;font-size:11px;color:rgba(255,255,255,.76)}
+.buy .clbl{min-width:112px}
+.buy .chips{display:flex;align-items:center;gap:5px}
+.buy .chips button{
+  width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.14);
+  color:#fff;font-size:11.5px;font-weight:600;display:grid;place-items:center;
+  transition:background .25s var(--ease),color .25s var(--ease),transform .2s var(--ease);
+}
+.buy .chips button:hover{background:rgba(255,255,255,.24)}
+.buy .chips button.on{background:#fff;color:#090a0e;border-color:#fff}
+.buy .chips button:active{transform:scale(.88)}
+.buy .dots{display:flex;align-items:center;gap:8px;height:28px}
+.buy .dots button{
+  width:17px;height:17px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.28);
+  transition:box-shadow .25s var(--ease),transform .2s var(--ease);
+}
+.buy .dots button.on{box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(255,255,255,.22);transform:scale(1.08)}
+.buy .dots button:active{transform:scale(.9)}
+.buy-cta{flex:0 0 auto;height:38px;padding:0 16px;white-space:nowrap}
+
+/* Compact Branding Bar Neatly Right Below Outfit Area */
+.outfit-brand-bar{
+  position:absolute;
+  left:50%;
+  bottom:1.0vh;
+  transform:translateX(-50%);
+  z-index:60;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:4px 14px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:500;
+  color:rgba(255,255,255,.78);
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  white-space:nowrap;
+}
+.outfit-brand-bar .ob-mark{
+  font-family:"Cairo",sans-serif;
+  font-weight:900;
+  font-size:14px;
+  line-height:1;
+  color:#fff;
+}
+.outfit-brand-bar .ob-sep{opacity:.35}
+.outfit-brand-bar button,.outfit-brand-bar a{
+  font-size:11px;
+  font-weight:600;
+  color:rgba(255,255,255,.84);
+  transition:color .2s var(--ease);
+}
+.outfit-brand-bar button:hover,.outfit-brand-bar a:hover{color:#fff}
+
+/* =====================================================================
+   LOWER HUB: ACCOUNT GATEWAY, ORDER TRACKER, DIRECT CONNECT & CREATOR BAR
+   ===================================================================== */
+.hub{
+  position:relative;z-index:20;width:100%;padding:72px 20px 64px;
+  border-top:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(180deg,rgba(7,8,12,.76) 0%,rgba(6,7,10,.98) 100%);
+}
+.hub-inner{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+.hub-top{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.hub-eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.62);margin-bottom:6px}
+.hub-title{font-size:clamp(24px,3.2vw,36px);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.hub-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.panel{border-radius:26px;padding:26px;color:#fff}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.panel-head h3{font-size:20px;font-weight:700;letter-spacing:-.02em}
+.seg{display:inline-flex;padding:3px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
+.seg button{padding:6px 14px;border-radius:999px;font-size:12px;font-weight:600;color:rgba(255,255,255,.74);transition:background .25s var(--ease),color .25s var(--ease)}
+.seg button.on{background:#fff;color:#090a0e}
+.google-btn{
+  width:100%;height:44px;border-radius:14px;background:#fff;color:#1f1f1f;
+  font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:transform .2s var(--ease),background .2s var(--ease);margin-bottom:14px;
+}
+.google-btn:hover{background:#f2f3f5}
+.google-btn:active{transform:scale(.98)}
+.google-inline{
+  display:none;padding:12px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);
+  margin-bottom:14px;
+}
+.google-inline.open{display:block}
+.divider{display:flex;align-items:center;gap:10px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin:14px 0}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.14)}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.field label{font-size:11.5px;font-weight:600;color:rgba(255,255,255,.78)}
+.field input,.field textarea,.field select{
+  width:100%;padding:10px 13px;border-radius:13px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);
+  color:#fff;font-size:13.5px;outline:none;transition:border-color .2s var(--ease),background .2s var(--ease);
+}
+.field select option{color:#111;background:#fff}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.42)}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:rgba(255,255,255,.68);background:rgba(255,255,255,.12)}
+.field textarea{min-height:80px;resize:vertical}
+.form-status{margin-top:10px;font-size:12.5px;font-weight:500;min-height:18px;color:#86efac}
+.signed-card{
+  display:none;align-items:center;justify-content:space-between;gap:14px;
+  padding:14px 16px;border-radius:16px;background:rgba(74,222,128,.12);border:1px solid rgba(134,239,172,.35);margin-bottom:14px;
+}
+.signed-card.show{display:flex}
+.signed-info strong{display:block;font-size:14px}
+.signed-info span{font-size:12px;opacity:.82}
+.callout-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.btn-wa{
+  height:42px;border-radius:13px;background:#25D366;color:#072010;font-size:13px;font-weight:700;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 14px;
+  transition:transform .2s var(--ease),filter .2s var(--ease);
+}
+.btn-wa:hover{filter:brightness(1.06)}
+.btn-wa:active{transform:scale(.97)}
+.btn-call{
+  height:42px;border-radius:13px;background:#fff;color:#090a0e;font-size:13px;font-weight:700;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 14px;
+  transition:transform .2s var(--ease),background .2s var(--ease);
+}
+.btn-call:hover{background:#efefef}
+.btn-call:active{transform:scale(.97)}
+
+/* Creator Bar */
+.creator{
+  border-radius:26px;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;color:#fff;
+}
+.creator-left{display:flex;align-items:center;gap:16px}
+.creator-avatar{
+  width:56px;height:56px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.22),rgba(255,255,255,.06));
+  border:2px solid rgba(255,255,255,.32);
+  display:grid;place-items:center;font-family:"Cairo",sans-serif;font-weight:900;font-size:28px;color:#fff;
+  flex-shrink:0;
+}
+.creator-meta h4{font-size:17px;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.creator-meta p{font-size:12.5px;color:rgba(255,255,255,.74);margin-top:2px}
+.creator-direct{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px;font-size:12px;color:rgba(255,255,255,.9)}
+.creator-direct a:hover{text-decoration:underline}
+.socials{display:flex;flex-wrap:wrap;gap:8px}
+.soc-pill{
+  height:34px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);
+  font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:6px;
+  transition:background .22s var(--ease),color .22s var(--ease),transform .2s var(--ease);
+}
+.soc-pill:hover{background:#fff;color:#090a0e;transform:translateY(-2px)}
+
+/* =====================================================================
+   MODALS: TRANSACTION GATEWAY (SHARP bKash ICON), ADMIN STUDIO, SIZE GUIDE & TRACKER
+   ===================================================================== */
+.modal-backdrop{
+  position:fixed;inset:0;z-index:90;background:rgba(4,5,8,.78);backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;pointer-events:none;transition:opacity .32s var(--ease);
+}
+.modal-backdrop.open{opacity:1;pointer-events:auto}
+.modal-card{
+  width:min(960px,100%);max-height:90vh;overflow-y:auto;overscroll-behavior:contain;border-radius:28px;padding:26px;color:#fff;
+  transform:translateY(16px) scale(.97);transition:transform .38s var(--ease);
+}
+.modal-card.compact{width:min(580px,100%)}
+.modal-backdrop.open .modal-card{transform:translateY(0) scale(1)}
+.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px}
+.modal-head h2{font-size:21px;font-weight:800;letter-spacing:-.02em}
+.modal-close{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.12);display:grid;place-items:center;font-size:18px;flex:0 0 36px}
+.modal-close:hover{background:rgba(255,255,255,.24)}
+.gw-grid{display:grid;grid-template-columns:1fr 1.18fr;gap:22px}
+.gw-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:18px}
+.gw-box h4{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.72);margin-bottom:12px}
+.gw-items{display:flex;flex-direction:column;gap:10px;max-height:210px;overflow-y:auto;margin-bottom:14px}
+.gw-item{display:flex;align-items:center;gap:11px;padding:8px;border-radius:12px;background:rgba(255,255,255,.06)}
+.gw-thumb{width:46px;height:46px;border-radius:10px;background:rgba(255,255,255,.14);position:relative;flex:0 0 46px;overflow:hidden}
+.gw-thumb .g{position:absolute;inset:3px;background-repeat:no-repeat}
+.gw-totals{border-top:1px solid rgba(255,255,255,.14);padding-top:12px;display:flex;flex-direction:column;gap:7px;font-size:13px}
+.gw-row{display:flex;justify-content:space-between;color:rgba(255,255,255,.82)}
+.gw-row.total{font-size:16px;font-weight:800;color:#fff;padding-top:6px;border-top:1px dashed rgba(255,255,255,.2)}
+.promo-row{display:flex;gap:8px;margin-bottom:12px}
+.promo-row input{flex:1;padding:9px 12px;border-radius:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);font-size:12.5px;outline:none}
+
+/* Payment Method Buttons + Razor-Sharp bKash Button */
+.pay-methods{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.pay-methods button{
+  padding:10px 8px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);
+  font-size:12px;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  transition:background .22s var(--ease),border-color .22s var(--ease),transform .18s var(--ease),box-shadow .22s var(--ease);
+}
+.pay-methods button:hover{background:rgba(255,255,255,.14)}
+.pay-methods button.on{background:#fff;color:#090a0e;border-color:#fff}
+.pay-methods button.bkash-tab{
+  border-color:rgba(226,19,110,.55);
+  background:linear-gradient(155deg,rgba(226,19,110,.22),rgba(184,12,87,.12));
+}
+.pay-methods button.bkash-tab.on{
+  background:linear-gradient(145deg,#E2136E,#c20d5c);
+  color:#fff;
+  border-color:#ff4d9a;
+  box-shadow:0 8px 24px -8px rgba(226,19,110,.78);
+}
+
+/* Secure Hidden-Number bKash Interactive Vault Card */
+.bkash-vault{
+  padding:14px;
+  border-radius:16px;
+  background:linear-gradient(150deg,rgba(226,19,110,.18),rgba(20,10,18,.72));
+  border:1px solid rgba(226,19,110,.45);
+  margin-bottom:13px;
+}
+.bkash-vault-top{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  margin-bottom:12px;
+}
+.bkash-icon-btn{
+  width:56px;
+  height:56px;
+  flex:0 0 56px;
+  border-radius:16px;
+  background:linear-gradient(145deg,#f01879,#b80a56);
+  border:1.5px solid rgba(255,145,196,.65);
+  box-shadow:0 10px 26px -8px rgba(226,19,110,.82),inset 0 1px 0 rgba(255,255,255,.45);
+  display:grid;
+  place-items:center;
+  transition:transform .22s var(--ease),box-shadow .22s var(--ease),filter .22s var(--ease);
+}
+.bkash-icon-btn:hover{
+  transform:scale(1.06) translateY(-1px);
+  filter:brightness(1.08);
+  box-shadow:0 14px 32px -8px rgba(226,19,110,.95),inset 0 1px 0 rgba(255,255,255,.6);
+}
+.bkash-icon-btn:active{transform:scale(.94)}
+.bkash-icon-btn svg{width:34px;height:34px;display:block}
+.bkash-vault-info{flex:1;min-width:0}
+.bkash-vault-title{display:flex;align-items:center;gap:6px;font-size:13.5px;font-weight:800;color:#fff}
+.bkash-verified-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80}
+.bkash-vault-info p{font-size:11.5px;color:rgba(255,255,255,.82);margin-top:3px;line-height:1.45}
+.bkash-vault-info p strong{color:#fff;font-weight:700}
+.bkash-copy-pill{
+  display:inline-flex;align-items:center;gap:6px;margin-top:6px;
+  padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);color:#fff;
+  transition:background .2s var(--ease);
+}
+.bkash-copy-pill:hover{background:rgba(255,255,255,.24)}
+
+.gw-receipt{display:none;text-align:center;padding:24px 16px}
+.gw-receipt.show{display:block}
+.gw-check{width:62px;height:62px;border-radius:50%;background:rgba(74,222,128,.16);border:2px solid #4ade80;color:#4ade80;font-size:28px;display:grid;place-items:center;margin:0 auto 14px}
+
+/* Admin Studio UI */
+.pin-gate{max-width:440px;margin:20px auto;text-align:center;padding:24px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14)}
+.admin-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.admin-tabs button{
+  height:34px;padding:0 14px;border-radius:999px;font-size:12px;font-weight:600;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.8);
+}
+.admin-tabs button.on{background:#fff;color:#090a0e;border-color:#fff}
+.dropzone{
+  border:2px dashed rgba(255,255,255,.28);border-radius:18px;padding:18px 14px;text-align:center;
+  background:rgba(255,255,255,.04);transition:border-color .2s var(--ease),background .2s var(--ease);cursor:pointer;margin-bottom:12px;
+}
+.dropzone.over,.dropzone:hover{border-color:#fff;background:rgba(255,255,255,.09)}
+.dropzone p{font-size:12.5px;color:rgba(255,255,255,.82);margin-bottom:9px}
+.batch-queue{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.batch-chip{
+  display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;font-size:11.5px;font-weight:600;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);cursor:pointer;
+}
+.batch-chip.on{background:#fff;color:#090a0e;border-color:#fff}
+.preview-stage{display:grid;grid-template-columns:138px 1fr;gap:14px;align-items:center;margin-bottom:12px;padding:12px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12)}
+.preview-box{height:190px;border-radius:12px;background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.14),rgba(0,0,0,.65));display:grid;place-items:center;overflow:hidden;padding:6px}
+.preview-box img{max-width:100%;max-height:100%;object-fit:contain}
+.catalog-list{display:flex;flex-direction:column;gap:9px;max-height:390px;overflow-y:auto}
+.cat-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.cat-row-thumb{width:42px;height:42px;border-radius:10px;background:rgba(255,255,255,.14);position:relative;flex:0 0 42px;overflow:hidden}
+.cat-row-thumb .g{position:absolute;inset:3px;background-repeat:no-repeat}
+.cat-row-info{flex:1;min-width:0}
+.cat-row-info strong{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cat-row-info span{font-size:11px;opacity:.72}
+.cat-row-price{display:flex;align-items:center;gap:5px}
+.cat-row-price input{width:58px;padding:5px 7px;border-radius:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);font-size:12px;text-align:center}
+.btn-danger{width:28px;height:28px;border-radius:50%;background:rgba(239,68,68,.2);color:#fca5a5;display:grid;place-items:center;font-size:14px}
+.btn-danger:hover{background:rgba(239,68,68,.4);color:#fff}
+
+/* Order Ledger Table */
+.order-card{
+  padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px;font-size:12.5px;
+}
+.status-pill{
+  padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;
+  background:rgba(250,204,21,.16);color:#fde047;border:1px solid rgba(250,204,21,.35);
+}
+.status-pill.paid{background:rgba(74,222,128,.16);color:#86efac;border-color:rgba(74,222,128,.35)}
+.status-pill.shipped{background:rgba(96,165,250,.18);color:#93c5fd;border-color:rgba(96,165,250,.35)}
+
+/* Size Guide Table */
+.size-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.size-table th,.size-table td{padding:10px 12px;text-align:left;border-bottom:1px solid rgba(255,255,255,.12)}
+.size-table th{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.68)}
+
+/* Toast */
+.toast{
+  position:fixed;top:80px;left:50%;transform:translate(-50%,-16px);z-index:120;
+  padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;color:#fff;
+  opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .38s var(--ease);
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* =========================================================================
+   SILKY MOUSE-TRACKING SPATIAL HALO (NATIVE HARDWARE POINTER STAYS 100% VISIBLE!)
+   ========================================================================= */
+.cur{
+  position:fixed;left:0;top:0;z-index:110;pointer-events:none;opacity:0;
+  transition:opacity .28s var(--ease);will-change:transform;
+}
+.cur.vis{opacity:1}
+.cur .ring{
+  position:absolute;left:-19px;top:-19px;width:38px;height:38px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.38);background:rgba(255,255,255,.04);
+  transition:transform .26s var(--ease),border-color .22s var(--ease),background .22s var(--ease);
+}
+.cur.try .ring{transform:scale(1.42);border-color:rgba(255,255,255,.78);background:rgba(255,255,255,.08)}
+.cur.btn .ring{transform:scale(1.22);border-color:rgba(255,255,255,.65)}
+.cur.down .ring{transform:scale(.82)}
+@media(hover:none),(pointer:coarse){.cur{display:none}}
+
+/* Lookbook Grid Modal, Wishlist & Admin Precision Sliders */
+.top-right-group{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.icon-pill{
+  height:44px;padding:0 13px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;
+  font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap;
+  transition:transform .22s var(--ease),border-color .22s var(--ease),background .22s var(--ease);
+}
+.icon-pill:hover{border-color:rgba(255,255,255,.45);transform:translateY(-1px)}
+.icon-pill svg{width:15px;height:15px;display:block}
+.wish-btn{
+  width:38px;height:38px;border-radius:50%;flex:0 0 38px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);
+  display:grid;place-items:center;color:rgba(255,255,255,.82);
+  transition:transform .2s var(--ease),background .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease);
+}
+.wish-btn:hover{background:rgba(255,255,255,.20);color:#fff}
+.wish-btn.saved{background:rgba(244,63,94,.22);border-color:rgba(251,113,133,.65);color:#fb7185}
+.wish-btn:active{transform:scale(.88)}
+.wish-btn svg{width:17px;height:17px;display:block}
+
+.lb-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.lb-search{
+  flex:1 1 200px;padding:10px 14px;border-radius:12px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+  color:#fff;font-size:13px;outline:none;
+}
+.lb-search:focus{border-color:rgba(255,255,255,.6)}
+.lb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:12px;max-height:58vh;overflow-y:auto;padding-right:4px}
+.lb-card{
+  position:relative;border-radius:18px;padding:12px;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;gap:8px;
+  transition:border-color .22s var(--ease),transform .22s var(--ease),background .22s var(--ease);
+}
+.lb-card:hover{border-color:rgba(255,255,255,.38);background:rgba(255,255,255,.09);transform:translateY(-2px)}
+.lb-img-wrap{position:relative;height:132px;border-radius:12px;background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.13),rgba(255,255,255,.02));overflow:hidden}
+.lb-img-wrap .g{position:absolute;inset:8px;background-repeat:no-repeat}
+.lb-tag{position:absolute;top:7px;left:7px;font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;background:rgba(9,10,14,.72);border:1px solid rgba(255,255,255,.18);text-transform:uppercase;letter-spacing:.06em}
+.lb-heart{position:absolute;top:6px;right:6px;width:28px;height:28px;border-radius:50%;background:rgba(9,10,14,.68);display:grid;place-items:center;color:rgba(255,255,255,.78)}
+.lb-heart.saved{color:#fb7185;background:rgba(244,63,94,.24)}
+.lb-title{font-size:12.5px;font-weight:700;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lb-sub{font-size:11px;color:rgba(255,255,255,.68)}
+.lb-foot{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:auto}
+.lb-price{font-size:13px;font-weight:800;font-variant-numeric:tabular-nums}
+.lb-price small{font-size:10.5px;font-weight:600;opacity:.72;display:block}
+
+.adm-sliders{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.1)}
+.adm-sliders label{display:flex;flex-direction:column;gap:4px;font-size:10.5px;color:rgba(255,255,255,.78);font-weight:600}
+.adm-sliders input[type="range"]{width:100%;accent-color:#fff;cursor:pointer}
+
+/* Mobile Quick-Access Bottom Dock (Shown on Mobile/Compact Touch Screens) */
+.mobile-dock{
+  display:none;
+  position:absolute;
+  left:50%;
+  bottom:1.1vh;
+  transform:translateX(-50%);
+  z-index:62;
+  padding:4px 6px;
+  border-radius:999px;
+  align-items:center;
+  gap:2px;
+  max-width:calc(100vw - 16px);
+}
+.mobile-dock button,.mobile-dock a{
+  height:32px;padding:0 10px;border-radius:999px;font-size:11px;font-weight:600;
+  color:rgba(255,255,255,.84);display:inline-flex;align-items:center;gap:4px;white-space:nowrap;
+  transition:background .2s var(--ease),color .2s var(--ease);
+}
+.mobile-dock button:hover,.mobile-dock a:hover,.mobile-dock button.on{background:#fff;color:#090a0e}
+
+/* =========================================================================
+   3-PLATFORM RESPONSIVE ARCHITECTURE: DESKTOP (>=1180) + TABLET + MOBILE
+   ========================================================================= */
+@media(max-width:1240px){
+  .price-pill .pp-bdt,.price-pill .pp-sep{display:none}
+  .price-pill{padding:0 10px 0 12px;gap:6px}
+  .icon-pill span.lbl-txt{display:none}
+  .icon-pill{padding:0 12px}
+}
+@media(max-width:1080px){
+  :root{--MH:min(58vh,48vw);--CW:min(17vw,27vh)}
+  .top-bar{flex-wrap:wrap;justify-content:space-between;row-gap:8px;top:1.8vh}
+  .tabs{order:3;margin:0 auto;max-width:calc(100vw - 32px);overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .women-palette{width:196px;padding:10px 11px;bottom:14.2vh}
+  .buy{width:min(680px,calc(100vw - 24px));gap:12px;padding:8px 12px}
+  .buy .grp.color-grp{display:none}
+}
+@media(max-width:900px){
+  .hub-grid,.gw-grid{grid-template-columns:1fr}
+  .women-palette{
+    left:50%;bottom:15.2vh;width:min(410px,calc(100vw - 24px));
+    padding:8px 12px;border-radius:999px;
+    transform:translate3d(-50%,10px,0) scale(.96);
+  }
+  .women-palette.show{transform:translate3d(-50%,0,0) scale(1)}
+  .wp-head{margin-bottom:0;margin-right:8px}
+  .wp-title span,.wp-active-name{display:none}
+  .women-palette{display:flex;align-items:center;gap:6px}
+  .wp-swatches{display:flex;align-items:center;gap:7px;margin-bottom:0;overflow-x:auto;scrollbar-width:none;padding:2px 2px;flex:1}
+  .wp-swatches::-webkit-scrollbar{display:none}
+  .wp-swatches button{width:24px;height:24px;flex:0 0 24px}
+}
+@media(max-width:760px){
+  :root{--MH:min(47vh,66vw);--CW:min(31vw,22vh)}
+  .hero{min-height:680px}
+  .top-bar{padding:0 12px;top:1.3vh;row-gap:7px}
+  .gender-switch button{height:32px;padding:0 11px;font-size:12px}
+  .price-pill,.icon-pill{height:38px}
+  .price-pill .pp-usd{font-size:13.5px}
+  .price-pill .pp-bag{font-size:11px;padding:3px 8px}
+  .tabs{padding:3px}
+  .tabs button{padding:0 11px;font-size:11.5px;height:30px}
+  .tabs .pill{height:30px;top:3px}
+  .rail{display:none}
+  .arrow.prev{left:8px}
+  .arrow.next{right:8px}
+  .arrow{width:36px;height:36px;top:46%}
+  .ghost{top:13vh}
+  .seen-svg{width:min(54vw,245px)}
+  .arc{top:46%}
+  .model,.model-aura{bottom:21.5vh}
+  .women-palette{bottom:18.6vh;padding:6px 10px}
+  .buy{
+    bottom:6.4vh;width:calc(100vw - 18px);
+    padding:8px 10px;gap:8px;border-radius:20px;
+    display:grid;grid-template-columns:44px 1fr auto auto;grid-template-rows:auto auto;align-items:center;
+  }
+  .buy .thumb{width:44px;height:44px;flex:0 0 44px;border-radius:11px;grid-row:1 / span 2}
+  .buy .info{min-width:0;grid-column:2 / span 3;grid-row:1}
+  .buy .bname{font-size:13.5px}
+  .buy .bprice{font-size:11.5px}
+  .buy .grp.size-grp{display:flex;flex-direction:row;align-items:center;gap:5px;grid-column:2;grid-row:2}
+  .buy .grp.size-grp .lbl{display:none}
+  .buy .chips button{width:26px;height:26px;font-size:11px}
+  .wish-btn{width:34px;height:34px;grid-column:3;grid-row:2}
+  .buy-cta{height:34px;padding:0 13px;font-size:11.5px;grid-column:4;grid-row:2}
+  .outfit-brand-bar{display:none}
+  .mobile-dock{display:inline-flex}
+  .field-grid,.callout-actions,.adm-sliders{grid-template-columns:1fr}
+  .pay-methods{grid-template-columns:repeat(2,1fr)}
+  .side-price{top:11vh;right:10px;width:calc(100vw - 20px)}
+  .modal-card{padding:18px;border-radius:22px}
+}
+@media(prefers-reduced-motion:reduce){
+  .tabs .pill,.buy .chips button,.buy .dots button,.cur .ring{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Static Zero-Lag Dark Architectural Studio Backdrop -->
+<div class="studio-bg" aria-hidden="true">
+  <div class="studio-beam"></div>
+  <div class="studio-grid"></div>
+  <div class="studio-horizon"></div>
+</div>
+
+<!-- ===============================================================
+     HERO: MEN & WOMEN HEADLESS MANNEQUIN SPATIAL TRY-ON STORE
+     =============================================================== -->
+<section class="hero" id="hero" aria-label="SEEN Spatial T-Shirt Try-On Stage">
+
+  <!-- Clearly Visible Compact Vector Arabic SEEN (س) Monogram Above & Behind Mannequin -->
+  <div class="ghost" id="ghost" aria-hidden="true">
+    <svg class="seen-svg" id="seenSvg" viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="seenPlat" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="52%" stop-color="#dfe6f5"/>
+          <stop offset="100%" stop-color="#7c879c"/>
+        </linearGradient>
+      </defs>
+      <g opacity="0.34">
+        <text x="300" y="232" text-anchor="middle" direction="rtl"
+          font-family="'Cairo', system-ui, sans-serif" font-weight="900" font-size="292"
+          fill="url(#seenPlat)">س</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Top Navigation: Men / Women Switcher (with Small Male & Female Icons) + Collection Tabs + Live Price Pill -->
+  <header class="top-bar">
+    <div class="gender-switch glass" id="genderSwitch" role="tablist" aria-label="Men and Women Collections">
+      <button type="button" class="on" data-gender="men" role="tab" aria-selected="true" id="btnMen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="10" cy="14" r="5"/>
+          <path d="M13.6 10.4L19 5M15 5h4v4"/>
+        </svg>
+        <span>Men</span>
+      </button>
+      <button type="button" data-gender="women" role="tab" aria-selected="false" id="btnWomen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="9" r="5"/>
+          <path d="M12 14v7M9 18h6"/>
+        </svg>
+        <span>Women</span>
+      </button>
+    </div>
+
+    <nav class="tabs glass" id="tabs" aria-label="T-Shirt Collections">
+      <span class="pill" id="pill"></span>
+      <button type="button" class="on" data-cat="all">All Tees</button>
+      <button type="button" data-cat="Essential">Essential</button>
+      <button type="button" data-cat="Athletic Fit">Athletic Fit</button>
+      <button type="button" data-cat="Oversized">Oversized</button>
+      <button type="button" data-cat="Limited Drop">Limited Drop</button>
+    </nav>
+
+    <div class="top-right-group">
+      <button type="button" class="icon-pill glass" id="topLookbookBtn" aria-label="Browse All 24 T-Shirts & Search" title="Browse All 24 Tees">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        <span class="lbl-txt">All 24</span>
+      </button>
+      <button type="button" class="price-pill glass" id="pricePill" aria-label="Open Live Pricing & Shopping Bag">
+        <span class="pp-usd" id="ppUsd">$45</span>
+        <span class="pp-bdt" id="ppBdt">৳1,490</span>
+        <span class="pp-sep" aria-hidden="true"></span>
+        <span class="pp-bag" id="ppBag">Bag &middot; 0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Left Tool Rail -->
+  <aside class="rail glass" id="rail" aria-label="Store Tools">
+    <button type="button" class="on" id="railTry" aria-label="Spatial T-Shirt Try-On" title="Spatial Try-On">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l4-3h8l4 3-2 4-2-1v10H8V10l-2 1-2-4z"/></svg>
+    </button>
+    <button type="button" id="railCatalog" aria-label="Browse All 24 Tees & Saved Favorites" title="Browse All 24 Tees & Wishlist">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+      <span class="badge" id="wishBadge">0</span>
+    </button>
+    <button type="button" id="railCart" aria-label="Live Pricing & Shopping Bag" title="Live Pricing & Bag">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M3 4h2l2.4 11.2a1.6 1.6 0 0 0 1.6 1.3h9a1.6 1.6 0 0 0 1.6-1.2L21 8H7"/></svg>
+      <span class="badge" id="cartBadge">0</span>
+    </button>
+    <button type="button" id="railGateway" aria-label="Transaction & Payment Gateway" title="Payment Gateway (bKash / Nagad / Card)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M7 15h4"/></svg>
+    </button>
+    <button type="button" id="railAdmin" aria-label="Admin Auto-Mockup & Orders Studio" title="Admin Studio: Auto-Mockup & Orders">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+    </button>
+    <button type="button" id="railProfile" aria-label="Login Gateway & Contact Jayed" title="Account Login & Direct Connect">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 19.5c1.6-3.2 4-4.7 7-4.7s5.4 1.5 7 4.7"/></svg>
+    </button>
+  </aside>
+
+  <!-- WOMEN-ONLY Favorite Color Palette Widget (Bottom-Left Empty Space) -->
+  <aside class="women-palette glass" id="womenPalette" aria-label="Women's Favorite Color Palette">
+    <div class="wp-head">
+      <div class="wp-title">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="9" r="5"/><path d="M12 14v7M9 18h6"/></svg>
+        <span>Women&rsquo;s Palette</span>
+      </div>
+      <button type="button" class="wp-reset" id="wpResetBtn" title="Reset to original T-shirt color">Reset</button>
+    </div>
+    <div class="wp-swatches" id="wpSwatches"></div>
+    <div class="wp-active-name">
+      <span>Live Shade</span>
+      <strong id="wpShadeName">Original</strong>
+    </div>
+  </aside>
+
+  <button type="button" class="arrow prev glass" id="prev" aria-label="Previous T-shirt">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+  </button>
+  <button type="button" class="arrow next glass" id="next" aria-label="Next T-shirt">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+
+  <!-- Slide-Out Live Pricing & Bag Drawer -->
+  <aside class="side-price glass-dark collapsed" id="sidePrice" aria-label="Live T-Shirt Pricing & Shopping Bag">
+    <div class="sp-head">
+      <span class="sp-tag" id="spCount">Men &middot; 8 Tees</span>
+      <button type="button" class="sp-close" id="spClose" aria-label="Close bag drawer">&times;</button>
+    </div>
+    <div class="sp-body">
+      <div class="sp-price-row">
+        <span class="sp-usd" id="spUsd">$45</span>
+        <span class="sp-bdt" id="spBdt">৳1,490</span>
+      </div>
+      <div class="sp-meta" id="spMeta">Essential White Heavy Tee &middot; Essential</div>
+      <div class="sp-spec">
+        <span class="sp-chip" id="spFitChip">260 GSM Heavy Cotton</span>
+        <span class="sp-chip" id="spSizeChip">Size M</span>
+        <span class="sp-chip" id="spColorChip">Pure White</span>
+      </div>
+    </div>
+    <div class="sp-actions">
+      <button type="button" class="btn-solid" id="spAddBtn">+ Add to Bag</button>
+      <button type="button" class="btn-soft" id="spBuyBtn">Buy Now</button>
+    </div>
+    <div class="sp-cart" id="spCart">
+      <div class="sp-cart-list" id="spCartList"></div>
+      <div class="sp-total-row">
+        <span>Total</span>
+        <span id="spCartTotal">$0 &middot; ৳0</span>
+      </div>
+      <button type="button" class="btn-solid sp-checkout" id="spCheckoutBtn">Proceed to Transaction Gateway &rarr;</button>
+    </div>
+  </aside>
+
+  <!-- 3D Spatial T-Shirt Arc Stage -->
+  <main class="stage" id="stage">
+    <div class="arc" id="arc"></div>
+  </main>
+
+  <!-- Headless Sculptural Mannequin Stage -->
+  <div class="model-aura" aria-hidden="true"></div>
+  <div class="model" id="model" aria-hidden="true">
+    <div id="mCur"></div>
+    <div id="mNext"></div>
+    <div class="grid" id="grid"></div>
+    <div class="scan" id="scan"></div>
+  </div>
+
+  <!-- Outfit Controls Capsule (Works on Desktop, Tablet & Mobile!) -->
+  <section class="buy glass" id="buy" aria-label="Selected T-shirt controls">
+    <div class="thumb"><div class="g" id="thumbG"></div></div>
+    <div class="info">
+      <div class="bname ln" id="bName"></div>
+      <div class="bprice ln" id="bPrice"></div>
+    </div>
+    <div class="grp size-grp">
+      <div class="lbl">Size</div>
+      <div class="chips" id="sizes">
+        <button type="button">S</button>
+        <button type="button" class="on">M</button>
+        <button type="button">L</button>
+        <button type="button">XL</button>
+      </div>
+    </div>
+    <div class="grp color-grp">
+      <div class="lbl ln clbl" id="bColor"></div>
+      <div class="dots" id="dots"></div>
+    </div>
+    <button type="button" class="wish-btn" id="buyWishBtn" aria-label="Save to Favorites" title="Save to Favorites">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21.3l7.8-7.8 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+    </button>
+    <button type="button" class="btn-solid buy-cta" id="buyAddBtn">Add &middot; $45</button>
+  </section>
+
+  <!-- Compact Brand & Action Strip Directly Below Outfit Area (Desktop/Tablet) -->
+  <div class="outfit-brand-bar" aria-label="Store quick navigation and branding">
+    <span class="ob-mark">س</span>
+    <span>SEEN Studio Apparel</span>
+    <span class="ob-sep">&middot;</span>
+    <button type="button" id="openLookbookLink">Browse All 24</button>
+    <span class="ob-sep">&middot;</span>
+    <button type="button" id="openSizeGuideBtn">Size Guide</button>
+    <span class="ob-sep">&middot;</span>
+    <button type="button" id="openTrackOrderBtn">Track Order</button>
+    <span class="ob-sep">&middot;</span>
+    <a href="#account-hub">Account &amp; Connect &darr;</a>
+  </div>
+
+  <!-- Mobile Bottom Quick-Access App Dock -->
+  <nav class="mobile-dock glass" aria-label="Mobile quick actions">
+    <button type="button" id="mobLookbook">Catalog</button>
+    <button type="button" id="mobPay">Pay</button>
+    <button type="button" id="mobSize">Size</button>
+    <button type="button" id="mobTrack">Track</button>
+    <button type="button" id="mobAdmin">Admin</button>
+    <a href="#account-hub">Account</a>
+  </nav>
+</section>
+
+<!-- ===============================================================
+     LOWER HUB: CUSTOMER LOGIN GATEWAY, DIRECT CONNECT & CREATOR BAR
+     =============================================================== -->
+<section class="hub" id="account-hub" aria-label="Account Login and Store Hub">
+  <div class="hub-inner">
+    <div class="hub-top">
+      <div>
+        <div class="hub-eyebrow">SEEN Spatial Apparel &middot; Men &amp; Women Active Storefront</div>
+        <h2 class="hub-title">Account Login Gateway &amp; Direct Connect</h2>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button type="button" class="btn-soft" id="hubTrackBtn">Track My Order</button>
+        <button type="button" class="btn-soft" id="hubAdminBtn">Admin Studio</button>
+        <a href="#hero" class="btn-solid">&uarr; Back to Spatial Try-On</a>
+      </div>
+    </div>
+
+    <div class="hub-grid">
+      <!-- Customer Login Gateway (Inline Google Auth — ZERO blocked prompt() popups!) -->
+      <div class="panel glass-dark">
+        <div class="panel-head">
+          <h3>Customer Login Gateway</h3>
+          <div class="seg" id="authSeg">
+            <button type="button" class="on" data-mode="login">Sign In</button>
+            <button type="button" data-mode="signup">Create Account</button>
+          </div>
+        </div>
+
+        <div class="signed-card" id="signedCard">
+          <div class="signed-info">
+            <strong id="signedName">Signed in</strong>
+            <span id="signedSub"></span>
+          </div>
+          <button type="button" class="btn-soft" id="signOutBtn">Sign Out</button>
+        </div>
+
+        <button type="button" class="google-btn" id="googleLoginBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#EA4335" d="M12 10.2v3.9h5.4c-.24 1.26-.96 2.33-2.04 3.04l3.3 2.56c1.92-1.77 3.04-4.38 3.04-7.48 0-.72-.06-1.42-.18-2.02H12z"/>
+            <path fill="#34A853" d="M12 22c2.76 0 5.08-.92 6.77-2.48l-3.3-2.56c-.92.62-2.08.99-3.47.99-2.67 0-4.93-1.8-5.74-4.22H2.85v2.65A10.22 10.22 0 0 0 12 22z"/>
+            <path fill="#FBBC05" d="M6.26 13.73A6.12 6.12 0 0 1 5.94 12c0-.6.11-1.18.32-1.73V7.62H2.85A10.2 10.2 0 0 0 1.78 12c0 1.65.4 3.21 1.07 4.38l3.41-2.65z"/>
+            <path fill="#4285F4" d="M12 6.05c1.5 0 2.85.52 3.91 1.53l2.93-2.93C17.07 2.99 14.76 2 12 2 8.01 2 4.56 4.29 2.85 7.62l3.41 2.65C7.07 7.85 9.33 6.05 12 6.05z"/>
+          </svg>
+          <span>Continue with Google Account</span>
+        </button>
+
+        <form class="google-inline" id="googleInlineForm">
+          <div class="field-grid">
+            <div class="field" style="margin-bottom:8px">
+              <label for="gQuickEmail">Google Email</label>
+              <input id="gQuickEmail" type="email" required placeholder="yourname@gmail.com">
+            </div>
+            <div class="field" style="margin-bottom:8px">
+              <label for="gQuickPhone">Phone (Optional)</label>
+              <input id="gQuickPhone" type="tel" placeholder="+880 1XXX-XXXXXX">
+            </div>
+          </div>
+          <button type="submit" class="btn-solid" style="width:100%;height:36px">Complete Google Sign-In</button>
+        </form>
+
+        <div class="divider">or with email &amp; phone</div>
+
+        <form id="authForm">
+          <div class="field-grid" id="signupNameRow" style="display:none">
+            <div class="field">
+              <label for="authName">Full Name</label>
+              <input id="authName" type="text" placeholder="Your full name">
+            </div>
+            <div class="field">
+              <label for="authPhone">Phone Number</label>
+              <input id="authPhone" type="tel" placeholder="+880 1XXX-XXXXXX">
+            </div>
+          </div>
+          <div class="field">
+            <label for="authEmail">Google / Email Address</label>
+            <input id="authEmail" type="email" required placeholder="yourname@gmail.com">
+          </div>
+          <div class="field">
+            <label for="authPass">Password</label>
+            <input id="authPass" type="password" required minlength="4" placeholder="Enter password">
+          </div>
+          <button type="submit" class="btn-solid" style="width:100%;height:42px;font-size:13.5px" id="authSubmitBtn">Sign In to SEEN Store</button>
+          <div class="form-status" id="authStatus"></div>
+        </form>
+      </div>
+
+      <!-- Direct Call-Out & Connect -->
+      <div class="panel glass-dark">
+        <div class="panel-head">
+          <h3>Call Out &amp; Connect with Jayed</h3>
+          <span class="sp-chip" style="background:rgba(74,222,128,.16);border-color:rgba(134,239,172,.38);color:#bbf7d0">Live Support</span>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,.78);line-height:1.55;margin-bottom:16px">
+          Want bulk Men&rsquo;s/Women&rsquo;s T-shirt orders, custom prints, or a spatial virtual try-on e-commerce store handed over for your brand? Connect directly below.
+        </p>
+
+        <form id="contactForm">
+          <div class="field-grid">
+            <div class="field">
+              <label for="cGoogle">Your Google Account</label>
+              <input id="cGoogle" type="email" required placeholder="you@gmail.com">
+            </div>
+            <div class="field">
+              <label for="cPhone">Your Phone Number</label>
+              <input id="cPhone" type="tel" required placeholder="+880 1XXX-XXXXXX">
+            </div>
+          </div>
+          <div class="field">
+            <label for="cMsg">Message / T-Shirt Order Inquiry</label>
+            <textarea id="cMsg" placeholder="Hi Jayed, I'd like to connect regarding SEEN Men & Women T-shirts..."></textarea>
+          </div>
+          <div class="callout-actions">
+            <button type="submit" class="btn-wa">WhatsApp Call-Out</button>
+            <button type="button" class="btn-call" id="directCallBtn">Email / Call Jayed</button>
+          </div>
+          <div class="form-status" id="contactStatus"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Creator Footer -->
+    <footer class="creator glass-dark">
+      <div class="creator-left">
+        <div class="creator-avatar" aria-hidden="true">س</div>
+        <div class="creator-meta">
+          <h4>Jayed Jaman Seen <span style="font-family:'Cairo',sans-serif;font-weight:900;font-size:19px;opacity:.9">س</span></h4>
+          <p>WordPress, WooCommerce &amp; AI Web Designer &middot; Barishal, Bangladesh (GMT+6)</p>
+          <div class="creator-direct">
+            <a href="mailto:thunderseen@gmail.com">thunderseen@gmail.com</a>
+            <a href="tel:+8801307758119">+880 1307-758119</a>
+          </div>
+        </div>
+      </div>
+      <div class="socials" aria-label="Jayed Jaman Seen Social Media Links">
+        <a class="soc-pill" href="https://wa.me/8801307758119" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a class="soc-pill" href="https://www.linkedin.com/in/jayed-jaman-seen-b540b8334/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="soc-pill" href="https://github.com/JJSEEN" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="soc-pill" href="https://x.com/JayedJamanSeen" target="_blank" rel="noopener noreferrer">X</a>
+        <a class="soc-pill" href="https://www.fiverr.com/jayedjaman_seen?public_mode=true" target="_blank" rel="noopener noreferrer">Fiverr</a>
+        <a class="soc-pill" href="https://www.freelancer.com.bd/u/jayedjamans" target="_blank" rel="noopener noreferrer">Freelancer</a>
+        <button type="button" class="soc-pill" id="footerAdminBtn">Admin</button>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<!-- ===============================================================
+     MODAL 1: ACTIVE TRANSACTION & PAYMENT GATEWAY (SHARP bKash ICON)
+     =============================================================== -->
+<div class="modal-backdrop" id="gwModal" role="dialog" aria-modal="true" aria-labelledby="gwTitle">
+  <div class="modal-card glass-dark">
+    <div class="modal-head">
+      <div>
+        <div class="hub-eyebrow" style="margin-bottom:3px">256-Bit Encrypted E-Commerce Transaction Gateway</div>
+        <h2 id="gwTitle">SEEN Secure Checkout &amp; Payment</h2>
+      </div>
+      <button type="button" class="modal-close" id="gwClose" aria-label="Close payment gateway">&times;</button>
+    </div>
+
+    <div class="gw-grid" id="gwBody">
+      <!-- Order Summary -->
+      <div class="gw-box">
+        <h4>Order Summary</h4>
+        <div class="gw-items" id="gwItems"></div>
+        <div class="promo-row">
+          <input type="text" id="promoInput" placeholder="Promo code (SEEN10 or JAYED10)">
+          <button type="button" class="btn-soft" id="promoApply" style="height:36px">Apply</button>
+        </div>
+        <div class="gw-totals">
+          <div class="gw-row"><span>Subtotal</span><span id="gwSub">$0 &middot; ৳0</span></div>
+          <div class="gw-row" id="gwDiscRow" style="display:none;color:#86efac"><span>Promo (10% OFF)</span><span id="gwDisc">-$0</span></div>
+          <div class="gw-row"><span>Express Delivery</span><span id="gwShip">৳120</span></div>
+          <div class="gw-row total"><span>Total Payable</span><span id="gwTotal">$0 &middot; ৳0</span></div>
+        </div>
+      </div>
+
+      <!-- Transaction Gateway Controls -->
+      <div class="gw-box">
+        <h4>Select Payment Method</h4>
+        <div class="pay-methods" id="payMethods">
+          <button type="button" class="bkash-tab on" data-pay="bKash" aria-label="Pay via bKash">
+            <svg width="24" height="24" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <path d="M12 14L31 28L25 46L12 14Z" fill="#fff"/>
+              <path d="M31 28L52 17L43 34L31 28Z" fill="#ffd1e6"/>
+              <path d="M31 28L43 34L25 46L31 28Z" fill="#fff"/>
+              <path d="M43 34L54 38L41 44L43 34Z" fill="#ffb3d5"/>
+              <path d="M25 46L41 44L17 54L25 46Z" fill="#ffd9ea"/>
+            </svg>
+            <span>bKash</span>
+          </button>
+          <button type="button" data-pay="Nagad">
+            <span style="font-size:14px;font-weight:900;color:#fb923c">N</span>
+            <span>Nagad</span>
+          </button>
+          <button type="button" data-pay="Rocket">
+            <span style="font-size:14px;font-weight:900;color:#c084fc">R</span>
+            <span>Rocket</span>
+          </button>
+          <button type="button" data-pay="Card">
+            <span style="font-size:13px;font-weight:800">VISA</span>
+            <span>SSLCommerz</span>
+          </button>
+          <button type="button" data-pay="COD">
+            <span style="font-size:13px;font-weight:800">৳</span>
+            <span>Cash on Delivery</span>
+          </button>
+        </div>
+
+        <!-- SHARP bKash VAULT: Merchant number (+8801721255494) is securely hidden INSIDE the sharp bKash icon! -->
+        <div class="bkash-vault" id="bkashVault">
+          <div class="bkash-vault-top">
+            <button type="button" class="bkash-icon-btn" id="bkashSecretIcon" aria-label="Tap sharp bKash icon to copy verified merchant number securely" title="Tap bKash icon to copy verified merchant account">
+              <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <path d="M10 13L30 28L23.5 47.5L10 13Z" fill="#ffffff"/>
+                <path d="M30 28L53 16L43.5 34.5L30 28Z" fill="#ffe1ef"/>
+                <path d="M30 28L43.5 34.5L23.5 47.5L30 28Z" fill="#ffffff"/>
+                <path d="M43.5 34.5L56 39L41 45.5L43.5 34.5Z" fill="#ffc4df"/>
+                <path d="M23.5 47.5L41 45.5L15 55.5L23.5 47.5Z" fill="#ffd9ea"/>
+              </svg>
+            </button>
+            <div class="bkash-vault-info">
+              <div class="bkash-vault-title"><span>bKash Verified Merchant</span> <span class="bkash-verified-dot"></span></div>
+              <p id="bkashHintText">Tap the sharp <strong>bKash icon</strong> to securely copy the hidden merchant number &amp; complete Send Money, then enter your TrxID below.</p>
+              <button type="button" class="bkash-copy-pill" id="bkashCopyTrigger">
+                <span>Tap bKash Icon to Copy Merchant</span>
+              </button>
+            </div>
+          </div>
+          <div class="field-grid" style="margin-bottom:0">
+            <div class="field" style="margin-bottom:0">
+              <label for="gwBkashSender">Your bKash Number</label>
+              <input id="gwBkashSender" type="tel" placeholder="017XX-XXXXXX">
+            </div>
+            <div class="field" style="margin-bottom:0">
+              <label for="gwTrxId">bKash Transaction ID (TrxID)</label>
+              <input id="gwTrxId" type="text" placeholder="e.g. BKH9A2X7P1" style="text-transform:uppercase;letter-spacing:.06em">
+            </div>
+          </div>
+        </div>
+
+        <div id="gwWalletHint" style="display:none;font-size:12px;color:rgba(255,255,255,.82);padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);margin-bottom:13px"></div>
+
+        <form id="gwForm">
+          <div class="field-grid">
+            <div class="field">
+              <label for="gwName">Customer Name</label>
+              <input id="gwName" type="text" required placeholder="Full name">
+            </div>
+            <div class="field">
+              <label for="gwPhone">Phone Number</label>
+              <input id="gwPhone" type="tel" required placeholder="+880 1XXX-XXXXXX">
+            </div>
+          </div>
+
+          <div id="gwCardFields" style="display:none">
+            <div class="field">
+              <label for="gwCardNum">Card Number (SSLCommerz)</label>
+              <input id="gwCardNum" type="text" placeholder="4532 •••• •••• 8841" maxlength="19">
+            </div>
+            <div class="field-grid">
+              <div class="field"><label for="gwExp">Expiry</label><input id="gwExp" type="text" placeholder="09/29" maxlength="5"></div>
+              <div class="field"><label for="gwCvv">CVV</label><input id="gwCvv" type="password" placeholder="•••" maxlength="4"></div>
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="gwCity">District / City</label>
+              <select id="gwCity">
+                <option>Dhaka</option>
+                <option>Barishal</option>
+                <option>Chattogram</option>
+                <option>Sylhet</option>
+                <option>Rajshahi</option>
+                <option>Khulna</option>
+                <option>Rangpur</option>
+                <option>Mymensingh</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="gwAddr">Delivery Address</label>
+              <input id="gwAddr" type="text" required placeholder="House, Road, Area">
+            </div>
+          </div>
+
+          <button type="submit" class="btn-solid" style="width:100%;height:44px;font-size:14px;background:linear-gradient(135deg,#fff,#e8edf8)" id="gwPayBtn">Verify &amp; Pay via bKash</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Verified Receipt & Printable Invoice -->
+    <div class="gw-receipt" id="gwReceipt">
+      <div class="gw-check">&#10003;</div>
+      <h3 style="font-size:22px;margin-bottom:6px">Transaction Logged &amp; Order Confirmed!</h3>
+      <p style="font-size:13.5px;opacity:.86;margin-bottom:16px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.5" id="rcptText"></p>
+      <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
+        <a id="rcptWaLink" href="https://wa.me/8801307758119" target="_blank" rel="noopener noreferrer" class="btn-wa">Confirm on WhatsApp</a>
+        <button type="button" class="btn-soft" id="rcptPrintBtn" style="height:42px;padding:0 18px">Download / Print Invoice</button>
+        <button type="button" class="btn-solid" id="rcptDoneBtn" style="height:42px;padding:0 20px">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===============================================================
+     MODAL 2: ADMIN PANEL (AUTO-MOCKUP + LIVE ORDERS + HANDOVER CONFIG)
+     =============================================================== -->
+<div class="modal-backdrop" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+  <div class="modal-card glass-dark">
+    <div class="modal-head">
+      <div>
+        <div class="hub-eyebrow" style="margin-bottom:3px">Active E-Commerce Control Center &middot; Men &amp; Women</div>
+        <h2 id="adminTitle">Admin Studio, Auto-Mockup &amp; Orders</h2>
+      </div>
+      <button type="button" class="modal-close" id="adminClose" aria-label="Close admin studio">&times;</button>
+    </div>
+
+    <!-- Secure Admin Password Gate (Zero hints displayed) -->
+    <div class="pin-gate" id="adminPinGate">
+      <p style="font-size:13.5px;opacity:.82;margin-bottom:14px">
+        Enter your Admin Password to manage Men &amp; Women T-shirt mockups, verify bKash transactions, and configure store handover settings.
+      </p>
+      <form id="pinForm" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+        <input type="password" id="pinInput" placeholder="Enter admin password" autocomplete="current-password" style="width:220px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);text-align:center;font-weight:600;letter-spacing:.08em">
+        <button type="submit" class="btn-solid" style="height:42px;padding:0 20px">Unlock Studio</button>
+      </form>
+      <div class="form-status" id="pinErr" style="color:#fca5a5"></div>
+    </div>
+
+    <div id="adminBody" style="display:none">
+      <div class="admin-tabs" id="adminTabs">
+        <button type="button" class="on" data-tab="mockup">Auto-Mockup &amp; Catalog</button>
+        <button type="button" data-tab="orders">Orders &amp; Transactions (<span id="admOrderCount">0</span>)</button>
+        <button type="button" data-tab="handover">Gateway &amp; Handover</button>
+      </div>
+
+      <!-- TAB 1: Auto-Mockup & Men/Women Catalog -->
+      <div id="admTabMockup">
+        <div class="gw-grid">
+          <div class="gw-box">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+              <h4 style="margin:0">Upload T-Shirt &rarr; Headless Mannequin</h4>
+              <button type="button" class="btn-soft" id="demoAutoBtn" style="height:28px;font-size:11px;padding:0 12px">+ Try Demo Tee</button>
+            </div>
+
+            <div class="field" style="margin-bottom:10px">
+              <label for="admTargetGender">Target Store Section (Auto-Fits Matching Mannequin)</label>
+              <select id="admTargetGender">
+                <option value="men">Men&rsquo;s Collection (Male Headless Mannequin)</option>
+                <option value="women">Women&rsquo;s Collection (Female Headless Mannequin)</option>
+              </select>
+            </div>
+
+            <div class="dropzone" id="dropzone">
+              <p><strong>Drop 1 or multiple T-shirt photos here</strong><br><small style="opacity:.75">PNG or JPG — auto-cleaned &amp; fitted onto the headless mannequin automatically</small></p>
+              <input type="file" id="teeFileInput" accept="image/*" multiple style="display:none">
+              <button type="button" class="btn-solid" id="pickFilesBtn">Choose T-Shirt Photo(s)</button>
+            </div>
+
+            <div class="batch-queue" id="batchQueue"></div>
+
+            <div class="preview-stage" id="previewStage" style="display:none">
+              <div class="preview-box" title="Auto-Generated Headless Mannequin Mockup">
+                <img id="prevModelImg" alt="Auto mockup preview">
+              </div>
+              <div>
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+                  <div style="width:52px;height:52px;border-radius:12px;background:rgba(255,255,255,.12);display:grid;place-items:center;padding:4px;overflow:hidden">
+                    <img id="prevCardImg" alt="Garment card preview" style="max-width:100%;max-height:100%;object-fit:contain">
+                  </div>
+                  <div style="font-size:12px;line-height:1.4">
+                    <strong>Mannequin Mockup Ready</strong><br>
+                    <span style="opacity:.75">Shaded + seamless waist fade</span>
+                  </div>
+                </div>
+                <div class="field" style="margin-bottom:8px">
+                  <label for="admMode">Mockup Mode</label>
+                  <select id="admMode">
+                    <option value="full">Auto-Wrap Full T-Shirt Photo</option>
+                    <option value="graphic">Chest Graphic + Custom Tee Color</option>
+                  </select>
+                </div>
+                <div class="field-grid" id="admColorTintRow" style="display:none;margin-bottom:6px">
+                  <div class="field" style="margin-bottom:0">
+                    <label for="admBaseHex">Base Tee Color</label>
+                    <input id="admBaseHex" type="color" value="#8a1826" style="height:34px;padding:3px">
+                  </div>
+                  <div class="field" style="margin-bottom:0">
+                    <label for="admBgStrip">Auto Strip BG</label>
+                    <select id="admBgStrip">
+                      <option value="1">Yes (Auto Clean)</option>
+                      <option value="0">Keep Original</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="adm-sliders" title="Fine-tune fit & cloth realism">
+                  <label><span>Scale <b id="admScaleVal">100%</b></span><input id="admScale" type="range" min="70" max="140" value="100"></label>
+                  <label><span>Y-Pos <b id="admYVal">0px</b></span><input id="admOffsetY" type="range" min="-55" max="55" value="0"></label>
+                  <label><span>Folds <b id="admFoldVal">1.15</b></span><input id="admFold" type="range" min="70" max="150" value="115"></label>
+                </div>
+              </div>
+            </div>
+
+            <form id="publishTeeForm">
+              <div class="field">
+                <label for="admName">Product Name</label>
+                <input id="admName" type="text" required placeholder="e.g. SEEN Crimson Signature Tee">
+              </div>
+              <div class="field-grid">
+                <div class="field"><label for="admUsd">Price (USD $)</label><input id="admUsd" type="number" min="1" value="54" required></div>
+                <div class="field"><label for="admBdt">Price (BDT ৳)</label><input id="admBdt" type="number" min="50" value="1750" required></div>
+              </div>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="admFit">Collection</label>
+                  <select id="admFit">
+                    <option>Essential</option>
+                    <option>Athletic Fit</option>
+                    <option>Oversized</option>
+                    <option>Limited Drop</option>
+                  </select>
+                </div>
+                <div class="field"><label for="admFabric">Fabric GSM</label><input id="admFabric" type="text" value="250 GSM Heavy Cotton"></div>
+              </div>
+              <div class="field-grid">
+                <div class="field"><label for="admColorName">Color Label</label><input id="admColorName" type="text" value="Crimson Red"></div>
+                <div class="field"><label for="admSwatchHex">Swatch Color</label><input id="admSwatchHex" type="color" value="#8a1826" style="height:40px;padding:4px"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                <button type="submit" class="btn-solid" style="height:40px">Publish to Live Store</button>
+                <button type="button" class="btn-soft" id="publishAllBtn" style="height:40px;display:none">Publish All Batch</button>
+              </div>
+              <div class="form-status" id="admStatus"></div>
+            </form>
+          </div>
+
+          <div class="gw-box">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+              <h4 style="margin:0"><span id="admCatLabel">Men</span> Catalog (<span id="catTotalCount">8</span> Tees)</h4>
+              <div style="display:flex;gap:6px">
+                <button type="button" class="btn-soft" id="admSwitchCatBtn" style="height:28px;font-size:11px;padding:0 10px">Switch to Women</button>
+                <button type="button" class="btn-soft" id="resetCatBtn" style="height:28px;font-size:11px;padding:0 10px">Reset Defaults</button>
+              </div>
+            </div>
+            <p style="font-size:11.5px;color:rgba(255,255,255,.72);margin-bottom:10px">
+              Edit USD/BDT prices live, jump directly to any T-shirt on its mannequin, or remove custom uploads. Auto-saved in browser.
+            </p>
+            <div class="catalog-list" id="catalogList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: Live Orders & bKash Transaction Ledger -->
+      <div id="admTabOrders" style="display:none">
+        <div class="gw-box">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+            <h4 style="margin:0">Customer Orders &amp; bKash Transactions</h4>
+            <button type="button" class="btn-solid" id="exportOrdersCsvBtn" style="height:32px;font-size:11.5px">Export Orders CSV</button>
+          </div>
+          <div id="admOrdersList" style="max-height:420px;overflow-y:auto"></div>
+        </div>
+      </div>
+
+      <!-- TAB 3: Gateway & Client Handover Settings -->
+      <div id="admTabHandover" style="display:none">
+        <div class="gw-grid">
+          <div class="gw-box">
+            <h4>Live Gateway Endpoints (Handover Ready)</h4>
+            <p style="font-size:12px;color:rgba(255,255,255,.76);margin-bottom:14px;line-height:1.5">
+              Connect your production SSLCommerz / bKash Tokenized API webhook when deploying live, or keep instant TrxID + WhatsApp verification active out of the box.
+            </p>
+            <form id="handoverCfgForm">
+              <div class="field">
+                <label for="cfgWebhook">Order Webhook URL (Optional — Google Sheets / Zapier / API)</label>
+                <input id="cfgWebhook" type="url" placeholder="https://your-api.com/webhooks/seen-orders">
+              </div>
+              <div class="field">
+                <label for="cfgSslStore">SSLCommerz Store ID (Optional Live Key)</label>
+                <input id="cfgSslStore" type="text" placeholder="seen_store_live">
+              </div>
+              <div class="field">
+                <label for="cfgWaNumber">WhatsApp Order Receiver (E.164 digits)</label>
+                <input id="cfgWaNumber" type="text" value="8801307758119">
+              </div>
+              <button type="submit" class="btn-solid" style="width:100%;height:40px">Save Handover Settings</button>
+              <div class="form-status" id="cfgStatus"></div>
+            </form>
+          </div>
+          <div class="gw-box">
+            <h4>Full Store Backup &amp; Client Handover</h4>
+            <p style="font-size:12px;color:rgba(255,255,255,.76);margin-bottom:14px;line-height:1.5">
+              Export all Men &amp; Women catalogs, prices, custom auto-mockups, and order history into a single portable JSON snapshot for instant client handover.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <button type="button" class="btn-solid" id="exportStoreJsonBtn" style="height:40px">Export Store Snapshot (.json)</button>
+              <label class="btn-soft" style="height:40px;cursor:pointer">
+                <span>Import Store Snapshot (.json)</span>
+                <input type="file" id="importStoreJsonInp" accept="application/json" style="display:none">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===============================================================
+     MODAL 3: SIZE GUIDE (MEN & WOMEN MEASUREMENTS)
+     =============================================================== -->
+<div class="modal-backdrop" id="sizeModal" role="dialog" aria-modal="true" aria-labelledby="sizeTitle">
+  <div class="modal-card compact glass-dark">
+    <div class="modal-head">
+      <div>
+        <div class="hub-eyebrow" style="margin-bottom:3px">Precision Fit Specification</div>
+        <h2 id="sizeTitle">SEEN T-Shirt Size Guide</h2>
+      </div>
+      <button type="button" class="modal-close" id="sizeClose" aria-label="Close size guide">&times;</button>
+    </div>
+    <p style="font-size:12.5px;color:rgba(255,255,255,.78);margin-bottom:10px">All measurements in inches (chest width &times; body length). Pre-shrunk 240–280 GSM studio cotton.</p>
+    <h4 style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:8px">Men&rsquo;s Fit</h4>
+    <table class="size-table">
+      <thead><tr><th>Size</th><th>Chest</th><th>Length</th><th>Shoulder</th></tr></thead>
+      <tbody>
+        <tr><td><strong>S</strong></td><td>38&Prime;</td><td>27.5&Prime;</td><td>17.5&Prime;</td></tr>
+        <tr><td><strong>M</strong></td><td>40&Prime;</td><td>28.5&Prime;</td><td>18.5&Prime;</td></tr>
+        <tr><td><strong>L</strong></td><td>42&Prime;</td><td>29.5&Prime;</td><td>19.5&Prime;</td></tr>
+        <tr><td><strong>XL</strong></td><td>45&Prime;</td><td>30.5&Prime;</td><td>20.5&Prime;</td></tr>
+      </tbody>
+    </table>
+    <h4 style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:18px">Women&rsquo;s Fit</h4>
+    <table class="size-table">
+      <thead><tr><th>Size</th><th>Bust / Chest</th><th>Length</th><th>Shoulder</th></tr></thead>
+      <tbody>
+        <tr><td><strong>S</strong></td><td>34&Prime;</td><td>23.5&Prime;</td><td>15.0&Prime;</td></tr>
+        <tr><td><strong>M</strong></td><td>36&Prime;</td><td>24.5&Prime;</td><td>15.8&Prime;</td></tr>
+        <tr><td><strong>L</strong></td><td>38.5&Prime;</td><td>25.5&Prime;</td><td>16.6&Prime;</td></tr>
+        <tr><td><strong>XL</strong></td><td>41&Prime;</td><td>26.5&Prime;</td><td>17.4&Prime;</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===============================================================
+     MODAL 4: LIVE ORDER TRACKER
+     =============================================================== -->
+<div class="modal-backdrop" id="trackModal" role="dialog" aria-modal="true" aria-labelledby="trackTitle">
+  <div class="modal-card compact glass-dark">
+    <div class="modal-head">
+      <div>
+        <div class="hub-eyebrow" style="margin-bottom:3px">Real-Time Order Verification</div>
+        <h2 id="trackTitle">Track Your SEEN Order</h2>
+      </div>
+      <button type="button" class="modal-close" id="trackClose" aria-label="Close order tracker">&times;</button>
+    </div>
+    <form id="trackForm" style="display:flex;gap:8px;margin-bottom:14px">
+      <input id="trackInput" type="text" required placeholder="Enter Order ID (e.g. SEEN-482910) or Phone" style="flex:1;padding:11px 14px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)">
+      <button type="submit" class="btn-solid" style="height:42px;padding:0 18px">Check</button>
+    </form>
+    <div id="trackResult" style="font-size:13px;color:rgba(255,255,255,.85)"></div>
+  </div>
+</div>
+
+<!-- ===============================================================
+     MODAL 5: BROWSE ALL 24 TEES LOOKBOOK, SEARCH & WISHLIST
+     =============================================================== -->
+<div class="modal-backdrop" id="lookbookModal" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+  <div class="modal-card glass-dark">
+    <div class="modal-head">
+      <div>
+        <div class="hub-eyebrow" style="margin-bottom:3px">Men &amp; Women Visual Lookbook &middot; 24 Studio T-Shirts</div>
+        <h2 id="lbTitle">Browse All Collections &amp; Favorites</h2>
+      </div>
+      <button type="button" class="modal-close" id="lbClose" aria-label="Close lookbook">&times;</button>
+    </div>
+    <div class="lb-controls">
+      <div class="seg" id="lbSeg">
+        <button type="button" class="on" data-lb="all">All (24)</button>
+        <button type="button" data-lb="men">Men</button>
+        <button type="button" data-lb="women">Women</button>
+        <button type="button" data-lb="saved">Saved &hearts;</button>
+      </div>
+      <input type="search" id="lbSearch" class="lb-search" placeholder="Search T-shirts, fit, GSM, color..." aria-label="Search T-shirts">
+    </div>
+    <div class="lb-grid" id="lbGrid"></div>
+  </div>
+</div>
+
+<div class="toast glass-dark" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Smooth GPU Mouse-Tracking Spatial Halo (Native Pointer Remains Visible!) -->
+<div class="cur" id="cur" aria-hidden="true">
+  <div class="ring"></div>
+</div>
+
+<script>
+(() => {
+  /* =========================================================================
+     CURATED MEN'S (12) & WOMEN'S (12) DESIGNER T-SHIRT COLLECTIONS (24 TEES!)
+     ========================================================================= */
+  const DEFAULT_CATALOGS = {
+    men: [
+      { id:"m-white",   n:"Essential White Heavy Tee",  p:45, bdt:1490, fit:"Essential",    fabric:"260 GSM Combed Cotton",    g:[0,0],       m:0,       c:[["Pure White","#f4f2ee"],["Bone","#e6dfd3"],["Ash","#c8c6c1"],["Charcoal","#393b40"]] },
+      { id:"m-black",   n:"Obsidian Muscle Tee",        p:52, bdt:1690, fit:"Athletic Fit", fabric:"250 GSM Stretch Cotton",   g:[33.333,0],  m:9.091,   c:[["Obsidian","#1b1c20"],["Graphite","#36373c"],["Slate","#5d626b"],["Espresso","#3b2d26"]] },
+      { id:"m-crimson", n:"Crimson Emblem Street Tee",  p:62, bdt:1990, fit:"Limited Drop", fabric:"270 GSM Screen-Print",     g:[66.667,0],  m:18.182,  c:[["Deep Crimson","#8e1822"],["Obsidian","#1c1d21"],["Burgundy","#5c141d"],["Bone","#e4dccf"]] },
+      { id:"m-raglan",  n:"Slate Raglan Stripe Tee",    p:58, bdt:1890, fit:"Athletic Fit", fabric:"245 GSM Tech-Cotton",      g:[100,0],     m:27.273,  c:[["Charcoal / Slate","#3e4650"],["Obsidian / Ash","#23262c"],["Navy / Steel","#24344d"]] },
+      { id:"m-ringer",  n:"Street Contrast Ringer Tee", p:55, bdt:1790, fit:"Limited Drop", fabric:"240 GSM Rib-Trim Cotton",  g:[0,50],      m:36.364,  c:[["White / Black","#f4f2ee"],["Cream / Navy","#efe6d3"],["Ash / Charcoal","#c9c7c2"]] },
+      { id:"m-sand",    n:"Sand Prism Graphic Tee",     p:60, bdt:1950, fit:"Oversized",    fabric:"280 GSM Heavy Drop-Cut",   g:[33.333,50], m:45.455,  c:[["Warm Sand","#ccbba5"],["Stone","#b5aba0"],["Sage","#7d876e"],["Washed Black","#2a2b2f"]] },
+      { id:"m-olive",   n:"Olive Oversized Heavy Tee",  p:56, bdt:1820, fit:"Oversized",    fabric:"280 GSM Heavyweight",      g:[66.667,50], m:54.545,  c:[["Olive Sage","#767e62"],["Forest","#34463a"],["Sand","#d4c5ac"],["Obsidian","#222327"]] },
+      { id:"m-steel",   n:"Steel Crest Minimal Tee",    p:54, bdt:1750, fit:"Essential",    fabric:"245 GSM Supima Blend",     g:[100,50],    m:63.636,  c:[["Steel Blue","#5c6c7c"],["Midnight Navy","#1f2b44"],["Graphite","#3f444d"],["Mist","#9aa8b6"]] },
+      { id:"m-seensig", n:"SEEN Arabic س Signature",    p:65, bdt:2150, fit:"Limited Drop", fabric:"280 GSM Platinum Print",   g:[0,100],     m:72.727,  c:[["Jet Noir","#16181c"],["Deep Slate","#2c3340"],["Charcoal","#3a3c42"]] },
+      { id:"m-cobalt",  n:"Cobalt Horizon Colorblock",  p:59, bdt:1920, fit:"Athletic Fit", fabric:"250 GSM Cut-and-Sew",      g:[33.333,100],m:81.818,  c:[["Royal Cobalt","#1e4a98"],["Midnight","#181b22"],["Silver Trim","#e4eaf4"]] },
+      { id:"m-tokyo",   n:"Spatial Archive 01 Tee",     p:61, bdt:1980, fit:"Oversized",    fabric:"275 GSM Editorial Cotton", g:[66.667,100],m:90.909,  c:[["Ivory Bone","#eae4d6"],["Warm Sand","#cbbca6"],["Ash Grey","#b8babf"]] },
+      { id:"m-emerald", n:"Forest Emerald Crest Tee",   p:54, bdt:1750, fit:"Essential",    fabric:"265 GSM Heavy Pima",       g:[100,100],   m:100,     c:[["British Emerald","#1c4e3a"],["Dark Pine","#17382c"],["Obsidian","#1d1f24"]] }
+    ],
+    women: [
+      { id:"w-white",   n:"Pure White Sculpted Tee",    p:44, bdt:1450, fit:"Essential",    fabric:"230 GSM Soft Interlock",   g:[0,0],       m:0,       c:[["Pure White","#f5f3ef"],["Champagne","#eee5d6"],["Blush","#d79ca3"],["Noir","#1b1c20"]] },
+      { id:"w-black",   n:"Obsidian Studio Fitted Tee", p:49, bdt:1590, fit:"Athletic Fit", fabric:"235 GSM Sculpt Stretch",   g:[33.333,0],  m:9.091,   c:[["Obsidian Noir","#1a1b1f"],["Espresso","#402e28"],["Plum","#4a253a"],["Charcoal","#3a3c42"]] },
+      { id:"w-blush",   n:"Dusty Blush Rose Baby-Tee",  p:52, bdt:1690, fit:"Essential",    fabric:"225 GSM Peached Cotton",   g:[66.667,0],  m:18.182,  c:[["Dusty Blush","#c47e86"],["Rose Mauve","#b06b7d"],["Soft Lavender","#c0aed2"],["Cream","#efe5d6"]] },
+      { id:"w-noirart", n:"Noir Atelier Star Tee",      p:58, bdt:1890, fit:"Limited Drop", fabric:"240 GSM Silver-Foil Ink",  g:[100,0],     m:27.273,  c:[["Matte Noir","#1c1d21"],["Deep Plum","#3d1e32"],["Midnight","#1e2840"]] },
+      { id:"w-lavbot",  n:"Lavender Botanical Drop",    p:56, bdt:1820, fit:"Oversized",    fabric:"260 GSM Relaxed Cotton",   g:[0,50],      m:36.364,  c:[["Soft Lavender","#c0aed2"],["Sky Mist","#a9c4dc"],["Blush Rose","#d498a2"],["Sage","#9cae98"]] },
+      { id:"w-terra",   n:"Terracotta Monogram Ringer", p:59, bdt:1920, fit:"Limited Drop", fabric:"240 GSM Contrast Rib",     g:[33.333,50], m:45.455,  c:[["Terracotta Clay","#a65e3e"],["Cream / Rose","#d8a29e"],["Espresso","#4c3329"]] },
+      { id:"w-sage",    n:"Soft Sage Relaxed Tee",      p:54, bdt:1750, fit:"Oversized",    fabric:"255 GSM Combed Cotton",    g:[66.667,50], m:54.545,  c:[["Soft Sage","#9cae98"],["Eucalyptus","#7b9682"],["Champagne","#eadfca"],["White","#f4f2ee"]] },
+      { id:"w-espresso",n:"Espresso Ribbed Luxury Tee", p:55, bdt:1790, fit:"Athletic Fit", fabric:"250 GSM Fine-Rib Knit",    g:[100,50],    m:63.636,  c:[["Deep Espresso","#3e2c26"],["Cocoa","#6a4c3e"],["Terracotta","#9f5a3e"],["Obsidian","#1d1e22"]] },
+      { id:"w-seensig", n:"SEEN Pearl س Signature Tee", p:62, bdt:1990, fit:"Limited Drop", fabric:"245 GSM Champagne Print",  g:[0,100],     m:72.727,  c:[["Matte Noir","#18181c"],["Deep Espresso","#3d2c26"],["Burgundy","#581a2c"]] },
+      { id:"w-cream",   n:"Champagne Cream Heavy Tee",  p:48, bdt:1560, fit:"Essential",    fabric:"250 GSM Supima Cotton",    g:[33.333,100],m:81.818,  c:[["Champagne Cream","#e8dcc6"],["Pure White","#f5f3ef"],["Warm Sand","#d2c2a8"]] },
+      { id:"w-cherry",  n:"Cherry Star Club Baby-Tee",  p:58, bdt:1890, fit:"Limited Drop", fabric:"235 GSM Velvet-Touch",     g:[66.667,100],m:90.909,  c:[["Cherry Berry","#922442"],["Rose Wine","#70203a"],["Blush","#c9828c"]] },
+      { id:"w-skymist", n:"Sky Mist Atelier Wave Tee",  p:56, bdt:1820, fit:"Oversized",    fabric:"255 GSM Airy Cotton",      g:[100,100],   m:100,     c:[["Sky Mist","#a4c2da"],["Soft Lavender","#bfa9d4"],["Pure White","#f4f2ee"]] }
+    ]
+  };
+
+  // Curated Women's Favorite Shades for the Bottom-Left Palette Widget (live mannequin recoloring!)
+  const WOMEN_FAV_PALETTE = [
+    { name:"Pure White",      hex:"#f4f2ee" },
+    { name:"Dusty Blush",     hex:"#c9828c" },
+    { name:"Soft Lavender",   hex:"#bfa9d4" },
+    { name:"Rose Mauve",      hex:"#b36a84" },
+    { name:"Champagne Cream", hex:"#eadcc6" },
+    { name:"Soft Sage",       hex:"#9bb097" },
+    { name:"Terracotta Clay", hex:"#b26546" },
+    { name:"Cherry Berry",    hex:"#9c2444" },
+    { name:"Deep Espresso",   hex:"#46312a" },
+    { name:"Obsidian Noir",   hex:"#1c1d21" }
+  ];
+
+  // Exact Pen-Tool signed-distance headless sculptural mannequin geometry (520x680)
+  const MODEL_W = 520, MODEL_H = 680;
+  const TORSO_BOX = {
+    men:   { x: 24, y: 110, w: 470, h: 557 },
+    women: { x: 33, y: 115, w: 454, h: 541 }
+  };
+  const SHEET_ASSETS = {
+    men:   { model:"assets/men-mannequin-sheet.png?v=5",   garm:"assets/men-garments.png?v=5",   base:"assets/men-base.png?v=5",   mask:"assets/men-torso-mask.png?v=5" },
+    women: { model:"assets/women-mannequin-sheet.png?v=5", garm:"assets/women-garments.png?v=5", base:"assets/women-base.png?v=5", mask:"assets/women-torso-mask.png?v=5" }
+  };
+
+  // Securely concealed bKash Merchant Account (never exposed in plain DOM text!)
+  // Decoded ONLY inside the sharp bKash icon click handler.
+  const BKASH_VAULT_KEY = [43,56,56,48,49,55,50,49,50,53,53,52,57,52];
+  function resolveHiddenBkashMerchant() {
+    return BKASH_VAULT_KEY.map(c => String.fromCharCode(c)).join('');
+  }
+
+  let CATALOGS = {
+    men: DEFAULT_CATALOGS.men.map(x => ({ ...x, c: x.c.map(col => [...col]) })),
+    women: DEFAULT_CATALOGS.women.map(x => ({ ...x, c: x.c.map(col => [...col]) }))
+  };
+  let activeGender = 'men';
+  let activeCategory = 'all';
+  let womenLiveTint = null; // { name, hex, dataUrl } when woman chooses a favorite palette shade
+  let ORDERS = [];
+  let STORE_CFG = { webhook:'', sslStore:'', waNumber:'8801307758119' };
+  let shown = -1;
+  let pos = 0, target = 0;
+  let intro = 0;
+  let adminUnlocked = false;
+  let adminViewGender = 'men';
+  let pendingBatch = [];
+  let activePendingIdx = -1;
+
+  function currentItems() { return CATALOGS[activeGender]; }
+
+  const $ = id => document.getElementById(id);
+  const heroEl = $('hero');
+  const stageEl = $('stage');
+  const arcEl = $('arc');
+  const ghostEl = $('ghost');
+  const seenSvg = $('seenSvg');
+  const mCur = $('mCur');
+  const mNext = $('mNext');
+  const gridEl = $('grid');
+  const scanEl = $('scan');
+  const thumbG = $('thumbG');
+  const bName = $('bName');
+  const bPrice = $('bPrice');
+  const bColor = $('bColor');
+  const dotsEl = $('dots');
+  const sizesEl = $('sizes');
+  const tabsEl = $('tabs');
+  const pillEl = $('pill');
+  const railEl = $('rail');
+  const curEl = $('cur');
+  const sidePriceEl = $('sidePrice');
+  const pricePill = $('pricePill');
+  const womenPaletteEl = $('womenPalette');
+  const wpSwatchesEl = $('wpSwatches');
+  const wpShadeName = $('wpShadeName');
+  const toastEl = $('toast');
+
+  const mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let reduced = mqReduce.matches;
+  intro = reduced ? 1 : 0;
+  mqReduce.addEventListener('change', e => {
+    reduced = e.matches;
+    if (reduced) { intro = 1; pos = target; }
+  });
+
+  let selectedSize = 'M';
+  let selectedColorName = CATALOGS.men[0].c[0][0];
+  let cart = [];
+  let promoApplied = false;
+  let payMethod = 'bKash';
+  let lastReceiptOrder = null;
+
+  let toastTimer = null;
+  function showToast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2800);
+  }
+
+  /* =========================================================================
+     FULL-STACK SERVER DATABASE SYNC + INDEXEDDB OFFLINE FALLBACK
+     ========================================================================= */
+  const DB_NAME = 'seen_spatial_store_v5_db';
+  const DB_STORE = 'state';
+  let serverBackendLive = false;
+
+  function openDB() {
+    return new Promise((resolve, reject) => {
+      if (!window.indexedDB) return reject(new Error('No IndexedDB'));
+      const req = indexedDB.open(DB_NAME, 1);
+      req.onupgradeneeded = () => {
+        if (!req.result.objectStoreNames.contains(DB_STORE)) req.result.createObjectStore(DB_STORE);
+      };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+  }
+  async function syncOrdersFromServer() {
+    try {
+      const r = await fetch('/api/orders', { cache: 'no-store' });
+      if (r.ok) {
+        const list = await r.json();
+        if (Array.isArray(list)) { ORDERS = list; serverBackendLive = true; }
+      }
+    } catch (_) {}
+  }
+  async function saveStateToDB(syncCatalog = true, syncCfg = true) {
+    try {
+      const db = await openDB();
+      await new Promise((res, rej) => {
+        const tx = db.transaction(DB_STORE, 'readwrite');
+        tx.objectStore(DB_STORE).put(CATALOGS, 'catalogs');
+        tx.objectStore(DB_STORE).put(ORDERS, 'orders');
+        tx.objectStore(DB_STORE).put(STORE_CFG, 'cfg');
+        tx.oncomplete = res;
+        tx.onerror = rej;
+      });
+    } catch (_) {}
+    if (serverBackendLive) {
+      if (syncCatalog) {
+        fetch('/api/catalog', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(CATALOGS) }).catch(() => {});
+      }
+      if (syncCfg) {
+        fetch('/api/config', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(STORE_CFG) }).catch(() => {});
+      }
+    }
+  }
+  async function loadStateFromDB() {
+    // 1. Check live full-stack server API first (persisted on disk in virtualfit/data/)
+    try {
+      const hr = await fetch('/api/health', { cache: 'no-store' });
+      if (hr.ok) {
+        const h = await hr.json();
+        if (h && h.ok) serverBackendLive = true;
+      }
+    } catch (_) {}
+
+    if (serverBackendLive) {
+      await syncOrdersFromServer();
+      try {
+        const cr = await fetch('/api/catalog', { cache: 'no-store' });
+        if (cr.ok) {
+          const sc = await cr.json();
+          if (sc && Array.isArray(sc.men) && sc.men.length >= 12 && Array.isArray(sc.women) && sc.women.length >= 12) CATALOGS = sc;
+        }
+        const cfgr = await fetch('/api/config', { cache: 'no-store' });
+        if (cfgr.ok) {
+          const cf = await cfgr.json();
+          if (cf && typeof cf === 'object') STORE_CFG = { ...STORE_CFG, ...cf };
+        }
+      } catch (_) {}
+    }
+
+    // 2. Fallback / merge with local IndexedDB for static hosting deployments
+    try {
+      const db = await openDB();
+      const getVal = key => new Promise((res, rej) => {
+        const tx = db.transaction(DB_STORE, 'readonly');
+        const req = tx.objectStore(DB_STORE).get(key);
+        req.onsuccess = () => res(req.result);
+        req.onerror = rej;
+      });
+      if (!serverBackendLive) {
+        const savedCats = await getVal('catalogs');
+        if (savedCats && Array.isArray(savedCats.men) && savedCats.men.length && Array.isArray(savedCats.women) && savedCats.women.length) CATALOGS = savedCats;
+        const savedOrders = await getVal('orders');
+        if (Array.isArray(savedOrders)) ORDERS = savedOrders;
+        const savedCfg = await getVal('cfg');
+        if (savedCfg && typeof savedCfg === 'object') STORE_CFG = { ...STORE_CFG, ...savedCfg };
+      }
+    } catch (_) {}
+  }
+
+  /* =========================================================================
+     GARMENT & HEADLESS MANNEQUIN SPRITE / LIVE-TINT RENDERERS (4x3 & 12x1)
+     ========================================================================= */
+  function applyGarmentStyle(el, item, gender = activeGender) {
+    if (item.customCard) {
+      el.style.backgroundImage = `url("${item.customCard}")`;
+      el.style.backgroundSize = 'contain';
+      el.style.backgroundPosition = 'center center';
+    } else {
+      el.style.backgroundImage = `url("${SHEET_ASSETS[gender].garm}")`;
+      el.style.backgroundSize = '400% 300%';
+      el.style.backgroundPosition = `${item.g[0]}% ${item.g[1]}%`;
+    }
+  }
+  function applyModelStyle(el, item, gender = activeGender, overrideDataUrl = null) {
+    if (overrideDataUrl) {
+      el.style.backgroundImage = `url("${overrideDataUrl}")`;
+      el.style.backgroundSize = '100% 100%';
+      el.style.backgroundPosition = 'center center';
+    } else if (item.customModel) {
+      el.style.backgroundImage = `url("${item.customModel}")`;
+      el.style.backgroundSize = '100% 100%';
+      el.style.backgroundPosition = 'center center';
+    } else {
+      el.style.backgroundImage = `url("${SHEET_ASSETS[gender].model}")`;
+      el.style.backgroundSize = '1200% 100%';
+      el.style.backgroundPosition = `${item.m}% 0%`;
+    }
+  }
+
+  /* =========================================================================
+     3D SPATIAL T-SHIRT ARC LAYOUT
+     ========================================================================= */
+  let ARC_COUNT = 8;
+  let cards = [];
+  let W = window.innerWidth, H = window.innerHeight;
+  let XS = [0, 290, 510, 670, 810, 960];
+  const mod = (a, n) => ((a % n) + n) % n;
+
+  function measure() {
+    W = window.innerWidth;
+    H = window.innerHeight;
+    let cw, x1;
+    if (W <= 760) {
+      cw = Math.min(W * .31, H * .22);
+      x1 = Math.max(cw * 1.18, W * .35);
+    } else if (W <= 1080) {
+      cw = Math.min(W * .17, H * .27);
+      x1 = Math.max(cw * 1.48, Math.min(W * .28, 285));
+    } else {
+      cw = Math.min(W * .142, H * .31);
+      x1 = Math.max(cw * 1.62, Math.min(W * .255, 345));
+    }
+    const x2 = x1 + cw * 1.02;
+    const x3 = x2 + cw * .72;
+    const x4 = x3 + cw * .56;
+    XS = [0, x1, x2, x3, x4, x4 + cw * .5];
+    positionPill(true);
+  }
+  function xAt(a) {
+    const i = Math.min(Math.floor(a), XS.length - 2);
+    const f = Math.min(1, a - i);
+    return XS[i] + (XS[i + 1] - XS[i]) * f;
+  }
+
+  function rebuildArc() {
+    arcEl.innerHTML = '';
+    cards = [];
+    const items = currentItems();
+    const n = items.length;
+    const reps = n < 8 ? Math.ceil(8 / n) : 1;
+    ARC_COUNT = n * reps;
+
+    for (let i = 0; i < ARC_COUNT; i++) {
+      const item = items[i % n];
+      const el = document.createElement('div');
+      el.className = 'card';
+      el.dataset.i = i;
+      el.setAttribute('role', 'button');
+      el.setAttribute('tabindex', '0');
+      el.setAttribute('aria-label', `Try on ${item.n}, $${item.p}`);
+
+      const g = document.createElement('div');
+      g.className = 'g';
+      applyGarmentStyle(g, item, activeGender);
+
+      const nm = document.createElement('div');
+      nm.className = 'nm';
+      nm.textContent = item.n;
+
+      const pr = document.createElement('div');
+      pr.className = 'pr';
+      pr.textContent = `$${item.p}`;
+
+      const sheen = document.createElement('div');
+      sheen.className = 'sheen';
+
+      el.append(g, nm, pr, sheen);
+      arcEl.appendChild(el);
+
+      let sheenAnim = null;
+      el.addEventListener('pointerenter', () => {
+        if (reduced) return;
+        if (sheenAnim) sheenAnim.cancel();
+        sheenAnim = sheen.animate(
+          [{ transform: 'translate3d(-115%,0,0)', opacity: 1 }, { transform: 'translate3d(115%,0,0)', opacity: 1 }],
+          { duration: 760, easing: 'cubic-bezier(.22,1,.36,1)' }
+        );
+      });
+      el.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const half = ARC_COUNT / 2;
+          const u = mod(i - pos + half, ARC_COUNT) - half;
+          target = Math.round(pos + u);
+        }
+      });
+
+      cards.push({ el, i, seed: i * 1.37, vis: false, lastZ: -1 });
+    }
+  }
+
+  /* =========================================================================
+     MEN / WOMEN SWITCHER + WOMEN-ONLY BOTTOM-LEFT FAVORITE COLOR PALETTE
+     ========================================================================= */
+  const assetCache = { men: { base:null, mask:null }, women: { base:null, mask:null } };
+  function loadImage(src) {
+    return new Promise((res, rej) => {
+      const img = new Image();
+      img.onload = () => res(img);
+      img.onerror = rej;
+      img.src = src;
+    });
+  }
+  async function ensureMannequinAssets(gender) {
+    const slot = assetCache[gender];
+    if (!slot.base) slot.base = await loadImage(SHEET_ASSETS[gender].base);
+    if (!slot.mask) slot.mask = await loadImage(SHEET_ASSETS[gender].mask);
+    return slot;
+  }
+
+  // Live HTML5 Canvas shade renderer for Women's Bottom-Left Favorite Color Palette!
+  const tintCache = new Map();
+  async function renderLiveTintedMannequin(gender, hex) {
+    const cacheKey = `${gender}|${hex}`;
+    if (tintCache.has(cacheKey)) return tintCache.get(cacheKey);
+    const { base, mask } = await ensureMannequinAssets(gender);
+    const box = TORSO_BOX[gender];
+
+    const c = document.createElement('canvas');
+    c.width = MODEL_W; c.height = MODEL_H;
+    const ctx = c.getContext('2d');
+
+    // Fill target color + multiply with mannequin cotton folds + clip to torso mask
+    const shirtC = document.createElement('canvas');
+    shirtC.width = MODEL_W; shirtC.height = MODEL_H;
+    const sctx = shirtC.getContext('2d');
+    sctx.fillStyle = hex;
+    sctx.fillRect(0, 0, MODEL_W, MODEL_H);
+
+    // Build photo-real fold shading map from base white mannequin shirt
+    const shadeC = document.createElement('canvas');
+    shadeC.width = MODEL_W; shadeC.height = MODEL_H;
+    const shCtx = shadeC.getContext('2d');
+    shCtx.drawImage(base, 0, 0, MODEL_W, MODEL_H);
+    const shImg = shCtx.getImageData(0, 0, MODEL_W, MODEL_H);
+    const sd = shImg.data;
+    const hr = parseInt(hex.slice(1,3), 16), hg = parseInt(hex.slice(3,5), 16), hb = parseInt(hex.slice(5,7), 16);
+    const isDark = (0.299 * hr + 0.587 * hg + 0.114 * hb) < 76;
+    for (let i = 0; i < sd.length; i += 4) {
+      const lum = (0.299 * sd[i] + 0.587 * sd[i+1] + 0.114 * sd[i+2]) / 255;
+      let fold = Math.pow(Math.max(0.20, Math.min(1.06, (lum - 0.03) / 0.89)), 1.20);
+      if (isDark && lum > 0.62) fold = Math.min(1.25, fold + Math.pow((lum - 0.62) / 0.38, 1.8) * 0.25);
+      const v = Math.max(48, Math.min(255, Math.round(fold * 255)));
+      sd[i] = sd[i+1] = sd[i+2] = v;
+    }
+    shCtx.putImageData(shImg, 0, 0);
+
+    sctx.globalCompositeOperation = 'multiply';
+    sctx.drawImage(shadeC, 0, 0);
+    sctx.globalCompositeOperation = 'destination-in';
+    sctx.drawImage(mask, 0, 0, MODEL_W, MODEL_H);
+
+    ctx.drawImage(base, 0, 0, MODEL_W, MODEL_H);
+    ctx.globalCompositeOperation = 'source-atop';
+    ctx.drawImage(shirtC, 0, 0);
+    ctx.globalCompositeOperation = 'source-over';
+
+    const url = c.toDataURL('image/png');
+    tintCache.set(cacheKey, url);
+    return url;
+  }
+
+  function buildWomenPaletteWidget() {
+    wpSwatchesEl.innerHTML = '';
+    WOMEN_FAV_PALETTE.forEach(swatch => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.style.background = swatch.hex;
+      btn.title = swatch.name;
+      btn.setAttribute('aria-label', `Try Women's color ${swatch.name}`);
+      btn.addEventListener('click', async () => {
+        if (activeGender !== 'women') return;
+        wpSwatchesEl.querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+        btn.classList.add('on');
+        wpShadeName.textContent = swatch.name;
+        selectedColorName = swatch.name;
+        rollText(bColor, `Color · ${swatch.name}`);
+        $('spColorChip').textContent = swatch.name;
+        try {
+          const dataUrl = await renderLiveTintedMannequin('women', swatch.hex);
+          womenLiveTint = { name: swatch.name, hex: swatch.hex, dataUrl };
+          const idx = shown >= 0 ? shown : 0;
+          tryOn(idx, dataUrl);
+          showToast(`Women's live shade: ${swatch.name}`);
+        } catch (_) {}
+      });
+      wpSwatchesEl.appendChild(btn);
+    });
+  }
+  buildWomenPaletteWidget();
+
+  $('wpResetBtn').addEventListener('click', () => {
+    womenLiveTint = null;
+    wpSwatchesEl.querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+    wpShadeName.textContent = 'Original';
+    const idx = shown >= 0 ? shown : 0;
+    tryOn(idx, null);
+    showToast('Restored original T-shirt colorway');
+  });
+
+  function switchGender(newGender) {
+    if (newGender === activeGender) return;
+    activeGender = newGender;
+    womenLiveTint = null;
+    wpSwatchesEl.querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+    wpShadeName.textContent = 'Original';
+
+    $('genderSwitch').querySelectorAll('button').forEach(b => {
+      const isOn = b.dataset.gender === activeGender;
+      b.classList.toggle('on', isOn);
+      b.setAttribute('aria-selected', isOn ? 'true' : 'false');
+    });
+
+    // Show bottom-left Women's Color Palette ONLY in Women's section!
+    womenPaletteEl.classList.toggle('show', activeGender === 'women');
+    if (activeGender === 'women') ensureMannequinAssets('women').catch(() => {});
+
+    // Reset category tab to "All Tees"
+    activeCategory = 'all';
+    const firstTab = tabsEl.querySelector('button[data-cat="all"]');
+    if (activeTab) activeTab.classList.remove('on');
+    firstTab.classList.add('on');
+    activeTab = firstTab;
+    positionPill(false);
+
+    shown = -1;
+    pos = 0;
+    target = 0;
+    rebuildArc();
+    tryOn(0);
+    const cnt = currentItems().length;
+    showToast(activeGender === 'men' ? `Men's Headless Collection (${cnt} Tees)` : `Women's Headless Collection (${cnt} Tees)`);
+  }
+
+  $('genderSwitch').addEventListener('click', e => {
+    const btn = e.target.closest('button[data-gender]');
+    if (!btn) return;
+    switchGender(btn.dataset.gender);
+  });
+
+  /* =========================================================================
+     TABS, RAIL & PRICING UI
+     ========================================================================= */
+  let activeTab = tabsEl.querySelector('button.on');
+  function positionPill(instant) {
+    if (!activeTab) return;
+    if (instant) pillEl.style.transition = 'none';
+    pillEl.style.width = activeTab.offsetWidth + 'px';
+    pillEl.style.transform = `translate3d(${activeTab.offsetLeft}px,0,0)`;
+    if (instant) {
+      pillEl.offsetHeight;
+      pillEl.style.transition = '';
+    }
+  }
+
+  tabsEl.addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    if (activeTab) activeTab.classList.remove('on');
+    btn.classList.add('on');
+    activeTab = btn;
+    positionPill(false);
+
+    const cat = btn.dataset.cat;
+    activeCategory = cat;
+    const items = currentItems();
+    const n = items.length;
+    if (cat === 'all') {
+      target += 1;
+    } else {
+      const matchIdx = items.findIndex(it => it.fit.toLowerCase() === cat.toLowerCase());
+      if (matchIdx >= 0) {
+        const curIdx = mod(Math.round(target), n);
+        const delta = mod(matchIdx - curIdx, n);
+        target += (delta === 0 ? 0 : delta);
+      } else {
+        showToast(`No tees in ${cat} yet`);
+      }
+    }
+  });
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => positionPill(true));
+  }
+
+  function setActiveRail(btn) {
+    railEl.querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+  }
+  $('railTry').addEventListener('click', function() {
+    setActiveRail(this);
+    sidePriceEl.classList.add('collapsed');
+    heroEl.scrollIntoView({ behavior: 'smooth' });
+  });
+  function toggleSideDrawer() {
+    const willOpen = sidePriceEl.classList.contains('collapsed');
+    sidePriceEl.classList.toggle('collapsed', !willOpen);
+    setActiveRail(willOpen ? $('railCart') : $('railTry'));
+  }
+  $('railCart').addEventListener('click', toggleSideDrawer);
+  pricePill.addEventListener('click', toggleSideDrawer);
+  $('spClose').addEventListener('click', () => {
+    sidePriceEl.classList.add('collapsed');
+    setActiveRail($('railTry'));
+  });
+  $('railGateway').addEventListener('click', function() { setActiveRail(this); openGateway(); });
+  $('railAdmin').addEventListener('click', function() { setActiveRail(this); openAdmin(); });
+  $('railProfile').addEventListener('click', function() {
+    setActiveRail(this);
+    $('account-hub').scrollIntoView({ behavior: 'smooth' });
+  });
+  $('hubAdminBtn').addEventListener('click', openAdmin);
+  $('footerAdminBtn').addEventListener('click', openAdmin);
+
+  sizesEl.addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    sizesEl.querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    selectedSize = btn.textContent.trim();
+    $('spSizeChip').textContent = `Size ${selectedSize}`;
+  });
+
+  function rollText(el, text) {
+    // Cancel any overlapping spans from rapid clicks so text can NEVER stack!
+    const spans = Array.from(el.children);
+    const cur = spans.length ? spans[spans.length - 1] : null;
+    if (cur && cur.textContent === text && spans.length === 1) return;
+    spans.forEach(sp => {
+      if (sp !== cur) sp.remove();
+      else if (sp.getAnimations) sp.getAnimations().forEach(a => a.cancel());
+    });
+    const next = document.createElement('span');
+    next.textContent = text;
+    if (!cur || reduced) {
+      el.innerHTML = '';
+      el.appendChild(next);
+      return;
+    }
+    el.appendChild(next);
+    const ease = 'cubic-bezier(.22,1,.36,1)';
+    cur.animate([{ transform: 'translate3d(0,0,0)', opacity: 1 }, { transform: 'translate3d(0,-100%,0)', opacity: 0 }], { duration: 360, easing: ease, fill: 'forwards' }).onfinish = () => { if (cur.parentNode) cur.remove(); };
+    next.animate([{ transform: 'translate3d(0,100%,0)', opacity: 0 }, { transform: 'translate3d(0,0,0)', opacity: 1 }], { duration: 360, easing: ease });
+  }
+
+  let thumbAnim = null;
+  function updateSidePricing(item, idx) {
+    const items = currentItems();
+    const secLabel = activeGender === 'men' ? 'Men' : 'Women';
+    $('spCount').textContent = `${secLabel} · ${idx + 1} / ${items.length} Tees`;
+    $('spUsd').textContent = `$${item.p}`;
+    $('spBdt').textContent = `৳${Number(item.bdt).toLocaleString('en-US')}`;
+    $('ppUsd').textContent = `$${item.p}`;
+    $('ppBdt').textContent = `৳${Number(item.bdt).toLocaleString('en-US')}`;
+    $('spMeta').textContent = `${item.n} · ${item.fit}`;
+    $('spFitChip').textContent = item.fabric || '250 GSM Cotton';
+    $('spSizeChip').textContent = `Size ${selectedSize}`;
+    $('spColorChip').textContent = selectedColorName;
+  }
+
+  function updateBuy(item, idx, preserveColor = false) {
+    if (!preserveColor) selectedColorName = item.c[0][0];
+    rollText(bName, item.n);
+    rollText(bPrice, `$${item.p} · ৳${Number(item.bdt).toLocaleString('en-US')}`);
+    $('buyAddBtn').textContent = `Add · $${item.p}`;
+
+    applyGarmentStyle(thumbG, item, activeGender);
+    if (!reduced) {
+      if (thumbAnim) thumbAnim.cancel();
+      thumbAnim = thumbG.animate(
+        [{ transform: 'translate3d(0,70%,0) scale(.82)' }, { transform: 'translate3d(0,0,0) scale(1)' }],
+        { duration: 480, easing: 'cubic-bezier(.22,1,.36,1)' }
+      );
+    }
+
+    dotsEl.innerHTML = '';
+    item.c.forEach(([cname, hex], ci) => {
+      const d = document.createElement('button');
+      d.type = 'button';
+      d.style.background = hex;
+      d.setAttribute('aria-label', cname);
+      if ((!preserveColor && ci === 0) || (preserveColor && cname === selectedColorName)) d.classList.add('on');
+      d.addEventListener('click', async () => {
+        dotsEl.querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+        d.classList.add('on');
+        selectedColorName = cname;
+        rollText(bColor, `Color · ${cname}`);
+        $('spColorChip').textContent = cname;
+        // If user picks an alternate swatch on a solid tee, live-render that color onto the mannequin!
+        if (ci === 0) {
+          womenLiveTint = null;
+          tryOn(idx, null, true);
+        } else {
+          try {
+            const url = await renderLiveTintedMannequin(activeGender, hex);
+            tryOn(idx, url, true);
+          } catch (_) {}
+        }
+      });
+      dotsEl.appendChild(d);
+    });
+    rollText(bColor, `Color · ${selectedColorName}`);
+    updateSidePricing(item, idx);
+    syncCurrentWishBtn();
+  }
+
+  /* =========================================================================
+     SHOPPING BAG + ACTIVE TRANSACTION GATEWAY (SHARP bKash ICON WITH HIDDEN NUMBER)
+     ========================================================================= */
+  function addCurrentToCart(openDrawer = true) {
+    const items = currentItems();
+    const idx = shown >= 0 && shown < items.length ? shown : 0;
+    const item = items[idx];
+    const sec = activeGender === 'men' ? 'Men' : 'Women';
+    const key = `${activeGender}|${item.id}|${selectedSize}|${selectedColorName}`;
+    const existing = cart.find(c => c.key === key);
+    if (existing) existing.qty += 1;
+    else {
+      cart.push({
+        key, item, gender: activeGender, section: sec, name: item.n,
+        p: Number(item.p), bdt: Number(item.bdt),
+        size: selectedSize, color: selectedColorName, qty: 1
+      });
+    }
+    renderCart();
+    showToast(`Added ${item.n} (${sec} · ${selectedSize} · ${selectedColorName})`);
+    if (openDrawer) {
+      sidePriceEl.classList.remove('collapsed');
+      setActiveRail($('railCart'));
+    }
+  }
+
+  function renderCart() {
+    const totalQty = cart.reduce((s, c) => s + c.qty, 0);
+    const totalUsd = cart.reduce((s, c) => s + c.p * c.qty, 0);
+    const totalBdt = cart.reduce((s, c) => s + c.bdt * c.qty, 0);
+    $('cartBadge').textContent = totalQty;
+    $('cartBadge').classList.toggle('show', totalQty > 0);
+    $('ppBag').textContent = `Bag · ${totalQty}`;
+
+    const spCart = $('spCart');
+    const spCartList = $('spCartList');
+    if (totalQty === 0) {
+      spCart.classList.remove('has-items');
+      spCartList.innerHTML = '';
+      return;
+    }
+    spCart.classList.add('has-items');
+    spCartList.innerHTML = '';
+    cart.forEach(entry => {
+      const row = document.createElement('div');
+      row.className = 'sp-item';
+      row.innerHTML = `
+        <div class="sp-item-info">
+          <div class="sp-item-title">${entry.name}</div>
+          <div class="sp-item-sub">${entry.section} &middot; ${entry.size} &middot; ${entry.color} &middot; $${entry.p * entry.qty}</div>
+        </div>
+        <div class="sp-qty">
+          <button type="button" data-d="-1" aria-label="Decrease quantity">&minus;</button>
+          <span>${entry.qty}</span>
+          <button type="button" data-d="1" aria-label="Increase quantity">+</button>
+        </div>`;
+      row.querySelectorAll('.sp-qty button').forEach(b => {
+        b.addEventListener('click', () => {
+          entry.qty += Number(b.dataset.d);
+          if (entry.qty <= 0) cart = cart.filter(x => x.key !== entry.key);
+          renderCart();
+        });
+      });
+      spCartList.appendChild(row);
+    });
+    $('spCartTotal').textContent = `$${totalUsd} · ৳${totalBdt.toLocaleString('en-US')}`;
+  }
+
+  $('buyAddBtn').addEventListener('click', () => addCurrentToCart(true));
+  $('spAddBtn').addEventListener('click', () => addCurrentToCart(true));
+  $('spBuyBtn').addEventListener('click', () => { addCurrentToCart(false); openGateway(); });
+  $('spCheckoutBtn').addEventListener('click', openGateway);
+
+  const gwModal = $('gwModal');
+  const adminModal = $('adminModal');
+  const sizeModal = $('sizeModal');
+  const trackModal = $('trackModal');
+  const lookbookModal = $('lookbookModal');
+
+  function syncModalState() {
+    const anyOpen = [gwModal, adminModal, sizeModal, trackModal, lookbookModal].some(m => m.classList.contains('open'));
+    document.documentElement.classList.toggle('modal-open', anyOpen);
+    document.body.classList.toggle('modal-open', anyOpen);
+    if (anyOpen) curEl.classList.remove('vis');
+  }
+
+  /* =========================================================================
+     WISHLIST (SAVED FAVORITES) + BROWSE ALL 24 LOOKBOOK + MOBILE DOCK
+     ========================================================================= */
+  let savedIds = new Set();
+  try {
+    const rawW = JSON.parse(localStorage.getItem('seen_wishlist_v1') || '[]');
+    if (Array.isArray(rawW)) savedIds = new Set(rawW);
+  } catch (_) {}
+
+  function persistWishlist() {
+    try { localStorage.setItem('seen_wishlist_v1', JSON.stringify(Array.from(savedIds))); } catch (_) {}
+    const wb = $('wishBadge');
+    if (wb) {
+      wb.textContent = savedIds.size;
+      wb.classList.toggle('show', savedIds.size > 0);
+    }
+    syncCurrentWishBtn();
+  }
+  function syncCurrentWishBtn() {
+    const items = currentItems();
+    const item = items[shown >= 0 && shown < items.length ? shown : 0];
+    const btn = $('buyWishBtn');
+    if (!item || !btn) return;
+    const isSaved = savedIds.has(item.id);
+    btn.classList.toggle('saved', isSaved);
+    btn.querySelector('svg').setAttribute('fill', isSaved ? 'currentColor' : 'none');
+  }
+  $('buyWishBtn').addEventListener('click', () => {
+    const items = currentItems();
+    const item = items[shown >= 0 && shown < items.length ? shown : 0];
+    if (!item) return;
+    if (savedIds.has(item.id)) { savedIds.delete(item.id); showToast(`Removed ${item.n} from Saved`); }
+    else { savedIds.add(item.id); showToast(`Saved ${item.n} ♥`); }
+    persistWishlist();
+  });
+  persistWishlist();
+
+  let lbFilter = 'all';
+  function renderLookbookGrid() {
+    const q = ($('lbSearch').value || '').trim().toLowerCase();
+    const grid = $('lbGrid');
+    grid.innerHTML = '';
+    const allEntries = [
+      ...CATALOGS.men.map((item, idx) => ({ item, idx, gender: 'men', label: 'Men' })),
+      ...CATALOGS.women.map((item, idx) => ({ item, idx, gender: 'women', label: 'Women' }))
+    ];
+    const allCountBtn = $('lbSeg').querySelector('button[data-lb="all"]');
+    if (allCountBtn) allCountBtn.textContent = `All (${allEntries.length})`;
+
+    const filtered = allEntries.filter(e => {
+      if (lbFilter === 'men' && e.gender !== 'men') return false;
+      if (lbFilter === 'women' && e.gender !== 'women') return false;
+      if (lbFilter === 'saved' && !savedIds.has(e.item.id)) return false;
+      if (!q) return true;
+      return (e.item.n + ' ' + e.item.fit + ' ' + e.item.fabric + ' ' + e.label + ' ' + e.item.c.map(x => x[0]).join(' ')).toLowerCase().includes(q);
+    });
+
+    if (!filtered.length) {
+      grid.innerHTML = '<p style="grid-column:1/-1;opacity:.72;padding:24px 6px;font-size:13px">No matching T-shirts found. Try another filter or save items with ♥.</p>';
+      return;
+    }
+
+    filtered.forEach(entry => {
+      const card = document.createElement('div');
+      card.className = 'lb-card';
+      const isSaved = savedIds.has(entry.item.id);
+
+      const wrap = document.createElement('div');
+      wrap.className = 'lb-img-wrap';
+      const g = document.createElement('div');
+      g.className = 'g';
+      applyGarmentStyle(g, entry.item, entry.gender);
+      const tag = document.createElement('span');
+      tag.className = 'lb-tag';
+      tag.textContent = `${entry.label} · ${entry.item.fit}`;
+      const heart = document.createElement('button');
+      heart.type = 'button';
+      heart.className = 'lb-heart' + (isSaved ? ' saved' : '');
+      heart.setAttribute('aria-label', 'Toggle favorite');
+      heart.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21.3l7.8-7.8 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>`;
+      heart.addEventListener('click', ev => {
+        ev.stopPropagation();
+        if (savedIds.has(entry.item.id)) savedIds.delete(entry.item.id);
+        else savedIds.add(entry.item.id);
+        persistWishlist();
+        renderLookbookGrid();
+      });
+      wrap.append(g, tag, heart);
+
+      const title = document.createElement('div');
+      title.className = 'lb-title';
+      title.textContent = entry.item.n;
+      const sub = document.createElement('div');
+      sub.className = 'lb-sub';
+      sub.textContent = entry.item.fabric;
+
+      const foot = document.createElement('div');
+      foot.className = 'lb-foot';
+      const pr = document.createElement('div');
+      pr.className = 'lb-price';
+      pr.innerHTML = `$${entry.item.p}<small>৳${Number(entry.item.bdt).toLocaleString('en-US')}</small>`;
+      const tryBtn = document.createElement('button');
+      tryBtn.type = 'button';
+      tryBtn.className = 'btn-solid';
+      tryBtn.style.cssText = 'height:30px;padding:0 11px;font-size:11px';
+      tryBtn.textContent = 'Try On 3D';
+      tryBtn.addEventListener('click', () => {
+        closeLookbook();
+        if (activeGender !== entry.gender) switchGender(entry.gender);
+        const n = currentItems().length;
+        const cur = mod(Math.round(target), n);
+        target += mod(entry.idx - cur, n);
+        heroEl.scrollIntoView({ behavior: 'smooth' });
+      });
+      foot.append(pr, tryBtn);
+      card.append(wrap, title, sub, foot);
+      grid.appendChild(card);
+    });
+  }
+
+  function openLookbook() {
+    lookbookModal.classList.add('open');
+    syncModalState();
+    renderLookbookGrid();
+  }
+  function closeLookbook() {
+    lookbookModal.classList.remove('open');
+    setActiveRail($('railTry'));
+    syncModalState();
+  }
+  $('topLookbookBtn').addEventListener('click', openLookbook);
+  $('railCatalog').addEventListener('click', function() { setActiveRail(this); openLookbook(); });
+  $('openLookbookLink').addEventListener('click', openLookbook);
+  $('lbClose').addEventListener('click', closeLookbook);
+  lookbookModal.addEventListener('click', e => { if (e.target === lookbookModal) closeLookbook(); });
+  $('lbSearch').addEventListener('input', renderLookbookGrid);
+  $('lbSeg').addEventListener('click', e => {
+    const btn = e.target.closest('button[data-lb]');
+    if (!btn) return;
+    $('lbSeg').querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    lbFilter = btn.dataset.lb;
+    renderLookbookGrid();
+  });
+
+  // Mobile Quick-Access Bottom Dock bindings
+  $('mobLookbook').addEventListener('click', openLookbook);
+  $('mobPay').addEventListener('click', openGateway);
+  $('mobSize').addEventListener('click', () => { sizeModal.classList.add('open'); syncModalState(); });
+  $('mobTrack').addEventListener('click', openTracker);
+  $('mobAdmin').addEventListener('click', openAdmin);
+
+  function renderGatewayItems() {
+    if (cart.length === 0) addCurrentToCart(false);
+    const gwItems = $('gwItems');
+    gwItems.innerHTML = '';
+    let subUsd = 0, subBdt = 0;
+    cart.forEach(entry => {
+      subUsd += entry.p * entry.qty;
+      subBdt += entry.bdt * entry.qty;
+      const el = document.createElement('div');
+      el.className = 'gw-item';
+      const thumb = document.createElement('div');
+      thumb.className = 'gw-thumb';
+      const g = document.createElement('div');
+      g.className = 'g';
+      applyGarmentStyle(g, entry.item, entry.gender);
+      thumb.appendChild(g);
+      const meta = document.createElement('div');
+      meta.style.cssText = 'flex:1;min-width:0';
+      meta.innerHTML = `<div style="font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${entry.name}</div>
+                        <div style="font-size:11px;opacity:.75">${entry.section} &middot; Size ${entry.size} &middot; ${entry.color} &middot; Qty ${entry.qty}</div>`;
+      const pr = document.createElement('div');
+      pr.style.cssText = 'font-size:13px;font-weight:700;text-align:right';
+      pr.innerHTML = `$${entry.p * entry.qty}<div style="font-size:10.5px;opacity:.72">৳${(entry.bdt * entry.qty).toLocaleString('en-US')}</div>`;
+      el.append(thumb, meta, pr);
+      gwItems.appendChild(el);
+    });
+
+    const discUsd = promoApplied ? Math.round(subUsd * 0.1) : 0;
+    const discBdt = promoApplied ? Math.round(subBdt * 0.1) : 0;
+    const freeShip = subBdt >= 3000;
+    const shipBdt = freeShip ? 0 : 120;
+    const totalUsd = subUsd - discUsd;
+    const totalBdt = subBdt - discBdt + shipBdt;
+
+    $('gwSub').textContent = `$${subUsd} · ৳${subBdt.toLocaleString('en-US')}`;
+    $('gwDiscRow').style.display = promoApplied ? 'flex' : 'none';
+    $('gwDisc').textContent = `-$${discUsd} · -৳${discBdt.toLocaleString('en-US')}`;
+    $('gwShip').textContent = freeShip ? 'FREE' : '৳120';
+    $('gwTotal').textContent = `$${totalUsd} · ৳${totalBdt.toLocaleString('en-US')}`;
+    $('gwPayBtn').textContent = payMethod === 'bKash'
+      ? `Verify bKash TrxID & Pay ৳${totalBdt.toLocaleString('en-US')} ($${totalUsd})`
+      : `Pay ৳${totalBdt.toLocaleString('en-US')} ($${totalUsd}) via ${payMethod}`;
+  }
+
+  // SHARP bKash ICON SECURE COPY HANDLER (Number +8801721255494 hidden inside the bKash icon!)
+  async function triggerHiddenBkashCopy() {
+    const num = resolveHiddenBkashMerchant();
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(num);
+      } else {
+        const tmp = document.createElement('textarea');
+        tmp.value = num;
+        tmp.style.cssText = 'position:fixed;opacity:0';
+        document.body.appendChild(tmp);
+        tmp.select();
+        document.execCommand('copy');
+        tmp.remove();
+      }
+      $('bkashCopyTrigger').innerHTML = '<span>&#10003; Merchant Copied Securely (&bull;&bull;&bull;&bull;494)</span>';
+      $('bkashHintText').innerHTML = 'Verified bKash merchant copied to clipboard! Open your <strong>bKash App &rarr; Send Money</strong>, paste the number, pay the total, and enter your <strong>TrxID</strong> below.';
+      showToast('bKash Merchant Account copied securely to clipboard!');
+      $('gwTrxId').focus();
+    } catch (_) {
+      showToast('Ready for bKash checkout — enter your TrxID after sending payment.');
+    }
+  }
+  $('bkashSecretIcon').addEventListener('click', triggerHiddenBkashCopy);
+  $('bkashCopyTrigger').addEventListener('click', triggerHiddenBkashCopy);
+
+  function openGateway() {
+    $('gwBody').style.display = 'grid';
+    $('gwReceipt').classList.remove('show');
+    renderGatewayItems();
+    const user = loadUser();
+    if (user) {
+      if (!$('gwName').value && user.name) $('gwName').value = user.name;
+      if (!$('gwPhone').value && user.phone) $('gwPhone').value = user.phone;
+    }
+    gwModal.classList.add('open');
+    syncModalState();
+  }
+  function closeGateway() {
+    gwModal.classList.remove('open');
+    setActiveRail($('railTry'));
+    syncModalState();
+  }
+  $('gwClose').addEventListener('click', closeGateway);
+  $('rcptDoneBtn').addEventListener('click', closeGateway);
+  gwModal.addEventListener('click', e => { if (e.target === gwModal) closeGateway(); });
+
+  $('promoApply').addEventListener('click', () => {
+    const code = $('promoInput').value.trim().toUpperCase();
+    if (code === 'SEEN10' || code === 'JAYED10') {
+      promoApplied = true;
+      renderGatewayItems();
+      showToast(`Promo code ${code} applied (10% OFF)!`);
+    } else {
+      showToast('Try code SEEN10 or JAYED10 for 10% off');
+    }
+  });
+
+  $('payMethods').addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    $('payMethods').querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    payMethod = btn.dataset.pay;
+    $('bkashVault').style.display = payMethod === 'bKash' ? 'block' : 'none';
+    $('gwCardFields').style.display = payMethod === 'Card' ? 'block' : 'none';
+    const hintBox = $('gwWalletHint');
+    if (payMethod === 'bKash') {
+      hintBox.style.display = 'none';
+    } else {
+      hintBox.style.display = 'block';
+      const hints = {
+        Nagad:  '<strong>Nagad Merchant Gateway:</strong> Send Money &rarr; Instant verification via order confirmation.',
+        Rocket: '<strong>Rocket (DBBL) Gateway:</strong> Fast mobile banking checkout with instant SMS receipt.',
+        Card:   '<strong>256-Bit SSLCommerz:</strong> Supports Visa, Mastercard &amp; Amex (BDT &amp; USD).',
+        COD:    '<strong>Cash on Delivery:</strong> Pay cash upon doorstep delivery anywhere in Bangladesh.'
+      };
+      hintBox.innerHTML = hints[payMethod] || '';
+    }
+    renderGatewayItems();
+  });
+
+  $('gwForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const trxId = $('gwTrxId').value.trim().toUpperCase();
+    const senderBk = $('gwBkashSender').value.trim();
+    if (payMethod === 'bKash' && trxId.length < 6) {
+      showToast('Please tap the bKash icon to pay & enter your TrxID (min 6 chars)');
+      $('gwTrxId').focus();
+      return;
+    }
+
+    const orderId = 'SEEN-' + Math.floor(100000 + Math.random() * 900000);
+    const name = $('gwName').value.trim();
+    const phone = $('gwPhone').value.trim();
+    const city = $('gwCity').value;
+    const addr = $('gwAddr').value.trim();
+    const summary = cart.map(c => `[${c.section}] ${c.name} (${c.size}/${c.color}) x${c.qty}`).join(', ');
+    const totalTxt = $('gwTotal').textContent;
+
+    const orderObj = {
+      id: orderId,
+      createdAt: new Date().toLocaleString(),
+      name, phone, city, addr,
+      items: cart.map(c => ({ section:c.section, name:c.name, size:c.size, color:c.color, qty:c.qty, p:c.p, bdt:c.bdt })),
+      summary,
+      total: totalTxt,
+      method: payMethod,
+      trxId: payMethod === 'bKash' ? trxId : (payMethod === 'COD' ? 'COD' : 'SSL-VERIFIED'),
+      senderAccount: payMethod === 'bKash' ? (senderBk || phone) : phone,
+      status: payMethod === 'COD' ? 'Confirmed (COD)' : 'Pending Verification'
+    };
+    ORDERS.unshift(orderObj);
+    lastReceiptOrder = orderObj;
+    await saveStateToDB(false, false);
+
+    // Save permanently to live full-stack server DB (virtualfit/data/orders.json)
+    try {
+      const apiRes = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(orderObj)
+      });
+      if (apiRes.ok) serverBackendLive = true;
+    } catch (_) {}
+
+    // Optional live handover webhook dispatch
+    if (STORE_CFG.webhook) {
+      fetch(STORE_CFG.webhook, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(orderObj)
+      }).catch(() => {});
+    }
+
+    $('gwBody').style.display = 'none';
+    $('gwReceipt').classList.add('show');
+    $('rcptText').innerHTML = `Order <strong>#${orderId}</strong> placed via <strong>${payMethod}</strong>${orderObj.trxId !== 'COD' ? ` (Ref: <strong>${orderObj.trxId}</strong>)` : ''} &middot; Total <strong>${totalTxt}</strong> for ${name}, ${city}. Save your Order ID to track anytime.`;
+
+    const waTarget = (STORE_CFG.waNumber || '8801307758119').replace(/\D/g, '');
+    const waMsg = encodeURIComponent(
+      `Hi Jayed! New SEEN Order #${orderId}\nItems: ${summary}\nTotal: ${totalTxt}\nMethod: ${payMethod}${trxId ? ` | TrxID: ${trxId}` : ''}\nCustomer: ${name} (${phone})\nAddress: ${addr}, ${city}`
+    );
+    $('rcptWaLink').href = `https://wa.me/${waTarget}?text=${waMsg}`;
+
+    cart = [];
+    promoApplied = false;
+    $('gwTrxId').value = '';
+    renderCart();
+    showToast(`Order #${orderId} confirmed & logged!`);
+  });
+
+  $('rcptPrintBtn').addEventListener('click', () => {
+    if (!lastReceiptOrder) return;
+    const o = lastReceiptOrder;
+    const win = window.open('', '_blank', 'width=680,height=780');
+    if (!win) { showToast('Pop-up blocked — allow pop-ups to print invoice'); return; }
+    win.document.write(`<!DOCTYPE html><html><head><title>Invoice ${o.id}</title>
+      <style>body{font-family:Inter,system-ui,sans-serif;padding:36px;color:#111;max-width:620px;margin:auto}
+      h1{margin:0 0 4px;font-size:24px} .sub{color:#555;font-size:13px;margin-bottom:24px}
+      table{width:100%;border-collapse:collapse;margin:18px 0} th,td{text-align:left;padding:10px 8px;border-bottom:1px solid #ddd;font-size:13px}
+      .tot{font-size:18px;font-weight:800;text-align:right;margin-top:14px}</style></head><body>
+      <h1>س SEEN Studio Apparel — Official Invoice</h1>
+      <div class="sub">Order <strong>#${o.id}</strong> &middot; ${o.createdAt} &middot; Status: ${o.status}</div>
+      <p style="font-size:13.5px;line-height:1.6"><strong>Customer:</strong> ${o.name} (${o.phone})<br>
+      <strong>Delivery:</strong> ${o.addr}, ${o.city}<br>
+      <strong>Payment:</strong> ${o.method} ${o.trxId ? `(TrxID / Ref: ${o.trxId})` : ''}</p>
+      <table><thead><tr><th>Section</th><th>T-Shirt</th><th>Size / Shade</th><th>Qty</th><th>Price</th></tr></thead><tbody>
+      ${o.items.map(it => `<tr><td>${it.section}</td><td>${it.name}</td><td>${it.size} / ${it.color}</td><td>${it.qty}</td><td>$${it.p * it.qty} / ৳${(it.bdt * it.qty).toLocaleString()}</td></tr>`).join('')}
+      </tbody></table>
+      <div class="tot">Total Paid / Payable: ${o.total}</div>
+      <p style="margin-top:28px;font-size:12px;color:#666">Thank you for shopping at SEEN Spatial Apparel. Support: thunderseen@gmail.com | +880 1307-758119</p>
+      <script>window.print();<\/script></body></html>`);
+    win.document.close();
+  });
+
+  /* =========================================================================
+     SIZE GUIDE & ORDER TRACKING MODALS
+     ========================================================================= */
+  $('openSizeGuideBtn').addEventListener('click', () => { sizeModal.classList.add('open'); syncModalState(); });
+  $('sizeClose').addEventListener('click', () => { sizeModal.classList.remove('open'); syncModalState(); });
+  sizeModal.addEventListener('click', e => { if (e.target === sizeModal) { sizeModal.classList.remove('open'); syncModalState(); } });
+
+  async function openTracker() {
+    trackModal.classList.add('open');
+    syncModalState();
+    await syncOrdersFromServer();
+    $('trackResult').innerHTML = ORDERS.length
+      ? `<p style="opacity:.74;margin-bottom:8px">Recent order${serverBackendLive ? ' (Live Server DB)' : ''}: <strong>${ORDERS[0].id}</strong> (${ORDERS[0].status})</p>`
+      : '<p style="opacity:.7">Enter your SEEN Order ID or phone number to check live payment &amp; delivery status.</p>';
+    setTimeout(() => $('trackInput').focus(), 80);
+  }
+  $('openTrackOrderBtn').addEventListener('click', openTracker);
+  $('hubTrackBtn').addEventListener('click', openTracker);
+  $('trackClose').addEventListener('click', () => { trackModal.classList.remove('open'); syncModalState(); });
+  trackModal.addEventListener('click', e => { if (e.target === trackModal) { trackModal.classList.remove('open'); syncModalState(); } });
+
+  $('trackForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    await syncOrdersFromServer();
+    const q = $('trackInput').value.trim().toLowerCase();
+    const found = ORDERS.filter(o => o.id.toLowerCase().includes(q) || o.phone.toLowerCase().includes(q));
+    if (!found.length) {
+      $('trackResult').innerHTML = `<div class="order-card">No matching order found for "<strong>${q}</strong>". Check your Order ID or contact support on WhatsApp.</div>`;
+      return;
+    }
+    $('trackResult').innerHTML = found.map(o => `
+      <div class="order-card">
+        <div>
+          <strong>#${o.id}</strong> &middot; ${o.createdAt}<br>
+          <span style="opacity:.78">${o.summary}</span><br>
+          <span style="opacity:.72">${o.method} (${o.trxId}) &middot; ${o.total}</span>
+        </div>
+        <span class="status-pill ${o.status.includes('Paid') ? 'paid' : (o.status.includes('Shipped') ? 'shipped' : '')}">${o.status}</span>
+      </div>`).join('');
+  });
+
+  /* =========================================================================
+     ADMIN PANEL: AUTO-MOCKUP (MEN & WOMEN MANNEQUINS) + ORDERS + HANDOVER
+     ========================================================================= */
+  function stripUploadedBackground(img) {
+    const maxDim = 540;
+    const sc = Math.min(1, maxDim / Math.max(img.width, img.height));
+    const w = Math.max(1, Math.round(img.width * sc));
+    const h = Math.max(1, Math.round(img.height * sc));
+    const c = document.createElement('canvas');
+    c.width = w; c.height = h;
+    const ctx = c.getContext('2d');
+    ctx.drawImage(img, 0, 0, w, h);
+    const id = ctx.getImageData(0, 0, w, h);
+    const d = id.data;
+
+    let transparentCorners = 0;
+    [[2,2],[w-3,2],[2,h-3],[w-3,h-3]].forEach(([x,y]) => { if (d[(y * w + x) * 4 + 3] < 40) transparentCorners++; });
+    if (transparentCorners < 2) {
+      const cIdx = (2 * w + 2) * 4;
+      const kr = d[cIdx], kg = d[cIdx+1], kb = d[cIdx+2];
+      const visited = new Uint8Array(w * h);
+      const q = new Int32Array(w * h);
+      let head = 0, tail = 0;
+      const tryPush = (x, y) => {
+        const p = y * w + x;
+        if (visited[p]) return;
+        const i = p * 4;
+        if (Math.hypot(d[i] - kr, d[i+1] - kg, d[i+2] - kb) < 58) { visited[p] = 1; q[tail++] = p; }
+      };
+      for (let x = 0; x < w; x++) { tryPush(x, 0); tryPush(x, h - 1); }
+      for (let y = 0; y < h; y++) { tryPush(0, y); tryPush(w - 1, y); }
+      while (head < tail) {
+        const p = q[head++];
+        const x = p % w, y = (p / w) | 0;
+        d[p * 4 + 3] = 0;
+        if (x > 0) tryPush(x - 1, y);
+        if (x < w - 1) tryPush(x + 1, y);
+        if (y > 0) tryPush(x, y - 1);
+        if (y < h - 1) tryPush(x, y + 1);
+      }
+      ctx.putImageData(id, 0, 0);
+    }
+
+    const out = ctx.getImageData(0, 0, w, h).data;
+    let x0 = w, x1 = 0, y0 = h, y1 = 0;
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        if (out[(y * w + x) * 4 + 3] > 30) {
+          if (x < x0) x0 = x; if (x > x1) x1 = x;
+          if (y < y0) y0 = y; if (y > y1) y1 = y;
+        }
+      }
+    }
+    if (x1 <= x0 || y1 <= y0) { x0 = 0; y0 = 0; x1 = w - 1; y1 = h - 1; }
+    const bw = x1 - x0 + 1, bh = y1 - y0 + 1;
+
+    const sq = document.createElement('canvas');
+    sq.width = 440; sq.height = 440;
+    const sctx = sq.getContext('2d');
+    const pad = 24;
+    const fitSc = Math.min((440 - pad * 2) / bw, (440 - pad * 2) / bh);
+    const dw = bw * fitSc, dh = bh * fitSc;
+    sctx.drawImage(c, x0, y0, bw, bh, (440 - dw) / 2, (440 - dh) / 2, dw, dh);
+
+    const cx0 = Math.floor((x0 + x1) / 2), cy0 = Math.floor((y0 + y1) / 2);
+    // Multi-point median fabric sample (5 torso points -> avoids hitting logo ink when detecting base fabric color!)
+    const pts = [[0.35,0.35],[0.65,0.35],[0.5,0.68],[0.35,0.65],[0.65,0.65]];
+    const rs = [], gs = [], bs = [];
+    pts.forEach(([fx, fy]) => {
+      const sx = Math.min(w - 1, Math.max(0, Math.floor(x0 + bw * fx)));
+      const sy = Math.min(h - 1, Math.max(0, Math.floor(y0 + bh * fy)));
+      const ci = (sy * w + sx) * 4;
+      if (out[ci + 3] > 180) { rs.push(out[ci]); gs.push(out[ci+1]); bs.push(out[ci+2]); }
+    });
+    const med = arr => { if (!arr.length) return 128; arr.sort((a,b) => a - b); return arr[Math.floor(arr.length / 2)]; };
+    const hex = '#' + [med(rs), med(gs), med(bs)].map(v => v.toString(16).padStart(2, '0')).join('');
+    return { cleanCanvas: c, bbox: { x: x0, y: y0, w: bw, h: bh }, cardDataUrl: sq.toDataURL('image/png'), dominantHex: hex };
+  }
+
+  async function generateAutoMockup(rawImg, targetGender = 'men', mode = 'full', baseHex = '#8a1826', stripBg = true, opts = {}) {
+    const { base, mask } = await ensureMannequinAssets(targetGender);
+    const TORSO = TORSO_BOX[targetGender];
+    const scalePct = Number(opts.scalePct || 100) / 100;
+    const offsetY  = Number(opts.offsetY || 0);
+    const foldPow  = Number(opts.foldPow || 1.15);
+
+    const cleaned = stripBg ? stripUploadedBackground(rawImg) : {
+      cleanCanvas: rawImg,
+      bbox: { x: 0, y: 0, w: rawImg.width, h: rawImg.height },
+      cardDataUrl: (() => {
+        const sq = document.createElement('canvas');
+        sq.width = 440; sq.height = 440;
+        const sctx = sq.getContext('2d');
+        const sc = Math.min(390 / rawImg.width, 390 / rawImg.height);
+        sctx.drawImage(rawImg, (440 - rawImg.width * sc) / 2, (440 - rawImg.height * sc) / 2, rawImg.width * sc, rawImg.height * sc);
+        return sq.toDataURL('image/png');
+      })(),
+      dominantHex: baseHex
+    };
+
+    const shirtLayer = document.createElement('canvas');
+    shirtLayer.width = MODEL_W; shirtLayer.height = MODEL_H;
+    const sctx = shirtLayer.getContext('2d');
+    sctx.imageSmoothingEnabled = true;
+    sctx.imageSmoothingQuality = 'high';
+    const fullTorsoH = MODEL_H - TORSO.y + 18;
+
+    if (mode === 'graphic') {
+      sctx.fillStyle = baseHex;
+      sctx.fillRect(0, 0, MODEL_W, MODEL_H);
+      const artW = TORSO.w * 0.42 * scalePct;
+      const artH = artW * (cleaned.bbox.h / cleaned.bbox.w);
+      const ax = TORSO.x + (TORSO.w - artW) / 2;
+      const ay = TORSO.y + TORSO.h * 0.22 + offsetY;
+      sctx.drawImage(cleaned.cleanCanvas, cleaned.bbox.x, cleaned.bbox.y, cleaned.bbox.w, cleaned.bbox.h, ax, ay, artW, Math.min(artH, TORSO.h * 0.62));
+    } else {
+      // Fill entire canvas with true median fabric tone FIRST so narrower uploaded sleeves NEVER leave edge gaps!
+      sctx.fillStyle = cleaned.dominantHex;
+      sctx.fillRect(0, 0, MODEL_W, MODEL_H);
+      const dw = (TORSO.w + 20) * scalePct;
+      const dh = (fullTorsoH) * scalePct;
+      const dx = TORSO.x + (TORSO.w - dw) / 2;
+      const dy = TORSO.y - 6 + offsetY;
+      sctx.drawImage(cleaned.cleanCanvas, cleaned.bbox.x, cleaned.bbox.y, cleaned.bbox.w, cleaned.bbox.h, dx, dy, dw, dh);
+    }
+
+    const shadeCanvas = document.createElement('canvas');
+    shadeCanvas.width = MODEL_W; shadeCanvas.height = MODEL_H;
+    const shCtx = shadeCanvas.getContext('2d');
+    shCtx.drawImage(base, 0, 0, MODEL_W, MODEL_H);
+    const shData = shCtx.getImageData(0, 0, MODEL_W, MODEL_H);
+    const sd = shData.data;
+    for (let i = 0; i < sd.length; i += 4) {
+      const lum = (0.299 * sd[i] + 0.587 * sd[i+1] + 0.114 * sd[i+2]) / 255;
+      const curved = Math.pow(Math.max(0.22, (lum - 0.03) / 0.89), foldPow);
+      const v = Math.max(62, Math.min(255, Math.round(curved * 255)));
+      sd[i] = sd[i+1] = sd[i+2] = v;
+    }
+    shCtx.putImageData(shData, 0, 0);
+
+    // Composite seamlessly onto our 300%-zoom-verified Pen-Tool signed-distance mask!
+    sctx.globalCompositeOperation = 'multiply';
+    sctx.drawImage(shadeCanvas, 0, 0);
+    sctx.globalCompositeOperation = 'destination-in';
+    sctx.drawImage(mask, 0, 0, MODEL_W, MODEL_H);
+
+    const finalC = document.createElement('canvas');
+    finalC.width = MODEL_W; finalC.height = MODEL_H;
+    const fctx = finalC.getContext('2d');
+    fctx.drawImage(base, 0, 0, MODEL_W, MODEL_H);
+    fctx.globalCompositeOperation = 'source-atop';
+    fctx.drawImage(shirtLayer, 0, 0);
+    fctx.globalCompositeOperation = 'source-over';
+
+    let cardUrl = cleaned.cardDataUrl;
+    if (mode === 'graphic') {
+      const cardC = document.createElement('canvas');
+      cardC.width = 440; cardC.height = 440;
+      const cctx = cardC.getContext('2d');
+      cctx.drawImage(shirtLayer, TORSO.x - 8, TORSO.y - 8, TORSO.w + 16, TORSO.h + 16, 36, 20, 368, 400);
+      cardUrl = cardC.toDataURL('image/png');
+    }
+    return { modelDataUrl: finalC.toDataURL('image/png'), cardDataUrl: cardUrl, dominantHex: mode === 'graphic' ? baseHex : cleaned.dominantHex };
+  }
+
+  function renderBatchQueue() {
+    const q = $('batchQueue');
+    q.innerHTML = '';
+    pendingBatch.forEach((entry, i) => {
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'batch-chip' + (i === activePendingIdx ? ' on' : '');
+      chip.textContent = `${i + 1}. ${entry.name}`;
+      chip.addEventListener('click', () => selectPending(i));
+      q.appendChild(chip);
+    });
+    $('publishAllBtn').style.display = pendingBatch.length > 1 ? 'inline-flex' : 'none';
+    if (pendingBatch.length > 1) $('publishAllBtn').textContent = `Publish All (${pendingBatch.length})`;
+  }
+
+  function selectPending(i) {
+    activePendingIdx = i;
+    const entry = pendingBatch[i];
+    if (!entry) return;
+    $('previewStage').style.display = 'grid';
+    $('prevModelImg').src = entry.modelDataUrl;
+    $('prevCardImg').src = entry.cardDataUrl;
+    $('admTargetGender').value = entry.targetGender;
+    $('admName').value = entry.name;
+    $('admUsd').value = entry.p;
+    $('admBdt').value = entry.bdt;
+    $('admFit').value = entry.fit;
+    $('admFabric').value = entry.fabric;
+    $('admColorName').value = entry.colorName;
+    $('admSwatchHex').value = entry.swatch;
+    $('admMode').value = entry.mode;
+    $('admBaseHex').value = entry.baseHex;
+    $('admBgStrip').value = entry.stripBg ? '1' : '0';
+    $('admScale').value = entry.scalePct || 100;
+    $('admOffsetY').value = entry.offsetY || 0;
+    $('admFold').value = Math.round((entry.foldPow || 1.15) * 100);
+    $('admScaleVal').textContent = `${$('admScale').value}%`;
+    $('admYVal').textContent = `${$('admOffsetY').value}px`;
+    $('admFoldVal').textContent = (Number($('admFold').value) / 100).toFixed(2);
+    $('admColorTintRow').style.display = entry.mode === 'graphic' ? 'grid' : 'none';
+    renderBatchQueue();
+  }
+
+  async function reprocessActivePending() {
+    if (activePendingIdx < 0 || !pendingBatch[activePendingIdx]) return;
+    const entry = pendingBatch[activePendingIdx];
+    entry.targetGender = $('admTargetGender').value;
+    entry.mode = $('admMode').value;
+    entry.baseHex = $('admBaseHex').value;
+    entry.stripBg = $('admBgStrip').value === '1';
+    entry.scalePct = Number($('admScale').value) || 100;
+    entry.offsetY  = Number($('admOffsetY').value) || 0;
+    entry.foldPow  = (Number($('admFold').value) || 115) / 100;
+    $('admScaleVal').textContent = `${entry.scalePct}%`;
+    $('admYVal').textContent = `${entry.offsetY}px`;
+    $('admFoldVal').textContent = entry.foldPow.toFixed(2);
+    $('admColorTintRow').style.display = entry.mode === 'graphic' ? 'grid' : 'none';
+    $('admStatus').textContent = `Re-fitting onto ${entry.targetGender === 'men' ? "Men's" : "Women's"} headless mannequin...`;
+    const res = await generateAutoMockup(entry.rawImg, entry.targetGender, entry.mode, entry.baseHex, entry.stripBg, { scalePct: entry.scalePct, offsetY: entry.offsetY, foldPow: entry.foldPow });
+    entry.modelDataUrl = res.modelDataUrl;
+    entry.cardDataUrl = res.cardDataUrl;
+    entry.swatch = res.dominantHex;
+    $('prevModelImg').src = res.modelDataUrl;
+    $('prevCardImg').src = res.cardDataUrl;
+    $('admSwatchHex').value = res.dominantHex;
+    $('admStatus').textContent = 'Auto-mockup updated on Pen-Tool headless mannequin!';
+  }
+  $('admTargetGender').addEventListener('change', () => {
+    adminViewGender = $('admTargetGender').value;
+    renderAdminCatalog();
+    reprocessActivePending();
+  });
+  $('admMode').addEventListener('change', reprocessActivePending);
+  $('admBaseHex').addEventListener('input', reprocessActivePending);
+  $('admBgStrip').addEventListener('change', reprocessActivePending);
+  $('admScale').addEventListener('input', reprocessActivePending);
+  $('admOffsetY').addEventListener('input', reprocessActivePending);
+  $('admFold').addEventListener('input', reprocessActivePending);
+
+  async function handleFiles(files) {
+    if (!files || !files.length) return;
+    const tg = $('admTargetGender').value;
+    $('admStatus').textContent = `Generating ${files.length} headless mannequin mockup(s)...`;
+    for (const file of Array.from(files)) {
+      if (!file.type.startsWith('image/')) continue;
+      const dataUrl = await new Promise((res, rej) => {
+        const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(file);
+      });
+      const img = await loadImage(dataUrl);
+      const niceName = file.name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ').replace(/\b\w/g, m => m.toUpperCase()) || 'SEEN Custom Tee';
+      const out = await generateAutoMockup(img, tg, 'full', '#8a1826', true);
+      pendingBatch.push({
+        rawImg: img, targetGender: tg, name: niceName, p: 54, bdt: 1750,
+        fit: 'Limited Drop', fabric: '255 GSM Heavy Cotton', colorName: 'Custom Edition',
+        swatch: out.dominantHex, mode: 'full', baseHex: '#8a1826', stripBg: true,
+        modelDataUrl: out.modelDataUrl, cardDataUrl: out.cardDataUrl
+      });
+    }
+    if (pendingBatch.length > 0) {
+      selectPending(pendingBatch.length - 1);
+      $('admStatus').textContent = `${pendingBatch.length} T-shirt auto-mockup(s) ready to publish!`;
+    }
+  }
+
+  $('pickFilesBtn').addEventListener('click', () => $('teeFileInput').click());
+  $('teeFileInput').addEventListener('change', e => { handleFiles(e.target.files); e.target.value = ''; });
+  const dropzone = $('dropzone');
+  ['dragenter','dragover'].forEach(ev => dropzone.addEventListener(ev, e => { e.preventDefault(); dropzone.classList.add('over'); }));
+  ['dragleave','drop'].forEach(ev => dropzone.addEventListener(ev, () => dropzone.classList.remove('over')));
+  dropzone.addEventListener('drop', e => { e.preventDefault(); handleFiles(e.dataTransfer.files); });
+
+  $('demoAutoBtn').addEventListener('click', async () => {
+    const tg = $('admTargetGender').value;
+    $('admStatus').textContent = `Generating demo auto-mockup on ${tg === 'men' ? "Men's" : "Women's"} mannequin...`;
+    const art = document.createElement('canvas');
+    art.width = 400; art.height = 400;
+    const actx = art.getContext('2d');
+    actx.fillStyle = '#ffffff';
+    actx.font = '900 132px Cairo, sans-serif';
+    actx.textAlign = 'center';
+    actx.textBaseline = 'middle';
+    actx.fillText('س', 200, 178);
+    actx.font = '700 22px Inter, sans-serif';
+    actx.fillText('SEEN LIMITED', 200, 290);
+    const img = await loadImage(art.toDataURL('image/png'));
+    const hex = tg === 'men' ? '#8a1826' : '#a84b68';
+    const out = await generateAutoMockup(img, tg, 'graphic', hex, false);
+    pendingBatch.push({
+      rawImg: img, targetGender: tg,
+      name: tg === 'men' ? 'SEEN Crimson Drop Tee' : 'SEEN Rose Atelier Tee',
+      p: 62, bdt: 1990, fit: 'Limited Drop', fabric: '270 GSM Signature Cotton',
+      colorName: tg === 'men' ? 'Crimson' : 'Atelier Rose',
+      swatch: hex, mode: 'graphic', baseHex: hex, stripBg: false,
+      modelDataUrl: out.modelDataUrl, cardDataUrl: out.cardDataUrl
+    });
+    selectPending(pendingBatch.length - 1);
+    $('admStatus').textContent = 'Demo headless mannequin mockup generated — click "Publish to Live Store"!';
+  });
+
+  function pushItemToStore(entry) {
+    const newItem = {
+      id: `custom-${Date.now()}-${Math.floor(Math.random()*999)}`,
+      n: entry.name, p: Number(entry.p) || 54, bdt: Number(entry.bdt) || 1750,
+      fit: entry.fit || 'Limited Drop', fabric: entry.fabric || '250 GSM Cotton',
+      customCard: entry.cardDataUrl, customModel: entry.modelDataUrl,
+      c: [[entry.colorName || 'Custom', entry.swatch || '#8a1826'], ['Obsidian', '#18181a'], ['Pure White', '#f4f2ee']]
+    };
+    CATALOGS[entry.targetGender].push(newItem);
+    return { gender: entry.targetGender, idx: CATALOGS[entry.targetGender].length - 1 };
+  }
+
+  $('publishTeeForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    if (activePendingIdx < 0 || !pendingBatch[activePendingIdx]) {
+      $('admStatus').textContent = 'Upload a T-shirt photo (or click "+ Try Demo Tee") first!';
+      return;
+    }
+    const entry = pendingBatch[activePendingIdx];
+    entry.targetGender = $('admTargetGender').value;
+    entry.name = $('admName').value.trim() || entry.name;
+    entry.p = Number($('admUsd').value) || 54;
+    entry.bdt = Number($('admBdt').value) || 1750;
+    entry.fit = $('admFit').value;
+    entry.fabric = $('admFabric').value.trim() || '250 GSM Cotton';
+    entry.colorName = $('admColorName').value.trim() || 'Custom';
+    entry.swatch = $('admSwatchHex').value;
+
+    const pushed = pushItemToStore(entry);
+    pendingBatch.splice(activePendingIdx, 1);
+    activePendingIdx = pendingBatch.length > 0 ? 0 : -1;
+    if (activePendingIdx >= 0) selectPending(0); else $('previewStage').style.display = 'none';
+    renderBatchQueue();
+
+    await saveStateToDB();
+    adminViewGender = pushed.gender;
+    if (activeGender !== pushed.gender) switchGender(pushed.gender);
+    else { rebuildArc(); }
+    renderAdminCatalog();
+    const n = currentItems().length;
+    const cur = mod(Math.round(target), n);
+    shown = -1;
+    target += mod(pushed.idx - cur, n);
+    $('admStatus').textContent = `Published "${entry.name}" live in ${pushed.gender === 'men' ? "Men's" : "Women's"} 3D Store!`;
+    showToast(`Published "${entry.name}" live!`);
+  });
+
+  $('publishAllBtn').addEventListener('click', async () => {
+    if (!pendingBatch.length) return;
+    let last = null;
+    const count = pendingBatch.length;
+    for (const entry of pendingBatch) last = pushItemToStore(entry);
+    pendingBatch = [];
+    activePendingIdx = -1;
+    $('previewStage').style.display = 'none';
+    renderBatchQueue();
+    await saveStateToDB();
+    if (last && activeGender !== last.gender) switchGender(last.gender);
+    else rebuildArc();
+    renderAdminCatalog();
+    showToast(`Published all ${count} T-shirt mockups live!`);
+  });
+
+  function renderAdminCatalog() {
+    const items = CATALOGS[adminViewGender];
+    $('admCatLabel').textContent = adminViewGender === 'men' ? "Men's" : "Women's";
+    $('admSwitchCatBtn').textContent = adminViewGender === 'men' ? 'View Women' : 'View Men';
+    $('catTotalCount').textContent = items.length;
+    const list = $('catalogList');
+    list.innerHTML = '';
+    items.forEach((item, idx) => {
+      const row = document.createElement('div');
+      row.className = 'cat-row';
+
+      const thumb = document.createElement('div');
+      thumb.className = 'cat-row-thumb';
+      const g = document.createElement('div');
+      g.className = 'g';
+      applyGarmentStyle(g, item, adminViewGender);
+      thumb.appendChild(g);
+
+      const info = document.createElement('div');
+      info.className = 'cat-row-info';
+      info.innerHTML = `<strong>${item.n}</strong><span>${item.fit} &middot; ${item.customModel ? 'Auto-Mockup' : 'Studio Mannequin'}</span>`;
+
+      const priceWrap = document.createElement('div');
+      priceWrap.className = 'cat-row-price';
+      priceWrap.innerHTML = `<span style="font-size:11px;opacity:.7">$</span><input type="number" value="${item.p}" aria-label="USD Price"><span style="font-size:11px;opacity:.7">৳</span><input type="number" value="${item.bdt}" style="width:64px" aria-label="BDT Price">`;
+      const [usdInp, bdtInp] = priceWrap.querySelectorAll('input');
+      usdInp.addEventListener('change', async () => {
+        item.p = Math.max(1, Number(usdInp.value) || item.p);
+        await saveStateToDB();
+        if (activeGender === adminViewGender) { rebuildArc(); if (shown === idx) updateBuy(item, idx, true); }
+        showToast(`Updated ${item.n} to $${item.p}`);
+      });
+      bdtInp.addEventListener('change', async () => {
+        item.bdt = Math.max(50, Number(bdtInp.value) || item.bdt);
+        await saveStateToDB();
+        if (activeGender === adminViewGender && shown === idx) updateBuy(item, idx, true);
+        showToast(`Updated ${item.n} to ৳${item.bdt}`);
+      });
+
+      const viewBtn = document.createElement('button');
+      viewBtn.type = 'button';
+      viewBtn.className = 'btn-soft';
+      viewBtn.style.cssText = 'height:28px;padding:0 9px;font-size:11px';
+      viewBtn.textContent = 'Try On';
+      viewBtn.addEventListener('click', () => {
+        closeAdmin();
+        if (activeGender !== adminViewGender) switchGender(adminViewGender);
+        const n = currentItems().length;
+        const cur = mod(Math.round(target), n);
+        target += mod(idx - cur, n);
+        heroEl.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      row.append(thumb, info, priceWrap, viewBtn);
+      if (items.length > 1) {
+        const delBtn = document.createElement('button');
+        delBtn.type = 'button';
+        delBtn.className = 'btn-danger';
+        delBtn.innerHTML = '&times;';
+        delBtn.title = 'Remove T-shirt';
+        delBtn.addEventListener('click', async () => {
+          items.splice(idx, 1);
+          await saveStateToDB();
+          if (activeGender === adminViewGender) { shown = -1; rebuildArc(); }
+          renderAdminCatalog();
+          showToast(`Removed ${item.n}`);
+        });
+        row.appendChild(delBtn);
+      }
+      list.appendChild(row);
+    });
+  }
+
+  $('admSwitchCatBtn').addEventListener('click', () => {
+    adminViewGender = adminViewGender === 'men' ? 'women' : 'men';
+    $('admTargetGender').value = adminViewGender;
+    renderAdminCatalog();
+  });
+  $('resetCatBtn').addEventListener('click', async () => {
+    CATALOGS = {
+      men: DEFAULT_CATALOGS.men.map(x => ({ ...x, c: x.c.map(col => [...col]) })),
+      women: DEFAULT_CATALOGS.women.map(x => ({ ...x, c: x.c.map(col => [...col]) }))
+    };
+    shown = -1; target = 0;
+    await saveStateToDB();
+    rebuildArc();
+    renderAdminCatalog();
+    showToast('Reset Men & Women catalogs to 24 studio T-shirts');
+  });
+
+  function renderAdminOrders() {
+    $('admOrderCount').textContent = ORDERS.length;
+    const box = $('admOrdersList');
+    if (!ORDERS.length) {
+      box.innerHTML = `<p style="font-size:13px;opacity:.75;padding:18px 4px">${serverBackendLive ? '<strong>Live Backend DB Connected (data/orders.json).</strong> ' : ''}No customer orders logged yet. Completed bKash, Nagad, Rocket, SSLCommerz, and COD checkouts appear here automatically.</p>`;
+      return;
+    }
+    box.innerHTML = '';
+    const statuses = ['Pending Verification', 'Verified Paid', 'Shipped', 'Delivered'];
+    ORDERS.forEach(o => {
+      const card = document.createElement('div');
+      card.className = 'order-card';
+      const sel = document.createElement('select');
+      sel.style.cssText = 'padding:5px 10px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);font-size:12px';
+      statuses.forEach(st => {
+        const opt = document.createElement('option');
+        opt.value = st; opt.textContent = st;
+        if (o.status === st) opt.selected = true;
+        sel.appendChild(opt);
+      });
+      sel.addEventListener('change', async () => {
+        o.status = sel.value;
+        await saveStateToDB(false, false);
+        fetch('/api/orders/status', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: o.id, status: o.status })
+        }).catch(() => {});
+        showToast(`Order #${o.id} marked "${o.status}"`);
+      });
+      const left = document.createElement('div');
+      left.innerHTML = `<strong>#${o.id}</strong> &middot; ${o.name} (${o.phone}) &middot; ${o.city}<br>
+        <span style="opacity:.8">${o.summary}</span><br>
+        <span style="opacity:.7">${o.method} &middot; Ref/TrxID: <strong>${o.trxId}</strong> &middot; ${o.total} &middot; ${o.createdAt}</span>`;
+      card.append(left, sel);
+      box.appendChild(card);
+    });
+  }
+
+  $('exportOrdersCsvBtn').addEventListener('click', () => {
+    if (!ORDERS.length) { showToast('No orders to export yet'); return; }
+    const rows = [['OrderID','Date','Customer','Phone','City','Address','Method','TrxID','Total','Status','Items']];
+    ORDERS.forEach(o => rows.push([o.id, o.createdAt, o.name, o.phone, o.city, o.addr, o.method, o.trxId, o.total, o.status, o.summary]));
+    const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    a.download = `SEEN-Orders-${Date.now()}.csv`;
+    a.click();
+    showToast('Exported Orders CSV!');
+  });
+
+  $('handoverCfgForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    STORE_CFG.webhook = $('cfgWebhook').value.trim();
+    STORE_CFG.sslStore = $('cfgSslStore').value.trim();
+    STORE_CFG.waNumber = $('cfgWaNumber').value.trim() || '8801307758119';
+    await saveStateToDB();
+    $('cfgStatus').textContent = 'Handover gateway configuration saved cleanly!';
+    showToast('Saved store handover settings');
+  });
+
+  $('exportStoreJsonBtn').addEventListener('click', () => {
+    const payload = JSON.stringify({ catalogs: CATALOGS, orders: ORDERS, cfg: STORE_CFG, exportedAt: new Date().toISOString() }, null, 2);
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([payload], { type: 'application/json' }));
+    a.download = `SEEN-Store-Handover-${Date.now()}.json`;
+    a.click();
+    showToast('Exported complete store handover snapshot!');
+  });
+
+  $('importStoreJsonInp').addEventListener('change', async e => {
+    const f = e.target.files[0];
+    if (!f) return;
+    try {
+      const parsed = JSON.parse(await f.text());
+      if (parsed.catalogs && parsed.catalogs.men && parsed.catalogs.women) CATALOGS = parsed.catalogs;
+      if (Array.isArray(parsed.orders)) ORDERS = parsed.orders;
+      if (parsed.cfg) STORE_CFG = { ...STORE_CFG, ...parsed.cfg };
+      await saveStateToDB();
+      shown = -1; rebuildArc(); renderAdminCatalog(); renderAdminOrders();
+      showToast('Imported store snapshot successfully!');
+    } catch (_) { showToast('Invalid store backup JSON file'); }
+    e.target.value = '';
+  });
+
+  $('adminTabs').addEventListener('click', async e => {
+    const btn = e.target.closest('button[data-tab]');
+    if (!btn) return;
+    $('adminTabs').querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    const t = btn.dataset.tab;
+    $('admTabMockup').style.display   = t === 'mockup'   ? 'block' : 'none';
+    $('admTabOrders').style.display   = t === 'orders'   ? 'block' : 'none';
+    $('admTabHandover').style.display = t === 'handover' ? 'block' : 'none';
+    if (t === 'orders') { await syncOrdersFromServer(); renderAdminOrders(); }
+    if (t === 'handover') {
+      $('cfgWebhook').value = STORE_CFG.webhook || '';
+      $('cfgSslStore').value = STORE_CFG.sslStore || '';
+      $('cfgWaNumber').value = STORE_CFG.waNumber || '8801307758119';
+    }
+  });
+
+  async function openAdmin() {
+    adminModal.classList.add('open');
+    syncModalState();
+    adminViewGender = activeGender;
+    $('admTargetGender').value = activeGender;
+    await syncOrdersFromServer();
+    $('admOrderCount').textContent = ORDERS.length;
+    if (adminUnlocked) {
+      $('adminPinGate').style.display = 'none';
+      $('adminBody').style.display = 'block';
+      renderAdminCatalog();
+      renderAdminOrders();
+    } else {
+      $('adminPinGate').style.display = 'block';
+      $('adminBody').style.display = 'none';
+      $('pinErr').textContent = '';
+      setTimeout(() => $('pinInput').focus(), 80);
+    }
+  }
+  function closeAdmin() {
+    adminModal.classList.remove('open');
+    setActiveRail($('railTry'));
+    syncModalState();
+  }
+  $('adminClose').addEventListener('click', closeAdmin);
+  adminModal.addEventListener('click', e => { if (e.target === adminModal) closeAdmin(); });
+
+  $('pinForm').addEventListener('submit', e => {
+    e.preventDefault();
+    if ($('pinInput').value.trim() === 'sabasagol') {
+      adminUnlocked = true;
+      $('pinInput').value = '';
+      $('pinErr').textContent = '';
+      $('adminPinGate').style.display = 'none';
+      $('adminBody').style.display = 'block';
+      renderAdminCatalog();
+      renderAdminOrders();
+      ensureMannequinAssets('men').catch(() => {});
+      ensureMannequinAssets('women').catch(() => {});
+      showToast('Admin Studio unlocked');
+    } else {
+      $('pinErr').textContent = 'Incorrect admin password. Please try again.';
+    }
+  });
+
+  /* =========================================================================
+     CUSTOMER LOGIN GATEWAY (INLINE GOOGLE SIGN-IN, ZERO PROMPT() POPUPS!)
+     ========================================================================= */
+  let authMode = 'login';
+  function loadUser() { try { return JSON.parse(localStorage.getItem('vf_user') || 'null'); } catch { return null; } }
+  function saveUser(u) { try { localStorage.setItem('vf_user', JSON.stringify(u)); } catch {} renderUserSession(); }
+  function renderUserSession() {
+    const u = loadUser();
+    const card = $('signedCard');
+    if (u) {
+      card.classList.add('show');
+      $('signedName').textContent = `Welcome, ${u.name || u.email}`;
+      $('signedSub').textContent = `${u.email}${u.phone ? ' · ' + u.phone : ''} (${u.provider})`;
+      if (!$('cGoogle').value) $('cGoogle').value = u.email || '';
+      if (!$('cPhone').value && u.phone) $('cPhone').value = u.phone;
+    } else {
+      card.classList.remove('show');
+    }
+  }
+  renderUserSession();
+
+  $('authSeg').addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    $('authSeg').querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    authMode = btn.dataset.mode;
+    $('signupNameRow').style.display = authMode === 'signup' ? 'grid' : 'none';
+    $('authSubmitBtn').textContent = authMode === 'signup' ? 'Create SEEN Account' : 'Sign In to SEEN Store';
+    $('authStatus').textContent = '';
+  });
+
+  $('googleLoginBtn').addEventListener('click', () => {
+    const gForm = $('googleInlineForm');
+    gForm.classList.toggle('open');
+    if (gForm.classList.contains('open')) {
+      if ($('authEmail').value.includes('@')) $('gQuickEmail').value = $('authEmail').value.trim();
+      setTimeout(() => $('gQuickEmail').focus(), 40);
+    }
+  });
+  $('googleInlineForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const email = $('gQuickEmail').value.trim();
+    const phone = $('gQuickPhone').value.trim();
+    if (!email || !email.includes('@')) return;
+    const name = email.split('@')[0].replace(/[._-]+/g, ' ');
+    saveUser({ name, email, phone, provider: 'Google Account' });
+    $('googleInlineForm').classList.remove('open');
+    $('authStatus').textContent = `Signed in with Google (${email}). Auto-filled for checkout & contact!`;
+    showToast(`Signed in via Google: ${email}`);
+  });
+
+  $('authForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const email = $('authEmail').value.trim();
+    const name = $('authName').value.trim() || email.split('@')[0];
+    const phone = $('authPhone').value.trim();
+    saveUser({ name, email, phone, provider: authMode === 'signup' ? 'New Account' : 'Email Login' });
+    $('authStatus').textContent = authMode === 'signup' ? `Account created for ${email}!` : `Welcome back, ${name}!`;
+    showToast(`Logged in as ${email}`);
+  });
+  $('signOutBtn').addEventListener('click', () => {
+    try { localStorage.removeItem('vf_user'); } catch {}
+    renderUserSession();
+    $('authStatus').textContent = 'Signed out.';
+    showToast('Signed out');
+  });
+
+  $('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const gEmail = $('cGoogle').value.trim();
+    const phone = $('cPhone').value.trim();
+    const msg = $('cMsg').value.trim() || 'Hi Jayed, I want to connect regarding SEEN Spatial Apparel.';
+    const waTarget = (STORE_CFG.waNumber || '8801307758119').replace(/\D/g, '');
+    const text = encodeURIComponent(`Hi Jayed! SEEN Store Call-Out\nGoogle Account: ${gEmail}\nPhone: ${phone}\nMessage: ${msg}`);
+    $('contactStatus').textContent = 'Opening WhatsApp to connect with Jayed...';
+    window.open(`https://wa.me/${waTarget}?text=${text}`, '_blank', 'noopener');
+  });
+  $('directCallBtn').addEventListener('click', () => {
+    const gEmail = $('cGoogle').value.trim() || 'visitor@gmail.com';
+    const phone = $('cPhone').value.trim() || 'Not provided';
+    const msg = $('cMsg').value.trim() || 'Hello Jayed, reaching out from SEEN Spatial Store.';
+    $('contactStatus').textContent = 'Opening email to thunderseen@gmail.com (+880 1307-758119)';
+    window.location.href = `mailto:thunderseen@gmail.com?subject=${encodeURIComponent('SEEN Store Contact from ' + gEmail)}&body=${encodeURIComponent(`Google: ${gEmail}\nPhone: ${phone}\n\n${msg}`)}`;
+  });
+
+  /* =========================================================================
+     TRY-ON SCAN ANIMATION (SILKY 900ms CLIP-PATH REVEAL)
+     ========================================================================= */
+  let scanAnims = [];
+  let scanToken = 0;
+
+  function cancelScan() {
+    scanToken++;
+    scanAnims.forEach(a => a.cancel());
+    scanAnims = [];
+  }
+
+  function tryOn(idx, overrideDataUrl = null, preserveColor = false) {
+    const items = currentItems();
+    const item = items[idx];
+    if (!item) return;
+    shown = idx;
+    if (!overrideDataUrl && !preserveColor && activeGender === 'women') {
+      womenLiveTint = null;
+      wpSwatchesEl.querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+      wpShadeName.textContent = 'Original';
+    }
+    updateBuy(item, idx, preserveColor || !!overrideDataUrl);
+    cancelScan();
+
+    if (reduced) {
+      applyModelStyle(mCur, item, activeGender, overrideDataUrl);
+      mCur.style.opacity = '1';
+      return;
+    }
+
+    const token = scanToken;
+    applyModelStyle(mNext, item, activeGender, overrideDataUrl);
+    const easeScan = 'cubic-bezier(.65,0,.35,1)';
+
+    const aClip = mNext.animate(
+      [{ clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)' }],
+      { duration: 880, easing: easeScan, fill: 'forwards' }
+    );
+    const aGrid = gridEl.animate(
+      [{ clipPath: 'inset(0 0 100% 0)', offset: 0 }, { clipPath: 'inset(0 0 0 0)', offset: 0.5 }, { clipPath: 'inset(100% 0 0 0)', offset: 1 }],
+      { duration: 1020, easing: easeScan }
+    );
+    const aScan = scanEl.animate(
+      [
+        { top: '0%', transform: 'scaleX(.2)', opacity: 0, offset: 0 },
+        { top: '6%', transform: 'scaleX(1)', opacity: 1, offset: 0.08 },
+        { top: '94%', transform: 'scaleX(1)', opacity: 1, offset: 0.92 },
+        { top: '100%', transform: 'scaleX(.2)', opacity: 0, offset: 1 }
+      ],
+      { duration: 880, easing: easeScan }
+    );
+    scanAnims = [aClip, aGrid, aScan];
+    aClip.onfinish = () => {
+      if (token !== scanToken) return;
+      applyModelStyle(mCur, item, activeGender, overrideDataUrl);
+      mCur.style.opacity = '1';
+      aClip.cancel();
+    };
+  }
+
+  /* =========================================================================
+     SNAPPY SILKY INPUT & SCROLL HANDLING (ZERO MOUSE/SCROLL TRAPS!)
+     ========================================================================= */
+  let dragging = false, dragLocked = false, isTouchDrag = false;
+  let downX = 0, downY = 0, p0 = 0, lastX = 0, lastT = 0, vel = 0, moved = 0;
+  let downCard = null, activePointerId = null;
+
+  stageEl.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    dragging = true;
+    isTouchDrag = (e.pointerType === 'touch');
+    dragLocked = !isTouchDrag;
+    activePointerId = e.pointerId;
+    downCard = e.target.closest('.card');
+    downX = lastX = e.clientX;
+    downY = e.clientY;
+    p0 = pos;
+    lastT = performance.now();
+    vel = 0;
+    moved = 0;
+    if (!isTouchDrag) {
+      stageEl.classList.add('is-dragging');
+      try { stageEl.setPointerCapture(e.pointerId); } catch (_) {}
+    }
+  });
+
+  stageEl.addEventListener('pointermove', e => {
+    if (!dragging || e.pointerId !== activePointerId) return;
+    const dx = e.clientX - downX;
+    const dy = e.clientY - downY;
+    moved = Math.hypot(dx, dy);
+    if (!dragLocked) {
+      if (Math.abs(dy) > 8 && Math.abs(dy) > Math.abs(dx)) {
+        dragging = false; activePointerId = null; downCard = null;
+        return;
+      }
+      if (Math.abs(dx) > 8 && Math.abs(dx) >= Math.abs(dy)) {
+        dragLocked = true;
+        try { stageEl.setPointerCapture(e.pointerId); } catch (_) {}
+      } else return;
+    }
+    pos = p0 - dx / XS[1];
+    const now = performance.now();
+    const dt = now - lastT;
+    if (dt > 0) {
+      const v = (e.clientX - lastX) / dt;
+      vel = vel * .35 + v * .65;
+      lastX = e.clientX;
+      lastT = now;
+    }
+  });
+
+  function endDrag(e) {
+    if (!dragging || (e.pointerId !== undefined && e.pointerId !== activePointerId)) return;
+    const wasLocked = dragLocked;
+    dragging = false;
+    dragLocked = false;
+    activePointerId = null;
+    stageEl.classList.remove('is-dragging');
+    if (moved < 6 && downCard) {
+      const ci = Number(downCard.dataset.i);
+      const half = ARC_COUNT / 2;
+      const u = mod(ci - pos + half, ARC_COUNT) - half;
+      target = Math.round(pos + u);
+    } else if (wasLocked) {
+      const flick = (performance.now() - lastT > 80) ? 0 : vel;
+      target = Math.round(pos - flick * 3.0);
+    }
+    downCard = null;
+  }
+  stageEl.addEventListener('pointerup', endDrag);
+  stageEl.addEventListener('pointercancel', endDrag);
+
+  // Native vertical page scroll ALWAYS works effortlessly!
+  // Horizontal trackpad swipe OR Shift + Wheel smoothly rotates the 3D carousel.
+  let wheelAcc = 0, lastWheelStep = 0, lastWheelEvent = 0;
+  heroEl.addEventListener('wheel', e => {
+    if ([gwModal, adminModal, sizeModal, trackModal, lookbookModal].some(m => m.classList.contains('open'))) return;
+    if (e.target.closest('.side-price')) return;
+    const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.15;
+    const isShiftWheel = e.shiftKey && Math.abs(e.deltaY) > 0;
+    if (!isHorizontal && !isShiftWheel) return;
+
+    e.preventDefault();
+    const now = performance.now();
+    if (now - lastWheelEvent > 180) wheelAcc = 0;
+    lastWheelEvent = now;
+    wheelAcc += (isHorizontal ? e.deltaX : e.deltaY);
+    if (Math.abs(wheelAcc) >= 48) {
+      if (now - lastWheelStep >= 200) {
+        target += Math.sign(wheelAcc);
+        lastWheelStep = now;
+      }
+      wheelAcc = 0;
+    }
+  }, { passive: false });
+
+  window.addEventListener('scroll', () => {
+    const inHub = window.scrollY >= H * 0.45;
+    if (inHub) {
+      curEl.classList.remove('vis');
+      if (![gwModal, adminModal, sizeModal, trackModal, lookbookModal].some(m => m.classList.contains('open')) && sidePriceEl.classList.contains('collapsed')) {
+        setActiveRail($('railProfile'));
+      }
+    } else if (![gwModal, adminModal, sizeModal, trackModal, lookbookModal].some(m => m.classList.contains('open')) && sidePriceEl.classList.contains('collapsed')) {
+      setActiveRail($('railTry'));
+    }
+  }, { passive: true });
+
+  window.addEventListener('keydown', e => {
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
+      e.preventDefault(); openAdmin(); return;
+    }
+    if (e.key === 'Escape') {
+      if (gwModal.classList.contains('open')) closeGateway();
+      if (adminModal.classList.contains('open')) closeAdmin();
+      if (lookbookModal.classList.contains('open')) closeLookbook();
+      if (sizeModal.classList.contains('open')) { sizeModal.classList.remove('open'); syncModalState(); }
+      if (trackModal.classList.contains('open')) { trackModal.classList.remove('open'); syncModalState(); }
+      if (!sidePriceEl.classList.contains('collapsed')) { sidePriceEl.classList.add('collapsed'); setActiveRail($('railTry')); }
+      return;
+    }
+    const tag = document.activeElement && document.activeElement.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    if (e.key === 'ArrowLeft') { e.preventDefault(); target -= 1; }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); target += 1; }
+  });
+
+  $('prev').addEventListener('click', () => { target -= 1; });
+  $('next').addEventListener('click', () => { target += 1; });
+
+  /* =========================================================================
+     SILKY GPU MOUSE-TRACKING HALO & 3D PARALLAX (NATIVE POINTER ALWAYS ACTIVE!)
+     ========================================================================= */
+  let mx = W / 2, my = H / 2, cx = mx, cy = my;
+  let tx = 0, ty = 0, sx = 0, sy = 0;
+  let hasPointer = false;
+
+  function updateHaloState(el) {
+    const anyModal = [gwModal, adminModal, sizeModal, trackModal, lookbookModal].some(m => m.classList.contains('open'));
+    if (anyModal || !el || !el.closest('.hero')) {
+      curEl.classList.remove('vis');
+      return;
+    }
+    if (hasPointer) curEl.classList.add('vis');
+    const isBtn = !!el.closest('button,a');
+    const isCard = !isBtn && !!el.closest('.card');
+    curEl.classList.toggle('btn', isBtn);
+    curEl.classList.toggle('try', isCard);
+  }
+
+  window.addEventListener('pointermove', e => {
+    if (e.pointerType === 'touch') return;
+    mx = e.clientX; my = e.clientY;
+    if (!hasPointer) { hasPointer = true; cx = mx; cy = my; }
+    tx = mx / W - .5;
+    ty = my / H - .5;
+    updateHaloState(e.target);
+  }, { passive: true });
+  window.addEventListener('pointerdown', e => { if (e.pointerType !== 'touch') curEl.classList.add('down'); }, { passive: true });
+  window.addEventListener('pointerup', () => curEl.classList.remove('down'), { passive: true });
+  document.addEventListener('pointerleave', () => curEl.classList.remove('vis'));
+
+  /* =========================================================================
+     LOCKED 60/120FPS COMPOSITOR-ONLY ANIMATION LOOP
+     ========================================================================= */
+  let lastNow = performance.now();
+  function frame(now) {
+    const dt = Math.min(0.05, Math.max(0.001, (now - lastNow) * 0.001));
+    lastNow = now;
+    const t = now * 0.001;
+
+    if (window.scrollY < H * 0.95) {
+      if (reduced) {
+        intro = 1;
+        if (!dragging) pos = target;
+      } else {
+        if (intro < 1) intro = Math.min(1, intro + dt * 1.15);
+        if (!dragging) {
+          const easeStep = 1 - Math.exp(-dt * 11.5);
+          pos += (target - pos) * easeStep;
+          if (Math.abs(target - pos) < 0.0005) pos = target;
+        }
+      }
+
+      const ie = 1 - Math.pow(1 - intro, 3);
+      const pStep = 1 - Math.exp(-dt * 6.5);
+      sx += (tx - sx) * pStep;
+      sy += (ty - sy) * pStep;
+
+      // Subtle mouse-tracked parallax on the crisp Arabic SEEN (س) logo
+      ghostEl.style.transform = `translate3d(calc(-50% - ${(sx * 24).toFixed(1)}px),${(-sy * 11).toFixed(1)}px,0)`;
+      if (intro < 1) {
+        seenSvg.style.transform = `translate3d(0,${((1 - ie) * 38).toFixed(1)}px,0) scale(${(0.95 + 0.05 * ie).toFixed(4)})`;
+        seenSvg.style.opacity = ie.toFixed(3);
+      } else if (seenSvg.style.opacity !== '1') {
+        seenSvg.style.transform = 'translate3d(0,0,0) scale(1)';
+        seenSvg.style.opacity = '1';
+      }
+
+      const half = ARC_COUNT / 2;
+      for (let k = 0; k < cards.length; k++) {
+        const c = cards[k];
+        const u = mod(c.i - pos + half, ARC_COUNT) - half;
+        const a = Math.abs(u);
+        const sg = Math.sign(u);
+
+        if (a > 4.25) {
+          if (c.vis) { c.el.style.visibility = 'hidden'; c.el.style.opacity = '0'; c.vis = false; }
+          continue;
+        }
+
+        const x = sg * xAt(a) * ie;
+        let s, z, op, ry;
+        if (a < 1) {
+          s = .55 + .45 * a; z = -260 * (1 - a); op = a; ry = -sg * 16 * a;
+        } else {
+          s = 1 / (1 + .3 * Math.pow(a - 1, 1.15)); z = -110 * (a - 1);
+          op = 1 - Math.max(0, a - 2.3) * 0.24; ry = -sg * (16 + 9 * Math.min(2, a - 1));
+        }
+        if (a > 3.4) op = Math.max(0, (1 - (a - 3.4) / .8) * 0.72);
+
+        const finalOp = Math.max(0, op * ie);
+        if (finalOp < .01) {
+          if (c.vis) { c.el.style.visibility = 'hidden'; c.el.style.opacity = '0'; c.vis = false; }
+        } else {
+          if (!c.vis) { c.el.style.visibility = 'visible'; c.vis = true; }
+          const bob = reduced ? 0 : Math.sin(t * 1.05 + c.seed) * H * .005 * Math.min(1, a);
+          const y = bob - (1 - s) * H * .04;
+          ry += sx * 9;
+          const zi = a < 1 ? 1 : Math.round(100 - 10 * a);
+          if (c.lastZ !== zi) { c.el.style.zIndex = zi; c.lastZ = zi; }
+          const sc = s * (.6 + .4 * ie);
+          c.el.style.opacity = finalOp.toFixed(3);
+          c.el.style.transform = `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) perspective(1300px) translateZ(${z.toFixed(1)}px) rotateY(${ry.toFixed(1)}deg) rotateX(${(-sy * 5).toFixed(1)}deg) scale(${sc.toFixed(4)})`;
+        }
+      }
+
+      const items = currentItems();
+      if (!dragging && Math.abs(target - pos) < .04 && items.length > 0) {
+        const idx = mod(Math.round(target), items.length);
+        if (idx !== shown) tryOn(idx);
+      }
+    }
+
+    if (hasPointer && curEl.classList.contains('vis')) {
+      const cStep = 1 - Math.exp(-dt * 24);
+      cx += (mx - cx) * cStep;
+      cy += (my - cy) * cStep;
+      curEl.style.transform = `translate3d(${cx.toFixed(1)}px,${cy.toFixed(1)}px,0)`;
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  (async () => {
+    await loadStateFromDB();
+    measure();
+    rebuildArc();
+    window.addEventListener('resize', measure, { passive: true });
+    requestAnimationFrame(frame);
+  })();
+})();
+</script>
+</body>
+</html>

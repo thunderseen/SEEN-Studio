@@ -1,0 +1,6 @@
+data/orders.json
+data/catalog.json
+data/config.json
+.DS_Store
+Thumbs.db
+*.log
