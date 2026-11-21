@@ -1,6 +1,8 @@
 data/orders.json
 data/catalog.json
 data/config.json
+.wrangler/
+.dev.vars
 .DS_Store
 Thumbs.db
 *.log
