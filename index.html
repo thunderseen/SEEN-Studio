@@ -2,11 +2,72 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>س · SEEN — Men &amp; Women Spatial Virtual T-Shirt Store</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SEEN Studio (س) — Luxury Men &amp; Women Spatial Virtual T-Shirt Store Bangladesh</title>
+<meta name="description" content="Try on 24 luxury Men &amp; Women designer T-shirts in real time on sculptural headless mannequins at SEEN Studio by Jayed Jaman Seen. Instant bKash, Nagad &amp; COD checkout across Bangladesh.">
+<meta name="keywords" content="SEEN Studio, SEEN T-shirt, Bangladesh luxury streetwear, virtual try-on T-shirt store, men oversized T-shirt Bangladesh, women designer T-shirt Dhaka, bKash clothing store, Jayed Jaman Seen">
+<meta name="author" content="Jayed Jaman Seen — SEEN Studio">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="theme-color" content="#09090b">
+<link rel="canonical" href="https://seen-studio-store.pages.dev/">
+
+<!-- PWA & Mobile App Support (Android + iPhone Standalone App) -->
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SEEN Studio">
+
+<!-- Open Graph / Social Preview (Facebook, WhatsApp, Instagram, LinkedIn) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEEN Studio">
+<meta property="og:url" content="https://seen-studio-store.pages.dev/">
+<meta property="og:title" content="SEEN Studio (س) — Men &amp; Women Spatial Virtual T-Shirt Store">
+<meta property="og:description" content="Explore 24 Men &amp; Women studio T-shirts with live 3D virtual try-on, Women color palette, and seamless bKash checkout.">
+<meta property="og:image" content="https://seen-studio-store.pages.dev/assets/og-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SEEN Studio Men and Women Virtual Try-On T-Shirt Collection">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SEEN Studio (س) — Spatial Virtual T-Shirt Store">
+<meta name="twitter:description" content="24 Luxury Men &amp; Women T-Shirts with real-time virtual try-on and instant bKash checkout.">
+<meta name="twitter:image" content="https://seen-studio-store.pages.dev/assets/og-preview.jpg">
+
+<!-- Core Web Vitals: Preload Critical Hero Assets -->
+<link rel="preload" as="image" href="assets/men-mannequin-sheet.png" fetchpriority="high">
+<link rel="preload" as="image" href="assets/men-garments.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@800;900&family=Inter:wght@400;500;600;700;800;900&display=swap">
+
+<!-- Structured Data (JSON-LD) for Google Rich Search Results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ClothingStore",
+  "name": "SEEN Studio",
+  "alternateName": "س · SEEN",
+  "url": "https://seen-studio-store.pages.dev/",
+  "logo": "https://seen-studio-store.pages.dev/assets/icon-512.png",
+  "image": "https://seen-studio-store.pages.dev/assets/og-preview.jpg",
+  "description": "Luxury dark-mode Men & Women spatial virtual try-on T-shirt e-commerce storefront founded by Jayed Jaman Seen.",
+  "founder": {
+    "@type": "Person",
+    "name": "Jayed Jaman Seen"
+  },
+  "priceRange": "৳1,390 - ৳2,290",
+  "currenciesAccepted": "BDT, USD",
+  "paymentAccepted": "bKash, Nagad, Rocket, SSLCommerz, Cash on Delivery",
+  "areaServed": "BD",
+  "sameAs": [
+    "https://github.com/thunderseen/SEEN-Studio"
+  ]
+}
+</script>
 <style>
 :root{
   --ease:cubic-bezier(.22,1,.36,1);
@@ -1184,6 +1245,10 @@ input,textarea,select{
     </nav>
 
     <div class="top-right-group">
+      <button type="button" class="icon-pill glass" id="installAppBtn" style="display:none" aria-label="Install SEEN Studio Mobile App" title="Install SEEN Studio App">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2"/></svg>
+        <span class="lbl-txt">Install App</span>
+      </button>
       <button type="button" class="icon-pill glass" id="topLookbookBtn" aria-label="Browse All 24 T-Shirts & Search" title="Browse All 24 Tees">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
         <span class="lbl-txt">All 24</span>
@@ -4120,7 +4185,52 @@ input,textarea,select{
     requestAnimationFrame(frame);
   }
 
+  /* =========================================================================
+     PWA SERVICE WORKER + ONE-TAP INSTALL APP (ANDROID, IPHONE & DESKTOP)
+     ========================================================================= */
+  let deferredInstallPrompt = null;
+  const installBtn = $('installAppBtn');
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === '127.0.0.1' || location.hostname === 'localhost')) {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  }
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    if (installBtn && !isStandalone) installBtn.style.display = 'inline-flex';
+  });
+
+  if (isIOS && !isStandalone && installBtn) {
+    installBtn.style.display = 'inline-flex';
+  }
+
+  if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+      if (deferredInstallPrompt) {
+        deferredInstallPrompt.prompt();
+        const res = await deferredInstallPrompt.userChoice;
+        if (res && res.outcome === 'accepted') {
+          installBtn.style.display = 'none';
+          showToast('SEEN Studio App installed!');
+        }
+        deferredInstallPrompt = null;
+      } else if (isIOS) {
+        showToast('iPhone: Tap Share (↑) → "Add to Home Screen" to install SEEN Studio App');
+      }
+    });
+  }
+
+  window.addEventListener('appinstalled', () => {
+    if (installBtn) installBtn.style.display = 'none';
+    showToast('SEEN Studio App ready on your home screen!');
+  });
+
   (async () => {
+    const qpGender = new URLSearchParams(location.search).get('gender');
+    if (qpGender === 'women' || qpGender === 'men') activeGender = qpGender;
     await loadStateFromDB();
     measure();
     rebuildArc();

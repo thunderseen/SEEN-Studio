@@ -1,0 +1,48 @@
+{
+  "id": "/",
+  "name": "SEEN Studio — Men & Women Spatial Virtual T-Shirt Store",
+  "short_name": "SEEN Studio",
+  "description": "Luxury dark-mode Men & Women virtual try-on T-shirt e-commerce store with 24 studio tees, headless mannequins, instant bKash checkout, and live D1 catalog.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "background_color": "#09090b",
+  "theme_color": "#09090b",
+  "categories": ["shopping", "lifestyle", "fashion"],
+  "icons": [
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Men's Collection",
+      "short_name": "Men",
+      "url": "/?gender=men",
+      "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Women's Collection",
+      "short_name": "Women",
+      "url": "/?gender=women",
+      "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}
