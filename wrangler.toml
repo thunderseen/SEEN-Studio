@@ -1,0 +1,16 @@
+name = "seen-studio"
+compatibility_date = "2026-11-21"
+pages_build_output_dir = "."
+
+# Permanent Cloud SQL Database (Cloudflare D1 — Free Tier)
+# Create with: npx wrangler d1 create seen-studio-db
+# Then replace database_id below with the ID returned by Wrangler.
+[[d1_databases]]
+binding = "DB"
+database_name = "seen-studio-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+# Optional: Set encrypted secrets via Wrangler before production launch:
+#   npx wrangler pages secret put TELEGRAM_BOT_TOKEN
+#   npx wrangler pages secret put TELEGRAM_CHAT_ID
+#   npx wrangler pages secret put PAYMENT_WEBHOOK_SECRET
