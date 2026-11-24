@@ -105,7 +105,7 @@ YOUR PERSONALITY & EXPRESSION:
 - NEVER reveal raw bKash numbers (only say they can tap the sharp bKash icon at checkout to copy securely) and NEVER reveal admin passwords.
 
 SMART STYLIST GOAL:
-1. Help the client find their dream T-shirt from the LIVE CATALOG below (NEVER invent fake T-shirt IDs or prices).
+1. Help the client find their dream T-shirt from the LIVE CATALOG below (NEVER invent fake T-shirt IDs or prices). In the "reply" text, ALWAYS use natural human T-shirt names (like "Olive Oversized Heavy Tee"), NEVER put raw bracketed IDs like "[m-olive]" in "reply" — put IDs ONLY in "recommendedIds".
 2. Gently gather any missing preferences among: Gender (Men/Women), Style/Fit (Essential, Oversized, Athletic Fit, Limited Drop), Color, and Size (S/M/L/XL/XXL). If they haven't shared one yet, ask a short, fun follow-up question about color, size, or style!
 3. If they share height/weight/chest or ask about sizing, give a confident, accurate size pick (S: 36-38" / 50-60kg, M: 38-40" / 60-70kg, L: 40-42" / 70-80kg, XL: 42-44" / 80-92kg, XXL: 44-46" / 92kg+; mention Oversized drops have a relaxed drape).
 4. Mention promo codes SEEN10 or JAYED10 (10% OFF) if they ask about discounts/budget.
@@ -147,8 +147,9 @@ STRICT OUTPUT FORMAT — RETURN VALID JSON ONLY (no markdown fences, no extra pr
         try {
           aiRes = await env.AI.run(model, {
             messages,
-            max_tokens: 420,
-            temperature: 0.55,
+            max_tokens: 750,
+            temperature: 0.5,
+            response_format: { type: 'json_object' },
           });
           if (aiRes && aiRes.response) {
             usedModel = model;
@@ -162,15 +163,23 @@ STRICT OUTPUT FORMAT — RETURN VALID JSON ONLY (no markdown fences, no extra pr
         return jsonResponse({ ok: false, fallback: true, reason: lastErr?.message || 'ai_models_unavailable' }, 200);
       }
 
-      const rawText = String(aiRes?.response || '').trim();
       let parsed = null;
-      try {
-        const jsonMatch = rawText.match(/\{[\s\S]*\}/);
-        if (jsonMatch) parsed = JSON.parse(jsonMatch[0]);
-      } catch (_) {}
+      if (typeof aiRes.response === 'object' && aiRes.response !== null) {
+        parsed = aiRes.response;
+      } else {
+        const rawText = String(aiRes.response || '').trim();
+        try {
+          const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+          if (jsonMatch) parsed = JSON.parse(jsonMatch[0]);
+        } catch (_) {}
+      }
+
+      const idToName = new Map(catalog.map((t) => [t.id, t.n]));
+      const cleanIdsInText = (txt) => String(txt || '').trim().replace(/\[([a-z0-9_-]+)\]/gi, (m, id) => idToName.get(id) || m);
 
       if (parsed && typeof parsed.reply === 'string' && parsed.reply.trim()) {
         const validIds = new Set(catalog.map((t) => t.id));
+        const cleanReply = cleanIdsInText(parsed.reply);
         const recIds = Array.isArray(parsed.recommendedIds)
           ? parsed.recommendedIds.filter((id) => validIds.has(id)).slice(0, 3)
           : [];
@@ -178,7 +187,7 @@ STRICT OUTPUT FORMAT — RETURN VALID JSON ONLY (no markdown fences, no extra pr
           ok: true,
           mode: 'workers-ai',
           model: usedModel,
-          reply: parsed.reply.trim(),
+          reply: cleanReply,
           mood: parsed.mood || 'happy',
           recommendedIds: recIds,
           suggestedGender: parsed.suggestedGender === 'men' || parsed.suggestedGender === 'women' ? parsed.suggestedGender : null,
@@ -188,12 +197,16 @@ STRICT OUTPUT FORMAT — RETURN VALID JSON ONLY (no markdown fences, no extra pr
         });
       }
 
-      // If model responded with clean natural prose instead of strict JSON, still use its reply!
-      if (rawText) {
+      // If model responded with clean natural prose instead of strict JSON, strip any partial JSON blob
+      const rawFallback = typeof aiRes.response === 'string'
+        ? cleanIdsInText(aiRes.response.split(/\{\s*"reply"/)[0].replace(/^```json|```$/g, ''))
+        : '';
+      if (rawFallback) {
         return jsonResponse({
           ok: true,
           mode: 'workers-ai-prose',
-          reply: rawText.replace(/^```json|```$/g, '').trim(),
+          model: usedModel,
+          reply: rawFallback,
           mood: 'happy',
           recommendedIds: [],
           quickReplies: [],
