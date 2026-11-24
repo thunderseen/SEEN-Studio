@@ -78,6 +78,35 @@ export async function onRequest(context) {
   const url = new URL(request.url);
   const path = url.pathname.replace(/\/+$/, '');
 
+  // ---------------- AI T-SHIRT ARTWORK GENERATOR (FLUX.1 SCHNELL) ----------------
+  if (path === '/api/ai-generate-art' && method === 'POST') {
+    try {
+      const body = await request.json();
+      const idea = String(body?.prompt || '').trim().slice(0, 260);
+      const styleHint = String(body?.style || 'streetwear').trim().slice(0, 60);
+      if (!idea) return jsonResponse({ ok: false, error: 'Please describe your T-shirt design idea' }, 400);
+      if (!env.AI || typeof env.AI.run !== 'function') {
+        return jsonResponse({ ok: false, error: 'Workers AI binding unavailable' }, 503);
+      }
+
+      const fullPrompt = `Isolated flat vector T-shirt chest graphic print design of: ${idea}. Style: ${styleHint}, clean bold high-contrast luxury streetwear screen-print artwork, centered composition, pure solid plain white #FFFFFF background, no mannequin, no t-shirt fabric, no mockup, no border, crisp edges.`;
+      const imgRes = await env.AI.run('@cf/black-forest-labs/flux-1-schnell', {
+        prompt: fullPrompt,
+        steps: 4,
+      });
+      if (imgRes && imgRes.image) {
+        return jsonResponse({
+          ok: true,
+          model: '@cf/black-forest-labs/flux-1-schnell',
+          imageDataUrl: `data:image/jpeg;base64,${imgRes.image}`,
+        });
+      }
+      return jsonResponse({ ok: false, error: 'Image generator returned empty response' }, 502);
+    } catch (err) {
+      return jsonResponse({ ok: false, error: err?.message || 'AI artwork generation failed' }, 500);
+    }
+  }
+
   // ---------------- SEEN AI STYLIST CHATBOT (CLOUDFLARE WORKERS AI) ----------------
   if (path === '/api/ai-chat' && method === 'POST') {
     try {

@@ -1534,11 +1534,11 @@ input,textarea,select{
   .ai-panel{left:24px;top:calc(1.8vh + 136px);height:min(490px, calc(100vh - 250px))}
 }
 @media(max-width:760px){
-  .ai-fab-wrap{left:12px;right:auto;top:calc(1.3vh + 88px);bottom:auto}
-  .ai-fab{height:30px;padding:0 10px 0 6px;gap:5px}
+  .ai-fab-wrap{left:12px;right:auto;top:calc(1.3vh + 88px);bottom:auto;z-index:54}
+  .ai-fab{height:30px;padding:0 9px 0 6px;gap:5px}
   .ai-fab-mark{width:20px;height:20px;font-size:11px;flex:0 0 20px}
   .ai-fab-label{font-size:10.5px}
-  .ai-fab-tag{display:none}
+  .ai-fab-tag{display:inline-flex;font-size:8px;padding:1px 4px}
   .ai-panel{
     left:10px;right:10px;top:auto;bottom:10px;width:auto;
     height:min(74vh, 520px);border-radius:22px;
@@ -1550,11 +1550,34 @@ input,textarea,select{
 button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
 .hub{content-visibility:auto;contain-intrinsic-size:1200px}
 .studio-box{
-  margin-bottom:26px;
-  border-radius:26px;
-  padding:24px;
-  border:1px solid rgba(255,255,255,.16);
+  margin-bottom:30px;
+  border-radius:28px;
+  padding:28px;
+  border:1px solid rgba(255,255,255,.18);
   contain:layout style;
+  transition:border-radius .25s var(--ease);
+}
+.studio-box.fullscreen{
+  position:fixed;
+  inset:16px;
+  z-index:130;
+  margin:0;
+  border-radius:24px;
+  background:rgba(9,10,15,.97);
+  backdrop-filter:blur(28px);
+  -webkit-backdrop-filter:blur(28px);
+  overflow-y:auto;
+  box-shadow:0 30px 100px rgba(0,0,0,.9);
+  display:flex;
+  flex-direction:column;
+}
+.studio-box.fullscreen .designer-grid{
+  flex:1;
+  grid-template-columns:minmax(420px, 56%) 1fr;
+  align-items:stretch;
+}
+.studio-box.fullscreen .studio-canvas-wrap{
+  max-height:calc(100vh - 230px);
 }
 .studio-head{
   display:flex;
@@ -1562,31 +1585,53 @@ button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
   justify-content:space-between;
   gap:14px;
   flex-wrap:wrap;
-  margin-bottom:18px;
+  margin-bottom:22px;
 }
-.studio-head h3{font-size:21px;font-weight:800;letter-spacing:-.02em}
-.studio-sub{font-size:12.5px;color:rgba(255,255,255,.72);margin-top:4px;max-width:640px;line-height:1.5}
-.studio-grid{
+.studio-head h3{font-size:24px;font-weight:800;letter-spacing:-.02em}
+.studio-sub{font-size:13px;color:rgba(255,255,255,.74);margin-top:4px;max-width:660px;line-height:1.55}
+.studio-head-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.designer-grid{
+  position:relative;
   display:grid;
-  grid-template-columns:minmax(270px, 360px) 1fr;
-  gap:22px;
+  grid-template-columns:minmax(360px, 52%) 1fr;
+  gap:26px;
   align-items:start;
 }
 .studio-stage{
   position:relative;
-  border-radius:20px;
-  padding:14px 12px 12px;
-  background:radial-gradient(ellipse at 50% 35%, rgba(255,255,255,.09), rgba(6,7,10,.88) 72%);
-  border:1px solid rgba(255,255,255,.14);
+  border-radius:22px;
+  padding:18px 16px 16px;
+  background:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+    radial-gradient(ellipse at 50% 35%, rgba(255,255,255,.10), rgba(6,7,10,.92) 74%);
+  background-size:28px 28px, 28px 28px, 100% 100%;
+  border:1px solid rgba(255,255,255,.15);
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:10px;
+  gap:12px;
+}
+.studio-hint-bar{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  font-size:11px;
+  color:rgba(255,255,255,.78);
+}
+.studio-hint-pill{
+  padding:4px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.16);
+  font-weight:600;
 }
 .studio-canvas-wrap{
   width:100%;
   aspect-ratio:520 / 680;
-  max-height:420px;
+  max-height:560px;
   display:grid;
   place-items:center;
   position:relative;
@@ -1595,76 +1640,109 @@ button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
   width:100%;
   height:100%;
   object-fit:contain;
-  filter:drop-shadow(0 18px 34px rgba(0,0,0,.62));
+  filter:drop-shadow(0 22px 42px rgba(0,0,0,.68));
   will-change:contents;
+  cursor:grab;
+  touch-action:none;
 }
+.studio-canvas-wrap canvas.dragging{cursor:grabbing}
+.studio-canvas-wrap canvas.drawing{cursor:crosshair}
 .studio-stage-meta{
   width:100%;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  font-size:11px;
-  color:rgba(255,255,255,.72);
+  font-size:11.5px;
+  color:rgba(255,255,255,.74);
   padding:0 4px;
 }
 .studio-actions{
   width:100%;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:8px;
+  gap:10px;
 }
-.studio-actions .btn-solid,.studio-actions .btn-soft{height:38px;font-size:12px;padding:0 12px}
+.studio-actions .btn-solid,.studio-actions .btn-soft{height:42px;font-size:12.5px;padding:0 14px}
 .studio-controls{
   display:flex;
   flex-direction:column;
-  gap:12px;
+  gap:15px;
 }
+.studio-tabs{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:6px;
+  padding:5px;
+  border-radius:16px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+}
+.studio-tabs button{
+  height:36px;
+  border-radius:12px;
+  font-size:11.5px;
+  font-weight:700;
+  color:rgba(255,255,255,.76);
+  transition:background .2s var(--ease),color .2s var(--ease);
+  white-space:nowrap;
+}
+.studio-tabs button.on{background:#fff;color:#090a0e}
+.studio-pane{
+  display:none;
+  flex-direction:column;
+  gap:12px;
+  padding:16px;
+  border-radius:18px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.11);
+}
+.studio-pane.on{display:flex}
 .studio-row{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
+  gap:12px;
 }
 .studio-swatches{
   display:flex;
   flex-wrap:wrap;
   align-items:center;
-  gap:7px;
-  margin-top:4px;
+  gap:8px;
+  margin-top:6px;
 }
 .studio-swatches button{
-  width:24px;height:24px;border-radius:999px;
-  border:1.5px solid rgba(255,255,255,.28);
+  width:28px;height:28px;border-radius:999px;
+  border:1.5px solid rgba(255,255,255,.30);
   transition:transform .18s var(--ease),border-color .18s var(--ease),box-shadow .18s var(--ease);
 }
 .studio-swatches button:hover{transform:scale(1.12)}
-.studio-swatches button.on{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.45);transform:scale(1.12)}
+.studio-swatches button.on{border-color:#fff;box-shadow:0 0 0 2.5px rgba(255,255,255,.48);transform:scale(1.12)}
 .studio-motifs{
   display:flex;
   flex-wrap:wrap;
-  gap:6px;
-  margin-top:4px;
+  gap:7px;
+  margin-top:6px;
 }
 .studio-motifs button{
-  height:30px;padding:0 11px;border-radius:999px;font-size:11.5px;font-weight:600;
-  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.86);
-  transition:background .18s var(--ease),color .18s var(--ease),transform .18s var(--ease);
+  height:32px;padding:0 13px;border-radius:999px;font-size:11.5px;font-weight:600;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.88);
+  transition:background .18s var(--ease),color .18s var(--ease);
 }
 .studio-motifs button.on,.studio-motifs button:hover{background:#fff;color:#090a0e}
 .studio-sliders{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  padding:10px 12px;
+  gap:10px;
+  padding:12px 14px;
   border-radius:14px;
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.10);
 }
-.studio-sliders label{display:flex;flex-direction:column;gap:4px;font-size:10.5px;color:rgba(255,255,255,.78);font-weight:600}
+.studio-sliders label{display:flex;flex-direction:column;gap:5px;font-size:11px;color:rgba(255,255,255,.82);font-weight:600}
 .studio-sliders input[type="range"]{width:100%;accent-color:#fff;cursor:pointer}
 .studio-note{
   font-size:11.5px;
   color:rgba(255,255,255,.68);
-  padding:8px 12px;
+  padding:9px 13px;
   border-radius:12px;
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.10);
@@ -1711,12 +1789,14 @@ button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
 .ud-acts button.danger{border-color:rgba(248,113,113,.45);color:#fca5a5}
 .ud-acts button:hover{opacity:.9}
 
-@media(max-width:900px){
-  .studio-grid{grid-template-columns:1fr}
-  .studio-canvas-wrap{max-height:340px}
+@media(max-width:960px){
+  .designer-grid,.studio-box.fullscreen .designer-grid{grid-template-columns:1fr}
+  .studio-canvas-wrap{max-height:440px}
+  .studio-tabs{grid-template-columns:repeat(2, 1fr)}
 }
 @media(max-width:760px){
   .studio-box{padding:16px;border-radius:20px}
+  .studio-box.fullscreen{inset:6px;padding:14px}
   .studio-row,.studio-sliders,.studio-actions{grid-template-columns:1fr}
 }
 
@@ -1966,34 +2046,42 @@ button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
     </div>
 
     <!-- ===============================================================
-         CUSTOM T-SHIRT DESIGN STUDIO (DIRECTLY ABOVE LOGIN GATEWAY)
-         Users create & download personal mockups without altering live catalog;
-         designs are archived privately in Admin -> "Created by Users".
+         CUSTOM T-SHIRT DESIGN STUDIO (SPACIOUS PRO ATELIER ABOVE LOGIN)
+         Features: Big Interactive Drag-on-Tee Canvas, Full-Screen Studio Mode,
+         AI Idea-to-Artwork (FLUX.1), Upload Logo, Freehand Brush Sketch,
+         Custom Text & Emblems, PNG Download + Private Admin "Created by Users".
          =============================================================== -->
     <div class="studio-box glass-dark" id="custom-design-studio" aria-label="Custom T-Shirt Design Studio">
       <div class="studio-head">
         <div>
-          <div class="hub-eyebrow" style="margin-bottom:4px">Interactive Client Atelier &middot; Live 3D Mannequin Mockup</div>
+          <div class="hub-eyebrow" style="margin-bottom:4px">SEEN Interactive Atelier &middot; AI Art, Direct Drag &amp; Freehand Sketch</div>
           <h3>Design Your Own Custom T-Shirt</h3>
           <p class="studio-sub">
-            Turn your own idea, custom text, or artwork into a realistic SEEN Studio T-shirt mockup in real time. Download your PNG anytime—your custom design stays private and never alters the main store catalog.
+            Generate AI artwork from your idea, upload your logo, sketch directly on the T-shirt, or add custom typography—drag to position live on the 3D mannequin and download your PNG anytime.
           </p>
         </div>
-        <div class="seg" id="usrGenderSeg" role="tablist" aria-label="Custom mockup mannequin gender">
-          <button type="button" class="on" data-g="men">&#9794; Men&rsquo;s Torso</button>
-          <button type="button" data-g="women">&#9792; Women&rsquo;s Torso</button>
+        <div class="studio-head-right">
+          <div class="seg" id="usrGenderSeg" role="tablist" aria-label="Custom mockup mannequin gender">
+            <button type="button" class="on" data-g="men">&#9794; Men&rsquo;s Torso</button>
+            <button type="button" data-g="women">&#9792; Women&rsquo;s Torso</button>
+          </div>
+          <button type="button" class="btn-soft" id="usrFullBtn" style="height:36px;padding:0 14px;font-size:12px" aria-label="Toggle full-screen T-shirt design studio">&#x26F6; Full-Screen Studio</button>
         </div>
       </div>
 
-      <div class="studio-grid">
-        <!-- Live 60fps Headless Mannequin Preview Canvas -->
+      <div class="designer-grid">
+        <!-- BIG Interactive 60fps Headless Mannequin Design Canvas -->
         <div class="studio-stage">
+          <div class="studio-hint-bar">
+            <span class="studio-hint-pill" id="usrCanvasHint">Drag artwork or text directly on the T-shirt</span>
+            <button type="button" class="btn-soft" id="usrCenterBtn" style="height:26px;padding:0 10px;font-size:10.5px">Center Fit</button>
+          </div>
           <div class="studio-canvas-wrap">
-            <canvas id="usrDesignCanvas" width="520" height="680" aria-label="Live custom T-shirt mockup preview"></canvas>
+            <canvas id="usrDesignCanvas" width="520" height="680" aria-label="Interactive custom T-shirt mockup canvas"></canvas>
           </div>
           <div class="studio-stage-meta">
             <span id="usrLiveSpec">Men&rsquo;s Torso &middot; Obsidian (#18191e)</span>
-            <span style="color:#86efac;font-weight:700">Live 60fps Mockup</span>
+            <span style="color:#86efac;font-weight:700">Live 60fps Interactive Studio</span>
           </div>
           <div class="studio-actions">
             <button type="button" class="btn-solid" id="usrDownloadBtn">Download Mockup (PNG)</button>
@@ -2002,10 +2090,11 @@ button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
           <div class="form-status" id="usrDesignStatus" style="margin-top:2px;text-align:center"></div>
         </div>
 
-        <!-- Designer Controls -->
+        <!-- Spacious 4-Tab Interactive Design Controls -->
         <div class="studio-controls">
+          <!-- Always-Visible T-Shirt Base Color Bar -->
           <div>
-            <label style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.72)">1. Base T-Shirt Color</label>
+            <label style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.74)">T-Shirt Base Fabric Color</label>
             <div class="studio-swatches" id="usrColorSwatches">
               <button type="button" class="on" data-hex="#18191e" data-name="Obsidian" style="background:#18191e" title="Obsidian Black"></button>
               <button type="button" data-hex="#f4f2ee" data-name="Pure White" style="background:#f4f2ee" title="Pure White"></button>
@@ -2017,80 +2106,142 @@ button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
               <button type="button" data-hex="#ccbba5" data-name="Warm Sand" style="background:#ccbba5" title="Warm Sand"></button>
               <button type="button" data-hex="#3e2c26" data-name="Espresso" style="background:#3e2c26" title="Deep Espresso"></button>
               <button type="button" data-hex="#1c4e3a" data-name="Emerald" style="background:#1c4e3a" title="Forest Emerald"></button>
-              <input type="color" id="usrTeeHex" value="#18191e" aria-label="Pick custom T-shirt color" title="Custom color picker" style="width:32px;height:26px;padding:2px;border-radius:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.26);cursor:pointer">
+              <input type="color" id="usrTeeHex" value="#18191e" aria-label="Pick custom T-shirt color" title="Custom color picker" style="width:34px;height:28px;padding:2px;border-radius:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.26);cursor:pointer">
             </div>
           </div>
 
-          <div class="studio-row">
+          <!-- 4 Clean Studio Mode Tabs -->
+          <div class="studio-tabs" id="usrStudioTabs" role="tablist">
+            <button type="button" class="on" data-pane="ai">AI Idea Art</button>
+            <button type="button" data-pane="text">Text &amp; Emblems</button>
+            <button type="button" data-pane="upload">Upload Logo</button>
+            <button type="button" data-pane="draw">Draw on Tee</button>
+          </div>
+
+          <!-- PANE 1: AI Idea-to-Artwork Generator (Cloudflare FLUX.1) -->
+          <div class="studio-pane on" id="usrPaneAi">
             <div class="field" style="margin-bottom:0">
-              <label for="usrTextInp">2. Custom Chest Text / Quote</label>
-              <input id="usrTextInp" type="text" maxlength="36" value="SEEN STUDIO" placeholder="Type your text, name, or Arabic س...">
+              <label for="usrAiPrompt">Describe Your T-Shirt Graphic Idea (AI Draws It Live on the Tee!)</label>
+              <textarea id="usrAiPrompt" rows="2" maxlength="240" placeholder="e.g. Minimalist golden Bengal tiger emblem, cyberpunk neon Tokyo wave, vintage botanical rose print..." style="min-height:64px"></textarea>
+            </div>
+            <div class="studio-row">
+              <div class="field" style="margin-bottom:0">
+                <label for="usrAiStyle">Art Style</label>
+                <select id="usrAiStyle">
+                  <option value="luxury minimalist streetwear screen-print">Luxury Streetwear</option>
+                  <option value="retro vintage 90s graphic illustration">Vintage 90s Print</option>
+                  <option value="futuristic cyber geometric emblem">Cyber Geometric</option>
+                  <option value="hand-drawn botanical floral ink art">Botanical Ink Art</option>
+                  <option value="bold anime japanese wave artwork">Japanese Wave Art</option>
+                </select>
+              </div>
+              <div class="field" style="margin-bottom:0;display:flex;flex-direction:column;justify-content:flex-end">
+                <button type="button" class="btn-solid" id="usrAiGenBtn" style="height:40px;width:100%">Generate AI Artwork</button>
+              </div>
+            </div>
+            <div class="form-status" id="usrAiStatus" style="margin:0"></div>
+          </div>
+
+          <!-- PANE 2: Typography & Studio Emblems -->
+          <div class="studio-pane" id="usrPaneText">
+            <div class="studio-row">
+              <div class="field" style="margin-bottom:0">
+                <label for="usrTextInp">Chest Text / Brand / Quote</label>
+                <input id="usrTextInp" type="text" maxlength="36" value="SEEN STUDIO" placeholder="Type text, name, or Arabic س...">
+              </div>
+              <div class="field" style="margin-bottom:0">
+                <label for="usrFontSel">Font Style</label>
+                <select id="usrFontSel">
+                  <option value="bold">Luxury Sans Bold</option>
+                  <option value="editorial">Editorial Serif</option>
+                  <option value="mono">Streetwear Mono</option>
+                  <option value="cairo">Arabic / Cairo Display</option>
+                </select>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+              <label style="font-size:11.5px;font-weight:600;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:8px">
+                <span>Ink Color</span>
+                <input id="usrTextColor" type="color" value="#f5f5f7" style="width:42px;height:32px;padding:2px;border-radius:9px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);cursor:pointer">
+              </label>
+              <div class="studio-motifs" id="usrMotifs" style="margin:0;flex:1">
+                <button type="button" class="on" data-motif="seen-crest">س Crest</button>
+                <button type="button" data-motif="prism">Prism Geo</button>
+                <button type="button" data-motif="star">Atelier Star</button>
+                <button type="button" data-motif="frame">Editorial Box</button>
+                <button type="button" data-motif="wave">Wave Horizon</button>
+                <button type="button" data-motif="none">Text Only</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANE 3: Upload Own Logo / Artwork -->
+          <div class="studio-pane" id="usrPaneUpload">
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+              <label class="btn-solid" style="height:40px;flex:1;font-size:12.5px;cursor:pointer">
+                <span id="usrArtLabel">Upload Your Logo / Artwork (PNG, JPG)</span>
+                <input id="usrArtFile" type="file" accept="image/*" style="display:none">
+              </label>
+              <button type="button" class="btn-soft" id="usrClearArtBtn" style="height:40px;padding:0 14px;font-size:12px;display:none">Remove Art</button>
             </div>
             <div class="field" style="margin-bottom:0">
-              <label for="usrFontSel">Typography Style</label>
-              <select id="usrFontSel">
-                <option value="bold">Luxury Sans Bold</option>
-                <option value="editorial">Editorial Serif</option>
-                <option value="mono">Streetwear Mono</option>
-                <option value="cairo">Arabic / Cairo Display</option>
+              <label for="usrStripBg">Background Cleanup</label>
+              <select id="usrStripBg">
+                <option value="1">Auto-Remove White Background (Recommended)</option>
+                <option value="0">Keep Original Rectangular Image</option>
               </select>
             </div>
           </div>
 
-          <div class="studio-row">
-            <div class="field" style="margin-bottom:0">
-              <label for="usrTextColor">Text &amp; Emblem Ink Color</label>
-              <div style="display:flex;gap:8px;align-items:center">
-                <input id="usrTextColor" type="color" value="#f5f5f7" style="width:48px;height:38px;padding:3px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);cursor:pointer">
-                <input id="usrTitleInp" type="text" maxlength="60" placeholder="Design name (e.g. Midnight Street Idea)" style="flex:1">
+          <!-- PANE 4: Freehand Sketch / Draw Directly on T-Shirt -->
+          <div class="studio-pane" id="usrPaneDraw">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+              <button type="button" class="btn-solid" id="usrDrawToggleBtn" style="height:38px;padding:0 16px;font-size:12px">Enable Brush (Draw on Tee)</button>
+              <div style="display:flex;gap:8px">
+                <button type="button" class="btn-soft" id="usrUndoStrokeBtn" style="height:36px;padding:0 12px;font-size:11.5px">Undo</button>
+                <button type="button" class="btn-soft" id="usrClearSketchBtn" style="height:36px;padding:0 12px;font-size:11.5px">Clear Sketch</button>
               </div>
             </div>
-            <div class="field" style="margin-bottom:0">
-              <label for="usrArtFile">3. Upload Your Own Logo / Artwork</label>
-              <div style="display:flex;gap:6px;align-items:center">
-                <label class="btn-soft" style="height:38px;flex:1;font-size:12px;cursor:pointer">
-                  <span id="usrArtLabel">Choose Logo / Art</span>
-                  <input id="usrArtFile" type="file" accept="image/*" style="display:none">
-                </label>
-                <button type="button" class="btn-soft" id="usrClearArtBtn" style="height:38px;padding:0 11px;font-size:11.5px;display:none">Clear</button>
-              </div>
+            <div class="studio-row">
+              <label style="font-size:11.5px;font-weight:600;color:rgba(255,255,255,.82);display:flex;align-items:center;gap:8px">
+                <span>Brush Ink</span>
+                <input id="usrBrushColor" type="color" value="#ffffff" style="width:42px;height:32px;padding:2px;border-radius:9px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);cursor:pointer">
+              </label>
+              <label style="font-size:11.5px;font-weight:600;color:rgba(255,255,255,.82);display:flex;flex-direction:column;gap:4px">
+                <span>Brush Thickness <b id="usrBrushVal">6px</b></span>
+                <input id="usrBrushSize" type="range" min="2" max="24" value="6" style="accent-color:#fff;cursor:pointer">
+              </label>
             </div>
           </div>
 
-          <div>
-            <label style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.72)">4. Instant Graphic Motifs</label>
-            <div class="studio-motifs" id="usrMotifs">
-              <button type="button" class="on" data-motif="seen-crest">س Crest</button>
-              <button type="button" data-motif="prism">Prism Geo</button>
-              <button type="button" data-motif="star">Atelier Star</button>
-              <button type="button" data-motif="frame">Editorial Box</button>
-              <button type="button" data-motif="wave">Wave Horizon</button>
-              <button type="button" data-motif="none">Text / Art Only</button>
-            </div>
-          </div>
-
+          <!-- Precision Placement Sliders (Synced Live with Direct Drag on Canvas!) -->
           <div class="studio-sliders">
-            <label><span>Graphic Size <b id="usrScaleVal">100%</b></span><input id="usrScale" type="range" min="55" max="145" value="100"></label>
-            <label><span>Vertical Pos <b id="usrYVal">0px</b></span><input id="usrPosY" type="range" min="-70" max="80" value="0"></label>
-            <label><span>Strip White BG</span><select id="usrStripBg" style="height:26px;padding:0 6px;border-radius:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);font-size:11px"><option value="1">Auto Clean</option><option value="0">Keep BG</option></select></label>
+            <label><span>Size <b id="usrScaleVal">100%</b></span><input id="usrScale" type="range" min="50" max="155" value="100"></label>
+            <label><span>Vertical Y <b id="usrYVal">0px</b></span><input id="usrPosY" type="range" min="-90" max="110" value="0"></label>
+            <label><span>Rotate <b id="usrRotVal">0&deg;</b></span><input id="usrRot" type="range" min="-45" max="45" value="0"></label>
           </div>
 
+          <!-- Designer Name, Title & Idea Note -->
           <div class="studio-row">
+            <div class="field" style="margin-bottom:0">
+              <label for="usrTitleInp">Design Title (Optional)</label>
+              <input id="usrTitleInp" type="text" maxlength="60" placeholder="e.g. Midnight Bengal Tiger Tee">
+            </div>
             <div class="field" style="margin-bottom:0">
               <label for="usrCreatorName">Your Name (Optional)</label>
               <input id="usrCreatorName" type="text" maxlength="60" placeholder="e.g. Rafi / Guest">
             </div>
-            <div class="field" style="margin-bottom:0">
-              <label for="usrIdeaNote">Style Idea / Custom Print Note (Optional)</label>
-              <input id="usrIdeaNote" type="text" maxlength="160" placeholder="e.g. Oversized 280 GSM, Size L">
-            </div>
+          </div>
+          <div class="field" style="margin-bottom:0">
+            <label for="usrIdeaNote">Style / Fabric / Size Note (Optional)</label>
+            <input id="usrIdeaNote" type="text" maxlength="160" placeholder="e.g. Oversized 280 GSM, Size L — want this printed!">
           </div>
 
           <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
             <div class="studio-note" style="flex:1">
-              Your custom design downloads straight to your device &amp; does <strong>not</strong> appear on the public store. A copy is archived privately for our design team to review your style.
+              Your design downloads privately to your device and does <strong>not</strong> appear on the public store. Submitted/downloaded designs are archived separately for our design team.
             </div>
-            <button type="button" class="btn-soft" id="usrResetBtn" style="height:34px;font-size:11.5px;padding:0 14px">Reset</button>
+            <button type="button" class="btn-soft" id="usrResetBtn" style="height:36px;font-size:12px;padding:0 16px">Reset All</button>
           </div>
         </div>
       </div>
@@ -4789,6 +4940,11 @@ button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
       if (sizeModal.classList.contains('open')) { sizeModal.classList.remove('open'); syncModalState(); }
       if (trackModal.classList.contains('open')) { trackModal.classList.remove('open'); syncModalState(); }
       if ($('aiChatPanel') && $('aiChatPanel').classList.contains('open')) { $('aiChatPanel').classList.remove('open'); }
+      if ($('custom-design-studio') && $('custom-design-studio').classList.contains('fullscreen')) {
+        $('custom-design-studio').classList.remove('fullscreen');
+        if ($('usrFullBtn')) $('usrFullBtn').innerHTML = '&#x26F6; Full-Screen Studio';
+        syncModalState();
+      }
       if (!sidePriceEl.classList.contains('collapsed')) { sidePriceEl.classList.add('collapsed'); setActiveRail($('railTry')); }
       return;
     }
@@ -5660,9 +5816,18 @@ button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
     textColor: '#f5f5f7',
     motif: 'seen-crest',
     scalePct: 100,
+    posX: 0,
     posY: 0,
-    stripBg: true
+    rotDeg: 0,
+    stripBg: true,
+    drawMode: false,
+    brushColor: '#ffffff',
+    brushSize: 6
   };
+  let usrStrokes = [];
+  let usrActiveStroke = null;
+  let usrDraggingArt = false;
+  let usrDragStart = { x: 0, y: 0, ox: 0, oy: 0 };
 
   async function ensureUsrShadeCanvas(gender) {
     if (usrShadeCache.has(gender)) return usrShadeCache.get(gender);
@@ -5771,30 +5936,33 @@ button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
       sctx.fillRect(0, 0, MODEL_W, MODEL_H);
 
       const scale = usrState.scalePct / 100;
-      const cx = TORSO.x + TORSO.w * 0.5;
-      const baseChestY = TORSO.y + TORSO.h * 0.34 + usrState.posY;
+      const cx = TORSO.x + TORSO.w * 0.5 + usrState.posX;
+      const baseChestY = TORSO.y + TORSO.h * 0.36 + usrState.posY;
+      const rad = (usrState.rotDeg || 0) * Math.PI / 180;
 
-      // 1. Uploaded Artwork (if any)
+      // 1. Graphic Layer (AI Art / Uploaded Logo / Emblem + Typography) with direct X/Y drag & rotation
+      sctx.save();
+      sctx.translate(cx, baseChestY);
+      if (rad) sctx.rotate(rad);
+
       if (usrUploadedImg) {
         const src = usrState.stripBg && usrCleanedArt ? usrCleanedArt.cleanCanvas : usrUploadedImg;
         const box = usrState.stripBg && usrCleanedArt ? usrCleanedArt.bbox : { x: 0, y: 0, w: usrUploadedImg.width, h: usrUploadedImg.height };
-        const maxW = TORSO.w * 0.44 * scale;
-        const maxH = TORSO.h * 0.42 * scale;
+        const maxW = TORSO.w * 0.46 * scale;
+        const maxH = TORSO.h * 0.44 * scale;
         const sc = Math.min(maxW / box.w, maxH / box.h);
         const dw = box.w * sc, dh = box.h * sc;
-        sctx.drawImage(src, box.x, box.y, box.w, box.h, cx - dw / 2, baseChestY - dh / 2, dw, dh);
+        sctx.drawImage(src, box.x, box.y, box.w, box.h, -dw / 2, -dh / 2, dw, dh);
       } else if (usrState.motif && usrState.motif !== 'none') {
-        drawStudioMotif(sctx, usrState.motif, cx, baseChestY - (usrState.text ? 22 * scale : 0), 118 * scale, usrState.textColor);
+        drawStudioMotif(sctx, usrState.motif, 0, -(usrState.text ? 22 * scale : 0), 124 * scale, usrState.textColor);
       }
 
-      // 2. Custom Chest Typography
       const txt = (usrState.text || '').trim();
       if (txt) {
-        sctx.save();
         sctx.fillStyle = usrState.textColor;
         sctx.textAlign = 'center';
         sctx.textBaseline = 'middle';
-        const fontSize = Math.max(14, Math.min(46, Math.round((txt.length > 16 ? 22 : txt.length > 10 ? 27 : 33) * scale)));
+        const fontSize = Math.max(14, Math.min(48, Math.round((txt.length > 16 ? 22 : txt.length > 10 ? 27 : 34) * scale)));
         const fontFam = usrState.font === 'editorial'
           ? `700 ${fontSize}px Georgia,"Times New Roman",serif`
           : usrState.font === 'mono'
@@ -5804,9 +5972,33 @@ button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
               : `900 ${fontSize}px "Inter",system-ui,sans-serif`;
         sctx.font = fontFam;
         const ty = usrUploadedImg
-          ? baseChestY + 86 * scale
-          : (usrState.motif && usrState.motif !== 'none' ? baseChestY + 56 * scale : baseChestY);
-        sctx.fillText(txt, cx, ty, TORSO.w * 0.56);
+          ? 94 * scale
+          : (usrState.motif && usrState.motif !== 'none' ? 58 * scale : 0);
+        sctx.fillText(txt, 0, ty, TORSO.w * 0.58);
+      }
+      sctx.restore();
+
+      // 2. Direct Freehand Sketch Brush Strokes (shaded realistically with fabric folds!)
+      if (usrStrokes.length) {
+        sctx.save();
+        sctx.lineCap = 'round';
+        sctx.lineJoin = 'round';
+        for (const st of usrStrokes) {
+          if (!st.pts || !st.pts.length) continue;
+          sctx.strokeStyle = st.color;
+          sctx.fillStyle = st.color;
+          sctx.lineWidth = st.size;
+          if (st.pts.length === 1) {
+            sctx.beginPath();
+            sctx.arc(st.pts[0][0], st.pts[0][1], st.size / 2, 0, Math.PI * 2);
+            sctx.fill();
+          } else {
+            sctx.beginPath();
+            sctx.moveTo(st.pts[0][0], st.pts[0][1]);
+            for (let i = 1; i < st.pts.length; i++) sctx.lineTo(st.pts[i][0], st.pts[i][1]);
+            sctx.stroke();
+          }
+        }
         sctx.restore();
       }
 
@@ -6046,7 +6238,167 @@ button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
   }
   if ($('usrScale')) $('usrScale').addEventListener('input', e => { usrState.scalePct = Number(e.target.value) || 100; $('usrScaleVal').textContent = `${usrState.scalePct}%`; scheduleCustomStudioRender(); });
   if ($('usrPosY')) $('usrPosY').addEventListener('input', e => { usrState.posY = Number(e.target.value) || 0; $('usrYVal').textContent = `${usrState.posY}px`; scheduleCustomStudioRender(); });
+  if ($('usrRot')) $('usrRot').addEventListener('input', e => { usrState.rotDeg = Number(e.target.value) || 0; $('usrRotVal').innerHTML = `${usrState.rotDeg}&deg;`; scheduleCustomStudioRender(); });
   if ($('usrStripBg')) $('usrStripBg').addEventListener('change', e => { usrState.stripBg = e.target.value === '1'; scheduleCustomStudioRender(); });
+
+  // 4-Tab Studio Controls Switcher
+  if ($('usrStudioTabs')) {
+    $('usrStudioTabs').addEventListener('click', e => {
+      const btn = e.target.closest('button[data-pane]');
+      if (!btn) return;
+      $('usrStudioTabs').querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      const p = btn.dataset.pane;
+      const map = { ai: 'usrPaneAi', text: 'usrPaneText', upload: 'usrPaneUpload', draw: 'usrPaneDraw' };
+      Object.entries(map).forEach(([k, id]) => {
+        if ($(id)) $(id).classList.toggle('on', k === p);
+      });
+      if (p !== 'draw' && usrState.drawMode) {
+        usrState.drawMode = false;
+        syncDrawModeUi();
+      }
+    });
+  }
+
+  // Full-Screen Studio Expand / Collapse
+  if ($('usrFullBtn')) {
+    $('usrFullBtn').addEventListener('click', () => {
+      const box = $('custom-design-studio');
+      const isFull = box.classList.toggle('fullscreen');
+      $('usrFullBtn').innerHTML = isFull ? '&times; Exit Full-Screen' : '&#x26F6; Full-Screen Studio';
+      document.documentElement.classList.toggle('modal-open', isFull);
+      document.body.classList.toggle('modal-open', isFull);
+      scheduleCustomStudioRender();
+    });
+  }
+
+  // Center Fit Button
+  if ($('usrCenterBtn')) {
+    $('usrCenterBtn').addEventListener('click', () => {
+      usrState.posX = 0; usrState.posY = 0; usrState.rotDeg = 0; usrState.scalePct = 100;
+      if ($('usrScale')) $('usrScale').value = 100;
+      if ($('usrPosY')) $('usrPosY').value = 0;
+      if ($('usrRot')) $('usrRot').value = 0;
+      if ($('usrScaleVal')) $('usrScaleVal').textContent = '100%';
+      if ($('usrYVal')) $('usrYVal').textContent = '0px';
+      if ($('usrRotVal')) $('usrRotVal').innerHTML = '0&deg;';
+      scheduleCustomStudioRender();
+    });
+  }
+
+  // Real AI Idea-to-Artwork Generator (Cloudflare FLUX.1 Schnell -> Live 3D Mannequin!)
+  if ($('usrAiGenBtn')) {
+    $('usrAiGenBtn').addEventListener('click', async () => {
+      const prompt = ($('usrAiPrompt').value || '').trim();
+      const style = $('usrAiStyle') ? $('usrAiStyle').value : 'luxury minimalist streetwear';
+      if (!prompt) {
+        $('usrAiStatus').textContent = 'Type your T-shirt graphic idea above first!';
+        $('usrAiPrompt').focus();
+        return;
+      }
+      const btn = $('usrAiGenBtn');
+      btn.disabled = true;
+      btn.textContent = 'Generating AI Art...';
+      $('usrAiStatus').textContent = 'Creating your custom graphic with SEEN Atelier AI (3–5 sec)...';
+      try {
+        const res = await fetch('/api/ai-generate-art', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt, style })
+        });
+        const data = await res.json();
+        if (res.ok && data && data.ok && data.imageDataUrl) {
+          usrUploadedImg = await loadImage(data.imageDataUrl);
+          usrCleanedArt = stripUploadedBackground(usrUploadedImg);
+          usrState.stripBg = true;
+          if ($('usrStripBg')) $('usrStripBg').value = '1';
+          if ($('usrClearArtBtn')) $('usrClearArtBtn').style.display = 'inline-flex';
+          if ($('usrArtLabel')) $('usrArtLabel').textContent = 'AI Artwork Active';
+          if (!$('usrTitleInp').value.trim()) $('usrTitleInp').value = prompt.slice(0, 42);
+          scheduleCustomStudioRender();
+          $('usrAiStatus').textContent = 'AI graphic placed live on the T-shirt! Drag directly on the tee to position it.';
+          showToast('AI T-shirt graphic generated live!');
+        } else {
+          $('usrAiStatus').textContent = (data && data.error) ? data.error : 'Could not generate AI art right now — try Upload Logo or Draw on Tee.';
+        }
+      } catch (_) {
+        $('usrAiStatus').textContent = 'AI art generator needs live cloud connection — try Upload Logo, Motifs, or Draw on Tee!';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Generate AI Artwork';
+      }
+    });
+  }
+
+  // Direct Canvas Pointer Interaction: Drag Graphic OR Freehand Brush Draw!
+  function syncDrawModeUi() {
+    if (!usrCanvas) return;
+    usrCanvas.classList.toggle('drawing', usrState.drawMode);
+    if ($('usrDrawToggleBtn')) {
+      $('usrDrawToggleBtn').textContent = usrState.drawMode ? 'Brush ON — Drawing on Tee' : 'Enable Brush (Draw on Tee)';
+      $('usrDrawToggleBtn').className = usrState.drawMode ? 'btn-solid' : 'btn-soft';
+    }
+    if ($('usrCanvasHint')) {
+      $('usrCanvasHint').textContent = usrState.drawMode
+        ? 'Brush active: sketch directly on the T-shirt!'
+        : 'Drag artwork or text directly on the T-shirt';
+    }
+  }
+  if ($('usrDrawToggleBtn')) {
+    $('usrDrawToggleBtn').addEventListener('click', () => {
+      usrState.drawMode = !usrState.drawMode;
+      syncDrawModeUi();
+    });
+  }
+  if ($('usrBrushColor')) $('usrBrushColor').addEventListener('input', e => { usrState.brushColor = e.target.value; });
+  if ($('usrBrushSize')) $('usrBrushSize').addEventListener('input', e => { usrState.brushSize = Number(e.target.value) || 6; $('usrBrushVal').textContent = `${usrState.brushSize}px`; });
+  if ($('usrUndoStrokeBtn')) $('usrUndoStrokeBtn').addEventListener('click', () => { usrStrokes.pop(); scheduleCustomStudioRender(); });
+  if ($('usrClearSketchBtn')) $('usrClearSketchBtn').addEventListener('click', () => { usrStrokes = []; scheduleCustomStudioRender(); });
+
+  function canvasPointFromEvent(e) {
+    const r = usrCanvas.getBoundingClientRect();
+    return [
+      ((e.clientX - r.left) / r.width) * MODEL_W,
+      ((e.clientY - r.top) / r.height) * MODEL_H
+    ];
+  }
+  if (usrCanvas) {
+    usrCanvas.addEventListener('pointerdown', e => {
+      e.preventDefault();
+      usrCanvas.setPointerCapture(e.pointerId);
+      const [px, py] = canvasPointFromEvent(e);
+      if (usrState.drawMode) {
+        usrActiveStroke = { color: usrState.brushColor, size: usrState.brushSize, pts: [[px, py]] };
+        usrStrokes.push(usrActiveStroke);
+        scheduleCustomStudioRender();
+      } else {
+        usrDraggingArt = true;
+        usrCanvas.classList.add('dragging');
+        usrDragStart = { x: px, y: py, ox: usrState.posX, oy: usrState.posY };
+      }
+    });
+    usrCanvas.addEventListener('pointermove', e => {
+      if (!usrActiveStroke && !usrDraggingArt) return;
+      const [px, py] = canvasPointFromEvent(e);
+      if (usrActiveStroke) {
+        usrActiveStroke.pts.push([px, py]);
+        scheduleCustomStudioRender();
+      } else if (usrDraggingArt) {
+        usrState.posX = Math.max(-130, Math.min(130, Math.round(usrDragStart.ox + (px - usrDragStart.x))));
+        usrState.posY = Math.max(-90, Math.min(110, Math.round(usrDragStart.oy + (py - usrDragStart.y))));
+        if ($('usrPosY')) $('usrPosY').value = usrState.posY;
+        if ($('usrYVal')) $('usrYVal').textContent = `${usrState.posY}px`;
+        scheduleCustomStudioRender();
+      }
+    });
+    const endCanvasPointer = () => {
+      usrActiveStroke = null;
+      usrDraggingArt = false;
+      usrCanvas.classList.remove('dragging');
+    };
+    usrCanvas.addEventListener('pointerup', endCanvasPointer);
+    usrCanvas.addEventListener('pointercancel', endCanvasPointer);
+  }
 
   if ($('usrArtFile')) {
     $('usrArtFile').addEventListener('change', async e => {
@@ -6096,15 +6448,20 @@ button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
   }
   if ($('usrResetBtn')) {
     $('usrResetBtn').addEventListener('click', () => {
-      usrUploadedImg = null; usrCleanedArt = null;
+      usrUploadedImg = null; usrCleanedArt = null; usrStrokes = [];
       usrState.teeHex = '#18191e'; usrState.teeColorName = 'Obsidian';
       usrState.text = 'SEEN STUDIO'; usrState.font = 'bold'; usrState.textColor = '#f5f5f7';
-      usrState.motif = 'seen-crest'; usrState.scalePct = 100; usrState.posY = 0; usrState.stripBg = true;
+      usrState.motif = 'seen-crest'; usrState.scalePct = 100; usrState.posX = 0; usrState.posY = 0; usrState.rotDeg = 0;
+      usrState.stripBg = true; usrState.drawMode = false; syncDrawModeUi();
       $('usrTeeHex').value = '#18191e'; $('usrTextInp').value = 'SEEN STUDIO'; $('usrFontSel').value = 'bold';
       $('usrTextColor').value = '#f5f5f7'; $('usrScale').value = 100; $('usrPosY').value = 0;
+      if ($('usrRot')) $('usrRot').value = 0;
       $('usrScaleVal').textContent = '100%'; $('usrYVal').textContent = '0px';
-      $('usrArtLabel').textContent = 'Choose Logo / Art'; $('usrClearArtBtn').style.display = 'none';
+      if ($('usrRotVal')) $('usrRotVal').innerHTML = '0&deg;';
+      $('usrArtLabel').textContent = 'Upload Your Logo / Artwork (PNG, JPG)'; $('usrClearArtBtn').style.display = 'none';
       $('usrTitleInp').value = ''; $('usrIdeaNote').value = ''; $('usrDesignStatus').textContent = '';
+      if ($('usrAiPrompt')) $('usrAiPrompt').value = '';
+      if ($('usrAiStatus')) $('usrAiStatus').textContent = '';
       $('usrColorSwatches').querySelectorAll('button').forEach((b, i) => b.classList.toggle('on', i === 0));
       $('usrMotifs').querySelectorAll('button').forEach((b, i) => b.classList.toggle('on', i === 0));
       scheduleCustomStudioRender();
