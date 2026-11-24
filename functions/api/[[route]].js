@@ -136,11 +136,31 @@ STRICT OUTPUT FORMAT — RETURN VALID JSON ONLY (no markdown fences, no extra pr
         { role: 'user', content: userMsg },
       ];
 
-      const aiRes = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
-        messages,
-        max_tokens: 420,
-        temperature: 0.55,
-      });
+      const modelsToTry = [
+        '@cf/meta/llama-3.3-70b-instruct-fp8-fast',
+        '@cf/meta/llama-3.1-8b-instruct-fast',
+      ];
+      let aiRes = null;
+      let usedModel = null;
+      let lastErr = null;
+      for (const model of modelsToTry) {
+        try {
+          aiRes = await env.AI.run(model, {
+            messages,
+            max_tokens: 420,
+            temperature: 0.55,
+          });
+          if (aiRes && aiRes.response) {
+            usedModel = model;
+            break;
+          }
+        } catch (mErr) {
+          lastErr = mErr;
+        }
+      }
+      if (!aiRes || !aiRes.response) {
+        return jsonResponse({ ok: false, fallback: true, reason: lastErr?.message || 'ai_models_unavailable' }, 200);
+      }
 
       const rawText = String(aiRes?.response || '').trim();
       let parsed = null;
@@ -157,6 +177,7 @@ STRICT OUTPUT FORMAT — RETURN VALID JSON ONLY (no markdown fences, no extra pr
         return jsonResponse({
           ok: true,
           mode: 'workers-ai',
+          model: usedModel,
           reply: parsed.reply.trim(),
           mood: parsed.mood || 'happy',
           recommendedIds: recIds,
