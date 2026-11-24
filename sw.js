@@ -2,10 +2,12 @@
 // Network-first for /api/* and HTML so live Cloudflare D1 tees & orders stay fresh;
 // Stale-while-revalidate for static studio imagery for instant native-like app launch.
 
-const CACHE_NAME = 'seen-studio-pwa-v4';
+const CACHE_NAME = 'seen-studio-pwa-v5';
 const CORE_ASSETS = [
   '/',
   '/manifest.webmanifest',
+  '/assets/men-mannequin-sheet.webp?v=6',
+  '/assets/men-garments.webp?v=6',
   '/assets/icon-192.png',
   '/assets/icon-512.png',
   '/assets/apple-touch-icon.png',
