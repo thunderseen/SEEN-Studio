@@ -123,6 +123,161 @@ input,textarea,select{
 }
 
 /* =========================================================================
+   0. CINEMATIC LUXURY LAUNCH INTRO SPLASH (PC, TABLET, MOBILE & ANDROID APP)
+   ========================================================================= */
+@keyframes preLogoIn{
+  0%{opacity:0;transform:translate3d(0,18px,0) scale(.86);filter:blur(8px)}
+  100%{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}
+}
+@keyframes preWordIn{
+  0%{opacity:0;letter-spacing:.62em;transform:translate3d(0,12px,0)}
+  100%{opacity:1;letter-spacing:.34em;transform:translate3d(0,0,0)}
+}
+@keyframes preSubIn{
+  0%{opacity:0;transform:translate3d(0,8px,0)}
+  100%{opacity:.66;transform:translate3d(0,0,0)}
+}
+@keyframes preBeam{
+  0%{opacity:0;transform:translateX(-50%) scale(.75)}
+  50%{opacity:.92;transform:translateX(-50%) scale(1.04)}
+  100%{opacity:.78;transform:translateX(-50%) scale(1)}
+}
+@keyframes preRingSpin{
+  0%{transform:rotate(0deg)}
+  100%{transform:rotate(360deg)}
+}
+@keyframes preSheen{
+  0%{background-position:-160% 0}
+  100%{background-position:220% 0}
+}
+@keyframes preBarFill{
+  0%{transform:scaleX(.06)}
+  60%{transform:scaleX(.74)}
+  100%{transform:scaleX(1)}
+}
+.seen-intro{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:#050609;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  cursor:pointer;
+  will-change:opacity,transform;
+  transition:opacity .68s cubic-bezier(.22,1,.36,1),transform .78s cubic-bezier(.22,1,.36,1),visibility .78s;
+}
+.seen-intro.done{
+  opacity:0;
+  transform:scale(1.045);
+  visibility:hidden;
+  pointer-events:none;
+}
+.seen-intro-beam{
+  position:absolute;
+  top:-18%;
+  left:50%;
+  width:min(760px, 120vw);
+  height:78vh;
+  background:radial-gradient(ellipse at 50% 25%, rgba(226,232,248,.16), rgba(148,163,196,.05) 45%, transparent 72%);
+  pointer-events:none;
+  animation:preBeam 1.6s cubic-bezier(.22,1,.36,1) both;
+}
+.seen-intro-core{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  padding:0 24px;
+}
+.seen-intro-emblem{
+  position:relative;
+  width:118px;
+  height:118px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  margin-bottom:22px;
+  animation:preLogoIn .95s cubic-bezier(.22,1,.36,1) both;
+}
+.seen-intro-ring{
+  position:absolute;
+  inset:0;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.16);
+  background:radial-gradient(circle at 30% 22%, rgba(255,255,255,.12), rgba(255,255,255,.02) 70%);
+  box-shadow:0 20px 60px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.28);
+}
+.seen-intro-ring::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:999px;
+  border:1.5px solid transparent;
+  border-top-color:rgba(248,250,255,.85);
+  border-right-color:rgba(200,210,230,.35);
+  animation:preRingSpin 2.4s linear infinite;
+}
+.seen-intro-glyph{
+  font-family:'Cairo',var(--sans);
+  font-weight:900;
+  font-size:64px;
+  line-height:1;
+  background:linear-gradient(110deg, #b8c0d0 18%, #ffffff 48%, #9aa4b8 78%);
+  background-size:240% 100%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:preSheen 2s ease-in-out infinite;
+  transform:translateY(-2px);
+}
+.seen-intro-title{
+  font-size:clamp(18px, 3vw, 24px);
+  font-weight:800;
+  letter-spacing:.34em;
+  text-indent:.34em;
+  color:#f5f7fb;
+  animation:preWordIn 1.05s cubic-bezier(.22,1,.36,1) .22s both;
+}
+.seen-intro-sub{
+  margin-top:8px;
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.68);
+  animation:preSubIn .85s cubic-bezier(.22,1,.36,1) .48s both;
+}
+.seen-intro-track{
+  width:min(210px, 56vw);
+  height:2px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  margin-top:28px;
+  overflow:hidden;
+}
+.seen-intro-bar{
+  width:100%;
+  height:100%;
+  transform-origin:left center;
+  background:linear-gradient(90deg, rgba(255,255,255,.35), #ffffff);
+  animation:preBarFill 1.85s cubic-bezier(.22,1,.36,1) forwards;
+}
+.seen-intro-skip{
+  position:absolute;
+  bottom:28px;
+  font-size:10.5px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.42);
+  transition:color .2s;
+}
+.seen-intro:hover .seen-intro-skip{color:rgba(255,255,255,.78)}
+
+/* =========================================================================
    1. ULTRA-SHARP DARK LUXURY STUDIO BACKDROP (ZERO-LAG GPU COMPOSITED)
    ========================================================================= */
 .studio-bg{
@@ -1806,6 +1961,21 @@ button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
 </style>
 </head>
 <body>
+
+<!-- Cinematic Luxury Brand Launch Intro Animation (PC, Tablet, Mobile & Android App) -->
+<div class="seen-intro" id="seenIntro" role="status" aria-label="Loading SEEN Studio">
+  <div class="seen-intro-beam" aria-hidden="true"></div>
+  <div class="seen-intro-core">
+    <div class="seen-intro-emblem" aria-hidden="true">
+      <div class="seen-intro-ring"></div>
+      <span class="seen-intro-glyph">س</span>
+    </div>
+    <div class="seen-intro-title">SEEN STUDIO</div>
+    <div class="seen-intro-sub">Men &amp; Women &middot; Spatial Apparel Atelier</div>
+    <div class="seen-intro-track" aria-hidden="true"><div class="seen-intro-bar"></div></div>
+  </div>
+  <div class="seen-intro-skip">Tap anywhere to enter</div>
+</div>
 
 <!-- Static Zero-Lag Dark Architectural Studio Backdrop -->
 <div class="studio-bg" aria-hidden="true">
@@ -6488,14 +6658,43 @@ button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
     setTimeout(scheduleCustomStudioRender, 400);
   }
 
+  /* =========================================================================
+     CINEMATIC LAUNCH INTRO CURTAIN CONTROLLER (SYNCED WITH HERO ASSET LOAD)
+     ========================================================================= */
+  const seenIntroEl = $('seenIntro');
+  let introDismissed = false;
+  function dismissSeenIntro() {
+    if (introDismissed || !seenIntroEl) return;
+    introDismissed = true;
+    seenIntroEl.classList.add('done');
+    setTimeout(() => { if (seenIntroEl && seenIntroEl.parentNode) seenIntroEl.remove(); }, 850);
+  }
+  if (seenIntroEl) {
+    seenIntroEl.addEventListener('click', dismissSeenIntro, { once: true });
+    window.addEventListener('keydown', dismissSeenIntro, { once: true });
+    // Hard safety cap so slow networks never stall past 2.5s
+    setTimeout(dismissSeenIntro, reduced ? 420 : 2450);
+  }
+
   (async () => {
+    const startTs = performance.now();
     const qpGender = new URLSearchParams(location.search).get('gender');
     if (qpGender === 'women' || qpGender === 'men') activeGender = qpGender;
-    await loadStateFromDB();
+    // Preload critical hero mannequin sheet in parallel with D1 state load while intro plays!
+    const heroImgReady = new Promise(res => {
+      const im = new Image();
+      im.onload = im.onerror = () => res();
+      im.src = SHEET_ASSETS[activeGender].model;
+      setTimeout(res, 1800);
+    });
+    await Promise.all([loadStateFromDB(), heroImgReady]);
     measure();
     rebuildArc();
     window.addEventListener('resize', measure, { passive: true });
     requestAnimationFrame(frame);
+    const minBeat = reduced ? 320 : 1750;
+    const waitLeft = Math.max(0, minBeat - (performance.now() - startTs));
+    setTimeout(dismissSeenIntro, waitLeft);
   })();
 })();
 </script>
