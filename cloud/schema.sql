@@ -27,5 +27,16 @@ CREATE TABLE IF NOT EXISTS store_state (
   updated_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
+CREATE TABLE IF NOT EXISTS user_designs (
+  id TEXT PRIMARY KEY,
+  creator_name TEXT NOT NULL DEFAULT 'Guest Designer',
+  gender TEXT NOT NULL DEFAULT 'men',
+  title TEXT NOT NULL,
+  payload TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_user_designs_created_at ON user_designs(created_at DESC);
+
 INSERT OR IGNORE INTO store_state (key, value)
 VALUES ('config', '{"webhook":"","sslStore":"","waNumber":"8801307758119"}');

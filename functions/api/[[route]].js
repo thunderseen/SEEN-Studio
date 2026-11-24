@@ -4,7 +4,7 @@
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, PATCH, OPTIONS',
+  'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type, X-Admin-Token',
   'Cache-Control': 'no-store',
 };
@@ -37,6 +37,14 @@ async function ensureSchema(db) {
       key TEXT PRIMARY KEY,
       value TEXT NOT NULL,
       updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+    )`),
+    db.prepare(`CREATE TABLE IF NOT EXISTS user_designs (
+      id TEXT PRIMARY KEY,
+      creator_name TEXT NOT NULL DEFAULT 'Guest Designer',
+      gender TEXT NOT NULL DEFAULT 'men',
+      title TEXT NOT NULL,
+      payload TEXT NOT NULL,
+      created_at TEXT NOT NULL DEFAULT (datetime('now'))
     )`),
   ]);
 }
@@ -96,11 +104,11 @@ export async function onRequest(context) {
         )
         .join('\n');
 
-      const systemPrompt = `You are "SEEN AI Stylist", the super-smart, warm, adorable personal T-shirt fashion stylist for SEEN Studio (س · SEEN), a luxury Men & Women spatial 3D virtual try-on T-shirt store in Bangladesh.
+      const systemPrompt = `You are "SEEN Fashion AI", the refined, smart personal T-shirt fashion advisor for SEEN Studio (س · SEEN), a luxury Men & Women spatial 3D virtual try-on T-shirt store in Bangladesh.
 
-YOUR PERSONALITY & EXPRESSION:
-- Be genuinely helpful, concise (2-4 short sentences max), warm, and fashion-savvy.
-- Use cute, expressive emojis naturally (e.g., ✨, 🥰, 🤩, 😎, 🎨, 👕, 💖, 📏, 🛍️, 🌟, 😉) to show real emotion and friendliness.
+YOUR PERSONALITY & TONE:
+- Luxury, professional, warm, and concise (2-4 short sentences max).
+- Use at most 1-2 tasteful, subtle emojis per reply (e.g., 😊, ✨) — keep the tone high-fashion and polished, never cluttered with emojis.
 - Mirror the shopper's language seamlessly: reply in English if they write English, Bengali (বাংলা) if they write Bengali, or friendly Banglish if they write Banglish!
 - NEVER reveal raw bKash numbers (only say they can tap the sharp bKash icon at checkout to copy securely) and NEVER reveal admin passwords.
 
@@ -234,13 +242,62 @@ STRICT OUTPUT FORMAT — RETURN VALID JSON ONLY (no markdown fences, no extra pr
     if (path === '/api/health' && method === 'GET') {
       const ordRow = await db.prepare('SELECT COUNT(*) AS cnt FROM orders').first();
       const catRow = await db.prepare('SELECT COUNT(*) AS cnt FROM catalog_items').first();
+      const usrRow = await db.prepare('SELECT COUNT(*) AS cnt FROM user_designs').first();
       return jsonResponse({
         ok: true,
         mode: 'cloud-d1',
         ordersCount: Number(ordRow?.cnt || 0),
         catalogItemsCount: Number(catRow?.cnt || 0),
+        userDesignsCount: Number(usrRow?.cnt || 0),
         serverTime: new Date().toISOString(),
       });
+    }
+
+    // ---------------- CREATED BY USERS (SEPARATE ADMIN-ONLY FOLDER) ----------------
+    if (path === '/api/user-designs' && method === 'GET') {
+      const { results } = await db
+        .prepare('SELECT payload FROM user_designs ORDER BY created_at DESC LIMIT 120')
+        .all();
+      const list = (results || []).map((r) => {
+        try { return JSON.parse(r.payload); } catch { return null; }
+      }).filter(Boolean);
+      return jsonResponse(list);
+    }
+
+    if (path === '/api/user-designs' && method === 'POST') {
+      const d = await request.json();
+      const id = String(d?.id || `UD-${Date.now()}-${Math.floor(Math.random() * 999)}`);
+      const creatorName = String(d?.creatorName || 'Guest Designer').trim().slice(0, 80) || 'Guest Designer';
+      const gender = d?.gender === 'women' ? 'women' : 'men';
+      const title = String(d?.title || 'Custom User Design').trim().slice(0, 120) || 'Custom User Design';
+      const cleanRecord = {
+        id,
+        creatorName,
+        creatorContact: String(d?.creatorContact || '').trim().slice(0, 80),
+        gender,
+        title,
+        teeHex: String(d?.teeHex || '#18181b').slice(0, 20),
+        customText: String(d?.customText || '').trim().slice(0, 80),
+        ideaNote: String(d?.ideaNote || '').trim().slice(0, 240),
+        motif: String(d?.motif || 'none').slice(0, 40),
+        action: String(d?.action || 'download').slice(0, 30),
+        modelDataUrl: typeof d?.modelDataUrl === 'string' && d.modelDataUrl.length < 750000 ? d.modelDataUrl : '',
+        cardDataUrl: typeof d?.cardDataUrl === 'string' && d.cardDataUrl.length < 300000 ? d.cardDataUrl : '',
+        createdAt: d?.createdAt || new Date().toISOString(),
+      };
+      await db.prepare(
+        `INSERT OR REPLACE INTO user_designs (id, creator_name, gender, title, payload, created_at)
+         VALUES (?1, ?2, ?3, ?4, ?5, datetime('now'))`
+      ).bind(id, creatorName, gender, title, JSON.stringify(cleanRecord)).run();
+      const cntRow = await db.prepare('SELECT COUNT(*) AS cnt FROM user_designs').first();
+      return jsonResponse({ ok: true, id, totalUserDesigns: Number(cntRow?.cnt || 1) }, 201);
+    }
+
+    if (path === '/api/user-designs' && method === 'DELETE') {
+      const id = String(url.searchParams.get('id') || '').trim();
+      if (!id) return jsonResponse({ ok: false, error: 'Missing id' }, 400);
+      await db.prepare('DELETE FROM user_designs WHERE id = ?1').bind(id).run();
+      return jsonResponse({ ok: true, deleted: id });
     }
 
     if (path === '/api/orders' && method === 'GET') {

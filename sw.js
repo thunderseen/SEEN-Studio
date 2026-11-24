@@ -2,7 +2,7 @@
 // Network-first for /api/* and HTML so live Cloudflare D1 tees & orders stay fresh;
 // Stale-while-revalidate for static studio imagery for instant native-like app launch.
 
-const CACHE_NAME = 'seen-studio-pwa-v2';
+const CACHE_NAME = 'seen-studio-pwa-v3';
 const CORE_ASSETS = [
   '/',
   '/manifest.webmanifest',

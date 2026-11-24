@@ -1202,89 +1202,97 @@ input,textarea,select{
 }
 .ai-fab-wrap{
   position:fixed;
-  right:22px;
-  bottom:22px;
+  left:24px;
+  bottom:18px;
   z-index:88;
   display:flex;
   align-items:center;
-  gap:10px;
 }
-.ai-fab-bubble{
-  padding:9px 14px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:600;
-  color:#fff;
-  background:rgba(15,17,24,.9);
-  border:1px solid rgba(255,255,255,.22);
-  box-shadow:0 12px 32px rgba(0,0,0,.55);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  white-space:nowrap;
-  cursor:pointer;
-  transition:opacity .35s var(--ease),transform .35s var(--ease);
-}
-.ai-fab-bubble.hide{opacity:0;transform:translateX(10px);pointer-events:none}
 .ai-fab{
   position:relative;
-  width:58px;
-  height:58px;
+  height:44px;
+  padding:0 16px 0 10px;
   border-radius:999px;
-  background:radial-gradient(circle at 30% 25%, rgba(255,255,255,.28), rgba(24,26,36,.95) 68%);
-  border:1.5px solid rgba(255,255,255,.32);
-  box-shadow:0 16px 40px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.35);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  display:grid;
-  place-items:center;
-  animation:aiFloat 3.6s ease-in-out infinite;
-  transition:transform .25s var(--ease),border-color .25s var(--ease),box-shadow .25s var(--ease);
+  background:linear-gradient(135deg, rgba(24,26,34,.94), rgba(10,11,16,.96));
+  border:1px solid rgba(255,255,255,.26);
+  box-shadow:0 14px 36px rgba(0,0,0,.62), inset 0 1px 0 rgba(255,255,255,.24);
+  backdrop-filter:blur(20px) saturate(145%);
+  -webkit-backdrop-filter:blur(20px) saturate(145%);
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  color:#fff;
+  transition:transform .24s var(--ease),border-color .24s var(--ease),box-shadow .24s var(--ease);
 }
 .ai-fab::before{
   content:"";
   position:absolute;
-  inset:-3px;
+  inset:-2px;
   border-radius:999px;
-  border:1.5px solid rgba(255,214,234,.55);
-  animation:aiPulseRing 2.8s cubic-bezier(.22,1,.36,1) infinite;
+  border:1px solid rgba(255,255,255,.22);
+  opacity:0;
+  transition:opacity .25s var(--ease);
   pointer-events:none;
 }
 .ai-fab:hover{
-  transform:scale(1.07);
-  border-color:rgba(255,255,255,.65);
-  box-shadow:0 20px 48px rgba(0,0,0,.78), 0 0 26px rgba(255,204,228,.24);
+  transform:translateY(-2px);
+  border-color:rgba(255,255,255,.62);
+  box-shadow:0 18px 44px rgba(0,0,0,.78), 0 0 22px rgba(255,255,255,.14);
 }
-.ai-fab-emoji{
-  font-size:27px;
+.ai-fab:hover::before{opacity:1}
+.ai-fab-mark{
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  background:radial-gradient(circle at 30% 25%, rgba(255,255,255,.26), rgba(255,255,255,.07));
+  border:1px solid rgba(255,255,255,.28);
+  display:grid;
+  place-items:center;
+  font-family:'Cairo',var(--sans);
+  font-weight:900;
+  font-size:15px;
   line-height:1;
-  display:inline-block;
-  filter:drop-shadow(0 2px 6px rgba(0,0,0,.45));
+  color:#fff;
+  position:relative;
+  flex:0 0 28px;
 }
-.ai-fab-emoji.pop,.ai-avatar-emoji.pop{animation:aiPop .42s var(--ease)}
+.ai-fab-label{
+  font-size:12.5px;
+  font-weight:700;
+  letter-spacing:.01em;
+  white-space:nowrap;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.ai-fab-tag{
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:2px 6px;
+  border-radius:999px;
+  background:rgba(255,255,255,.14);
+  color:#fff;
+}
 .ai-fab-dot{
-  position:absolute;
-  top:4px;
-  right:4px;
-  width:11px;
-  height:11px;
+  width:7px;
+  height:7px;
   border-radius:999px;
   background:#4ade80;
-  border:2px solid #0b0c12;
-  box-shadow:0 0 10px rgba(74,222,128,.85);
+  box-shadow:0 0 8px rgba(74,222,128,.85);
+  flex:0 0 7px;
 }
 
 .ai-panel{
   position:fixed;
-  right:22px;
-  bottom:90px;
-  width:min(395px, calc(100vw - 28px));
-  height:min(600px, calc(100vh - 114px));
+  left:24px;
+  bottom:74px;
+  width:min(388px, calc(100vw - 28px));
+  height:min(580px, calc(100vh - 104px));
   z-index:92;
-  border-radius:24px;
-  background:rgba(12,13,19,.93);
+  border-radius:22px;
+  background:rgba(11,12,18,.94);
   border:1px solid rgba(255,255,255,.20);
   box-shadow:0 28px 80px rgba(0,0,0,.78), inset 0 1px 0 rgba(255,255,255,.16);
   backdrop-filter:blur(26px) saturate(150%);
@@ -1293,9 +1301,9 @@ input,textarea,select{
   flex-direction:column;
   overflow:hidden;
   opacity:0;
-  transform:translate3d(0,18px,0) scale(.95);
+  transform:translate3d(0,16px,0) scale(.96);
   pointer-events:none;
-  transition:opacity .28s var(--ease),transform .32s var(--ease);
+  transition:opacity .26s var(--ease),transform .30s var(--ease);
 }
 .ai-panel.open{
   opacity:1;
@@ -1313,17 +1321,34 @@ input,textarea,select{
 }
 .ai-head-left{display:flex;align-items:center;gap:11px;min-width:0}
 .ai-avatar{
-  width:42px;
-  height:42px;
-  flex:0 0 42px;
-  border-radius:14px;
-  background:radial-gradient(circle at 30% 25%, rgba(255,255,255,.22), rgba(255,255,255,.06));
-  border:1px solid rgba(255,255,255,.22);
+  width:40px;
+  height:40px;
+  flex:0 0 40px;
+  border-radius:13px;
+  background:radial-gradient(circle at 30% 25%, rgba(255,255,255,.24), rgba(255,255,255,.06));
+  border:1px solid rgba(255,255,255,.26);
   display:grid;
   place-items:center;
   position:relative;
+  font-family:'Cairo',var(--sans);
+  font-weight:900;
+  font-size:20px;
+  color:#fff;
 }
-.ai-avatar-emoji{font-size:23px;line-height:1;display:inline-block}
+.ai-avatar-emoji{
+  position:absolute;
+  right:-4px;
+  bottom:-4px;
+  width:19px;
+  height:19px;
+  border-radius:999px;
+  background:#11131b;
+  border:1px solid rgba(255,255,255,.26);
+  display:grid;
+  place-items:center;
+  font-size:11px;
+  line-height:1;
+}
 .ai-title{font-size:14px;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:6px}
 .ai-badge{
   font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:999px;
@@ -1504,16 +1529,199 @@ input,textarea,select{
 .ai-send:hover{transform:scale(1.06)}
 .ai-send:disabled{opacity:.45;cursor:not-allowed}
 
+@media(max-width:1180px){
+  .ai-fab-wrap{left:14px;bottom:10px}
+  .ai-fab{height:38px;padding:0 12px 0 8px;gap:7px}
+  .ai-fab-mark{width:24px;height:24px;font-size:13px;flex:0 0 24px}
+  .ai-fab-label{font-size:11.5px}
+}
 @media(max-width:760px){
-  .ai-fab-wrap{right:10px;bottom:25.5vh}
-  .ai-fab-bubble{display:none}
-  .ai-fab{width:46px;height:46px}
-  .ai-fab-emoji{font-size:22px}
+  .ai-fab-wrap{left:auto;right:10px;top:98px;bottom:auto}
+  .ai-fab{height:34px;padding:0 11px 0 7px;gap:6px}
+  .ai-fab-mark{width:22px;height:22px;font-size:12px;flex:0 0 22px}
+  .ai-fab-label{font-size:11px}
+  .ai-fab-tag{display:none}
   .ai-panel{
     left:10px;right:10px;bottom:10px;width:auto;
     height:min(76vh, 540px);border-radius:22px;
   }
 }
+/* =========================================================================
+   CUSTOM T-SHIRT DESIGN STUDIO (ABOVE LOGIN) + ADMIN "CREATED BY USERS"
+   ========================================================================= */
+button,a,.ai-chip,.card,.buy,.panel{touch-action:manipulation}
+.hub{content-visibility:auto;contain-intrinsic-size:1200px}
+.studio-box{
+  margin-bottom:26px;
+  border-radius:26px;
+  padding:24px;
+  border:1px solid rgba(255,255,255,.16);
+  contain:layout style;
+}
+.studio-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+.studio-head h3{font-size:21px;font-weight:800;letter-spacing:-.02em}
+.studio-sub{font-size:12.5px;color:rgba(255,255,255,.72);margin-top:4px;max-width:640px;line-height:1.5}
+.studio-grid{
+  display:grid;
+  grid-template-columns:minmax(270px, 360px) 1fr;
+  gap:22px;
+  align-items:start;
+}
+.studio-stage{
+  position:relative;
+  border-radius:20px;
+  padding:14px 12px 12px;
+  background:radial-gradient(ellipse at 50% 35%, rgba(255,255,255,.09), rgba(6,7,10,.88) 72%);
+  border:1px solid rgba(255,255,255,.14);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+.studio-canvas-wrap{
+  width:100%;
+  aspect-ratio:520 / 680;
+  max-height:420px;
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+.studio-canvas-wrap canvas{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 18px 34px rgba(0,0,0,.62));
+  will-change:contents;
+}
+.studio-stage-meta{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:11px;
+  color:rgba(255,255,255,.72);
+  padding:0 4px;
+}
+.studio-actions{
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.studio-actions .btn-solid,.studio-actions .btn-soft{height:38px;font-size:12px;padding:0 12px}
+.studio-controls{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.studio-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.studio-swatches{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:7px;
+  margin-top:4px;
+}
+.studio-swatches button{
+  width:24px;height:24px;border-radius:999px;
+  border:1.5px solid rgba(255,255,255,.28);
+  transition:transform .18s var(--ease),border-color .18s var(--ease),box-shadow .18s var(--ease);
+}
+.studio-swatches button:hover{transform:scale(1.12)}
+.studio-swatches button.on{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.45);transform:scale(1.12)}
+.studio-motifs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:4px;
+}
+.studio-motifs button{
+  height:30px;padding:0 11px;border-radius:999px;font-size:11.5px;font-weight:600;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.86);
+  transition:background .18s var(--ease),color .18s var(--ease),transform .18s var(--ease);
+}
+.studio-motifs button.on,.studio-motifs button:hover{background:#fff;color:#090a0e}
+.studio-sliders{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  padding:10px 12px;
+  border-radius:14px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+}
+.studio-sliders label{display:flex;flex-direction:column;gap:4px;font-size:10.5px;color:rgba(255,255,255,.78);font-weight:600}
+.studio-sliders input[type="range"]{width:100%;accent-color:#fff;cursor:pointer}
+.studio-note{
+  font-size:11.5px;
+  color:rgba(255,255,255,.68);
+  padding:8px 12px;
+  border-radius:12px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  line-height:1.45;
+}
+
+/* Admin Panel: "Created by Users" Folder Grid */
+.ud-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(230px, 1fr));
+  gap:12px;
+  max-height:450px;
+  overflow-y:auto;
+  padding-right:4px;
+}
+.ud-card{
+  border-radius:16px;
+  padding:12px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.13);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.ud-thumb{
+  width:100%;
+  height:185px;
+  border-radius:12px;
+  background:radial-gradient(circle at 50% 40%, rgba(255,255,255,.08), rgba(6,7,10,.88));
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+.ud-thumb img{max-width:100%;max-height:100%;object-fit:contain}
+.ud-meta{font-size:11.5px;line-height:1.45;color:rgba(255,255,255,.82)}
+.ud-meta strong{color:#fff;font-size:13px;display:block;margin-bottom:2px}
+.ud-acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+.ud-acts button{
+  flex:1;height:30px;padding:0 8px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);color:#fff;
+  transition:background .18s var(--ease),color .18s var(--ease);
+}
+.ud-acts button.primary{background:#fff;color:#090a0e;border-color:#fff}
+.ud-acts button.danger{border-color:rgba(248,113,113,.45);color:#fca5a5}
+.ud-acts button:hover{opacity:.9}
+
+@media(max-width:900px){
+  .studio-grid{grid-template-columns:1fr}
+  .studio-canvas-wrap{max-height:340px}
+}
+@media(max-width:760px){
+  .studio-box{padding:16px;border-radius:20px}
+  .studio-row,.studio-sliders,.studio-actions{grid-template-columns:1fr}
+}
+
 @media(prefers-reduced-motion:reduce){
   .tabs .pill,.buy .chips button,.buy .dots button,.cur .ring,.ai-fab,.ai-fab::before{transition:none;animation:none}
 }
@@ -1752,9 +1960,141 @@ input,textarea,select{
         <h2 class="hub-title">Account Login Gateway &amp; Direct Connect</h2>
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#custom-design-studio" class="btn-soft">Design Your Tee</a>
         <button type="button" class="btn-soft" id="hubTrackBtn">Track My Order</button>
         <button type="button" class="btn-soft" id="hubAdminBtn">Admin Studio</button>
         <a href="#hero" class="btn-solid">&uarr; Back to Spatial Try-On</a>
+      </div>
+    </div>
+
+    <!-- ===============================================================
+         CUSTOM T-SHIRT DESIGN STUDIO (DIRECTLY ABOVE LOGIN GATEWAY)
+         Users create & download personal mockups without altering live catalog;
+         designs are archived privately in Admin -> "Created by Users".
+         =============================================================== -->
+    <div class="studio-box glass-dark" id="custom-design-studio" aria-label="Custom T-Shirt Design Studio">
+      <div class="studio-head">
+        <div>
+          <div class="hub-eyebrow" style="margin-bottom:4px">Interactive Client Atelier &middot; Live 3D Mannequin Mockup</div>
+          <h3>Design Your Own Custom T-Shirt</h3>
+          <p class="studio-sub">
+            Turn your own idea, custom text, or artwork into a realistic SEEN Studio T-shirt mockup in real time. Download your PNG anytime—your custom design stays private and never alters the main store catalog.
+          </p>
+        </div>
+        <div class="seg" id="usrGenderSeg" role="tablist" aria-label="Custom mockup mannequin gender">
+          <button type="button" class="on" data-g="men">&#9794; Men&rsquo;s Torso</button>
+          <button type="button" data-g="women">&#9792; Women&rsquo;s Torso</button>
+        </div>
+      </div>
+
+      <div class="studio-grid">
+        <!-- Live 60fps Headless Mannequin Preview Canvas -->
+        <div class="studio-stage">
+          <div class="studio-canvas-wrap">
+            <canvas id="usrDesignCanvas" width="520" height="680" aria-label="Live custom T-shirt mockup preview"></canvas>
+          </div>
+          <div class="studio-stage-meta">
+            <span id="usrLiveSpec">Men&rsquo;s Torso &middot; Obsidian (#18191e)</span>
+            <span style="color:#86efac;font-weight:700">Live 60fps Mockup</span>
+          </div>
+          <div class="studio-actions">
+            <button type="button" class="btn-solid" id="usrDownloadBtn">Download Mockup (PNG)</button>
+            <button type="button" class="btn-soft" id="usrSaveIdeaBtn">Submit Design Idea</button>
+          </div>
+          <div class="form-status" id="usrDesignStatus" style="margin-top:2px;text-align:center"></div>
+        </div>
+
+        <!-- Designer Controls -->
+        <div class="studio-controls">
+          <div>
+            <label style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.72)">1. Base T-Shirt Color</label>
+            <div class="studio-swatches" id="usrColorSwatches">
+              <button type="button" class="on" data-hex="#18191e" data-name="Obsidian" style="background:#18191e" title="Obsidian Black"></button>
+              <button type="button" data-hex="#f4f2ee" data-name="Pure White" style="background:#f4f2ee" title="Pure White"></button>
+              <button type="button" data-hex="#8e1822" data-name="Deep Crimson" style="background:#8e1822" title="Deep Crimson"></button>
+              <button type="button" data-hex="#667157" data-name="Olive Sage" style="background:#667157" title="Olive Sage"></button>
+              <button type="button" data-hex="#c47e86" data-name="Dusty Blush" style="background:#c47e86" title="Dusty Blush"></button>
+              <button type="button" data-hex="#b7a4ce" data-name="Soft Lavender" style="background:#b7a4ce" title="Soft Lavender"></button>
+              <button type="button" data-hex="#1e4a98" data-name="Royal Cobalt" style="background:#1e4a98" title="Royal Cobalt"></button>
+              <button type="button" data-hex="#ccbba5" data-name="Warm Sand" style="background:#ccbba5" title="Warm Sand"></button>
+              <button type="button" data-hex="#3e2c26" data-name="Espresso" style="background:#3e2c26" title="Deep Espresso"></button>
+              <button type="button" data-hex="#1c4e3a" data-name="Emerald" style="background:#1c4e3a" title="Forest Emerald"></button>
+              <input type="color" id="usrTeeHex" value="#18191e" aria-label="Pick custom T-shirt color" title="Custom color picker" style="width:32px;height:26px;padding:2px;border-radius:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.26);cursor:pointer">
+            </div>
+          </div>
+
+          <div class="studio-row">
+            <div class="field" style="margin-bottom:0">
+              <label for="usrTextInp">2. Custom Chest Text / Quote</label>
+              <input id="usrTextInp" type="text" maxlength="36" value="SEEN STUDIO" placeholder="Type your text, name, or Arabic س...">
+            </div>
+            <div class="field" style="margin-bottom:0">
+              <label for="usrFontSel">Typography Style</label>
+              <select id="usrFontSel">
+                <option value="bold">Luxury Sans Bold</option>
+                <option value="editorial">Editorial Serif</option>
+                <option value="mono">Streetwear Mono</option>
+                <option value="cairo">Arabic / Cairo Display</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="studio-row">
+            <div class="field" style="margin-bottom:0">
+              <label for="usrTextColor">Text &amp; Emblem Ink Color</label>
+              <div style="display:flex;gap:8px;align-items:center">
+                <input id="usrTextColor" type="color" value="#f5f5f7" style="width:48px;height:38px;padding:3px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);cursor:pointer">
+                <input id="usrTitleInp" type="text" maxlength="60" placeholder="Design name (e.g. Midnight Street Idea)" style="flex:1">
+              </div>
+            </div>
+            <div class="field" style="margin-bottom:0">
+              <label for="usrArtFile">3. Upload Your Own Logo / Artwork</label>
+              <div style="display:flex;gap:6px;align-items:center">
+                <label class="btn-soft" style="height:38px;flex:1;font-size:12px;cursor:pointer">
+                  <span id="usrArtLabel">Choose Logo / Art</span>
+                  <input id="usrArtFile" type="file" accept="image/*" style="display:none">
+                </label>
+                <button type="button" class="btn-soft" id="usrClearArtBtn" style="height:38px;padding:0 11px;font-size:11.5px;display:none">Clear</button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.72)">4. Instant Graphic Motifs</label>
+            <div class="studio-motifs" id="usrMotifs">
+              <button type="button" class="on" data-motif="seen-crest">س Crest</button>
+              <button type="button" data-motif="prism">Prism Geo</button>
+              <button type="button" data-motif="star">Atelier Star</button>
+              <button type="button" data-motif="frame">Editorial Box</button>
+              <button type="button" data-motif="wave">Wave Horizon</button>
+              <button type="button" data-motif="none">Text / Art Only</button>
+            </div>
+          </div>
+
+          <div class="studio-sliders">
+            <label><span>Graphic Size <b id="usrScaleVal">100%</b></span><input id="usrScale" type="range" min="55" max="145" value="100"></label>
+            <label><span>Vertical Pos <b id="usrYVal">0px</b></span><input id="usrPosY" type="range" min="-70" max="80" value="0"></label>
+            <label><span>Strip White BG</span><select id="usrStripBg" style="height:26px;padding:0 6px;border-radius:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);font-size:11px"><option value="1">Auto Clean</option><option value="0">Keep BG</option></select></label>
+          </div>
+
+          <div class="studio-row">
+            <div class="field" style="margin-bottom:0">
+              <label for="usrCreatorName">Your Name (Optional)</label>
+              <input id="usrCreatorName" type="text" maxlength="60" placeholder="e.g. Rafi / Guest">
+            </div>
+            <div class="field" style="margin-bottom:0">
+              <label for="usrIdeaNote">Style Idea / Custom Print Note (Optional)</label>
+              <input id="usrIdeaNote" type="text" maxlength="160" placeholder="e.g. Oversized 280 GSM, Size L">
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+            <div class="studio-note" style="flex:1">
+              Your custom design downloads straight to your device &amp; does <strong>not</strong> appear on the public store. A copy is archived privately for our design team to review your style.
+            </div>
+            <button type="button" class="btn-soft" id="usrResetBtn" style="height:34px;font-size:11.5px;padding:0 14px">Reset</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -2074,6 +2414,7 @@ input,textarea,select{
     <div id="adminBody" style="display:none">
       <div class="admin-tabs" id="adminTabs">
         <button type="button" class="on" data-tab="mockup">Auto-Mockup &amp; Catalog</button>
+        <button type="button" data-tab="users">Created by Users (<span id="admUserDesignsCount">0</span>)</button>
         <button type="button" data-tab="orders">Orders &amp; Transactions (<span id="admOrderCount">0</span>)</button>
         <button type="button" data-tab="handover">Gateway &amp; Handover</button>
       </div>
@@ -2205,6 +2546,22 @@ input,textarea,select{
         </div>
       </div>
 
+      <!-- TAB 2B: Created by Users (Separate Private Archive of Custom User Mockups) -->
+      <div id="admTabUsers" style="display:none">
+        <div class="gw-box">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+            <div>
+              <h4 style="margin:0">Created by Users — Custom Design Archive</h4>
+              <p style="font-size:11.5px;color:rgba(255,255,255,.72);margin-top:3px">
+                Every T-shirt mockup visitors create or download in the Custom Design Studio is saved privately here (never auto-published to the live store unless you click Publish).
+              </p>
+            </div>
+            <button type="button" class="btn-soft" id="refreshUserDesignsBtn" style="height:30px;font-size:11.5px;padding:0 12px">Refresh Folder</button>
+          </div>
+          <div class="ud-grid" id="admUserDesignsList"></div>
+        </div>
+      </div>
+
       <!-- TAB 3: Gateway & Client Handover Settings -->
       <div id="admTabHandover" style="display:none">
         <div class="gw-grid">
@@ -2331,14 +2688,12 @@ input,textarea,select{
 </div>
 
 <!-- ===============================================================
-     SEEN AI STYLIST CHATBOT (CUTE EMOJI EXPRESSIONS + 3D TRY-ON)
+     SEEN FASHION AI — LUXURY STYLIST CHATBOT (ZERO-OVERLAP PLACEMENT)
      =============================================================== -->
 <div class="ai-fab-wrap" id="aiFabWrap">
-  <button type="button" class="ai-fab-bubble" id="aiFabBubble" aria-label="Open SEEN AI Stylist">
-    <span>Need a T-shirt? Ask SEEN AI ✨</span>
-  </button>
-  <button type="button" class="ai-fab" id="aiChatFab" aria-label="Open SEEN AI Stylist Chatbot" title="SEEN AI Stylist ✨">
-    <span class="ai-fab-emoji" id="aiFabEmoji" aria-hidden="true">😊</span>
+  <button type="button" class="ai-fab" id="aiChatFab" aria-label="Open SEEN Fashion AI Stylist" title="SEEN Fashion AI">
+    <span class="ai-fab-mark" aria-hidden="true">س</span>
+    <span class="ai-fab-label">SEEN Fashion <span class="ai-fab-tag">AI</span></span>
     <span class="ai-fab-dot" aria-hidden="true"></span>
   </button>
 </div>
@@ -2347,16 +2702,17 @@ input,textarea,select{
   <header class="ai-head">
     <div class="ai-head-left">
       <div class="ai-avatar" id="aiAvatar" aria-hidden="true">
+        <span>س</span>
         <span class="ai-avatar-emoji" id="aiMoodEmoji">😊</span>
       </div>
       <div style="min-width:0">
-        <div class="ai-title" id="aiChatTitle">SEEN AI Stylist <span class="ai-badge">Smart</span></div>
-        <div class="ai-mood-txt" id="aiMoodText">Ready to find your dream tee ✨</div>
+        <div class="ai-title" id="aiChatTitle">SEEN Fashion AI <span class="ai-badge">Atelier</span></div>
+        <div class="ai-mood-txt" id="aiMoodText">Personal T-Shirt Stylist · Online</div>
       </div>
     </div>
     <div class="ai-head-actions">
       <button type="button" class="ai-icon-btn" id="aiResetBtn" aria-label="Start new styling chat" title="Reset Chat">↺</button>
-      <button type="button" class="ai-icon-btn" id="aiCloseBtn" aria-label="Close SEEN AI Stylist" title="Close">&times;</button>
+      <button type="button" class="ai-icon-btn" id="aiCloseBtn" aria-label="Close SEEN Fashion AI" title="Close">&times;</button>
     </div>
   </header>
 
@@ -2367,7 +2723,7 @@ input,textarea,select{
   <div class="ai-quick-bar" id="aiQuickBar" aria-label="Quick style choices"></div>
 
   <form class="ai-form" id="aiChatForm" autocomplete="off">
-    <input type="text" class="ai-input" id="aiChatInput" placeholder="Ask color, size, style, or budget... ✨" maxlength="500" aria-label="Message SEEN AI Stylist">
+    <input type="text" class="ai-input" id="aiChatInput" placeholder="Ask SEEN Fashion AI about color, size, or style..." maxlength="500" aria-label="Message SEEN Fashion AI">
     <button type="submit" class="ai-send" id="aiSendBtn" aria-label="Send message">➤</button>
   </form>
 </section>
@@ -2455,6 +2811,7 @@ input,textarea,select{
   let activeCategory = 'all';
   let womenLiveTint = null; // { name, hex, dataUrl } when woman chooses a favorite palette shade
   let ORDERS = [];
+  let USER_DESIGNS = [];
   let STORE_CFG = { webhook:'', sslStore:'', waNumber:'8801307758119' };
   let shown = -1;
   let pos = 0, target = 0;
@@ -4106,8 +4463,10 @@ input,textarea,select{
     btn.classList.add('on');
     const t = btn.dataset.tab;
     $('admTabMockup').style.display   = t === 'mockup'   ? 'block' : 'none';
+    $('admTabUsers').style.display    = t === 'users'    ? 'block' : 'none';
     $('admTabOrders').style.display   = t === 'orders'   ? 'block' : 'none';
     $('admTabHandover').style.display = t === 'handover' ? 'block' : 'none';
+    if (t === 'users') { await syncUserDesignsFromServer(); renderAdminUserDesigns(); }
     if (t === 'orders') { await syncOrdersFromServer(); renderAdminOrders(); }
     if (t === 'handover') {
       $('cfgWebhook').value = STORE_CFG.webhook || '';
@@ -4121,13 +4480,15 @@ input,textarea,select{
     syncModalState();
     adminViewGender = activeGender;
     $('admTargetGender').value = activeGender;
-    await syncOrdersFromServer();
+    await Promise.all([syncOrdersFromServer(), syncUserDesignsFromServer()]);
     $('admOrderCount').textContent = ORDERS.length;
+    if ($('admUserDesignsCount')) $('admUserDesignsCount').textContent = USER_DESIGNS.length;
     if (adminUnlocked) {
       $('adminPinGate').style.display = 'none';
       $('adminBody').style.display = 'block';
       renderAdminCatalog();
       renderAdminOrders();
+      renderAdminUserDesigns();
     } else {
       $('adminPinGate').style.display = 'block';
       $('adminBody').style.display = 'none';
@@ -4143,7 +4504,7 @@ input,textarea,select{
   $('adminClose').addEventListener('click', closeAdmin);
   adminModal.addEventListener('click', e => { if (e.target === adminModal) closeAdmin(); });
 
-  $('pinForm').addEventListener('submit', e => {
+  $('pinForm').addEventListener('submit', async e => {
     e.preventDefault();
     if ($('pinInput').value.trim() === 'sabasagol') {
       adminUnlocked = true;
@@ -4151,8 +4512,10 @@ input,textarea,select{
       $('pinErr').textContent = '';
       $('adminPinGate').style.display = 'none';
       $('adminBody').style.display = 'block';
+      await syncUserDesignsFromServer();
       renderAdminCatalog();
       renderAdminOrders();
+      renderAdminUserDesigns();
       ensureMannequinAssets('men').catch(() => {});
       ensureMannequinAssets('women').catch(() => {});
       showToast('Admin Studio unlocked');
@@ -4481,7 +4844,7 @@ input,textarea,select{
     lastNow = now;
     const t = now * 0.001;
 
-    if (window.scrollY < H * 0.95) {
+    if (window.scrollY < H * 0.95 && !document.body.classList.contains('modal-open')) {
       if (reduced) {
         intro = 1;
         if (!dragging) pos = target;
@@ -4611,9 +4974,7 @@ input,textarea,select{
      SEEN AI STYLIST CHATBOT — HYBRID WORKERS AI + SMART MULTILINGUAL STYLIST
      ========================================================================= */
   const aiFabWrap   = $('aiFabWrap');
-  const aiFabBubble = $('aiFabBubble');
   const aiChatFab   = $('aiChatFab');
-  const aiFabEmoji  = $('aiFabEmoji');
   const aiChatPanel = $('aiChatPanel');
   const aiMoodEmoji = $('aiMoodEmoji');
   const aiMoodText  = $('aiMoodText');
@@ -4625,15 +4986,15 @@ input,textarea,select{
   const aiSendBtn   = $('aiSendBtn');
 
   const AI_MOODS = {
-    happy:    { emoji: '😊', label: 'Ready to find your dream tee ✨' },
-    thinking: { emoji: '🤔', label: 'Styling the best picks for you... 💭' },
-    excited:  { emoji: '🤩', label: 'Ooh! Found gorgeous matches for you! ✨' },
-    love:     { emoji: '🥰', label: 'This look is pure luxury on you! 💖' },
-    cool:     { emoji: '😎', label: 'Streetwear Atelier mode ON 🔥' },
-    artist:   { emoji: '🎨', label: 'Curating your favorite color shade! 🌈' },
-    sizing:   { emoji: '📏', label: 'Finding your exact tailored size! ✅' },
-    party:    { emoji: '🥳', label: 'Woohoo! Added right to your bag! 🛍️' },
-    wink:     { emoji: '😉', label: 'Insider SEEN tip coming right up! 💡' }
+    happy:    { emoji: '😊', label: 'Personal T-Shirt Stylist · Online' },
+    thinking: { emoji: '🤔', label: 'Curating your best matches...' },
+    excited:  { emoji: '🤩', label: 'Tailored recommendations ready' },
+    love:     { emoji: '🥰', label: 'Live on your 3D mannequin' },
+    cool:     { emoji: '😎', label: 'Atelier Streetwear Curation' },
+    artist:   { emoji: '🎨', label: 'Matching your preferred shade' },
+    sizing:   { emoji: '📏', label: 'Precision Fit Advisor' },
+    party:    { emoji: '🥳', label: 'Added to your shopping bag' },
+    wink:     { emoji: '😉', label: 'SEEN Studio Insider Tip' }
   };
 
   let aiHistory = [];
@@ -4649,27 +5010,8 @@ input,textarea,select{
       void aiMoodEmoji.offsetWidth;
       aiMoodEmoji.classList.add('pop');
     }
-    if (aiFabEmoji) {
-      aiFabEmoji.textContent = m.emoji;
-      aiFabEmoji.classList.remove('pop');
-      void aiFabEmoji.offsetWidth;
-      aiFabEmoji.classList.add('pop');
-    }
     if (aiMoodText) aiMoodText.textContent = customLabel || m.label;
   }
-
-  // Cute idle expression cycle on floating launcher when panel is closed
-  const IDLE_FACES = ['😊', '✨', '🥰', '😎', '🤩'];
-  let idleFaceIdx = 0;
-  setInterval(() => {
-    if (!aiChatPanel.classList.contains('open') && !aiBusy && !reduced) {
-      idleFaceIdx = (idleFaceIdx + 1) % IDLE_FACES.length;
-      aiFabEmoji.textContent = IDLE_FACES[idleFaceIdx];
-    }
-  }, 5500);
-
-  // Gently hide helper bubble after 9s so stage stays clean
-  setTimeout(() => { if (aiFabBubble) aiFabBubble.classList.add('hide'); }, 9000);
 
   function renderAiPrefs() {
     const pills = [];
@@ -5185,7 +5527,6 @@ input,textarea,select{
     aiBusy = true;
     aiSendBtn.disabled = true;
     aiChatInput.value = '';
-    if (aiFabBubble) aiFabBubble.classList.add('hide');
 
     appendUserMessage(text);
     aiHistory.push({ role: 'user', content: text });
@@ -5273,10 +5614,10 @@ input,textarea,select{
     renderAiPrefs();
     setAiMood('happy');
     appendBotMessage(
-      `Hey there! 😊✨ I'm your **SEEN AI Stylist**! Let's find a T-shirt you'll absolutely love 💖\nAre we shopping for **Men's** or **Women's** today—and do you have a favorite **style, color, or size** in mind? 👕🎨`,
+      `Welcome to **SEEN Fashion AI** 😊 I'm your personal T-shirt stylist.\nAre you shopping for **Men's** or **Women's** today—and what **style, color, or size** are you looking for?`,
       'happy',
       [],
-      ['♂️ Men\'s Tees', '♀️ Women\'s Tees', '🎨 Pick by Color', '📏 Find My Size', '🔥 Best Sellers']
+      ['Men\'s Collection', 'Women\'s Collection', 'Pick by Color', 'Find My Size', 'Best Sellers']
     );
     aiInitialized = true;
   }
@@ -5284,7 +5625,6 @@ input,textarea,select{
   function toggleAiChat(forceOpen = null) {
     const open = forceOpen === null ? !aiChatPanel.classList.contains('open') : forceOpen;
     aiChatPanel.classList.toggle('open', open);
-    if (aiFabBubble) aiFabBubble.classList.add('hide');
     if (open) {
       if (!aiInitialized) initAiGreeting();
       setTimeout(() => aiChatInput.focus(), 220);
@@ -5292,7 +5632,6 @@ input,textarea,select{
   }
 
   aiChatFab.addEventListener('click', () => toggleAiChat());
-  aiFabBubble.addEventListener('click', () => toggleAiChat(true));
   $('aiCloseBtn').addEventListener('click', () => toggleAiChat(false));
   $('aiResetBtn').addEventListener('click', () => {
     initAiGreeting();
@@ -5302,6 +5641,497 @@ input,textarea,select{
     e.preventDefault();
     sendUserMessage(aiChatInput.value);
   });
+
+  /* =========================================================================
+     60FPS CUSTOM T-SHIRT DESIGN STUDIO + ADMIN "CREATED BY USERS" ARCHIVE
+     (Pre-computed torso shade cache -> <3ms live drag rendering!)
+     ========================================================================= */
+  const usrCanvas     = $('usrDesignCanvas');
+  const usrCtx        = usrCanvas ? usrCanvas.getContext('2d') : null;
+  const usrShadeCache = new Map();
+  let usrRafPending   = false;
+  let usrStudioReady  = false;
+  let usrUploadedImg  = null;
+  let usrCleanedArt   = null;
+  const usrState = {
+    gender: 'men',
+    teeHex: '#18191e',
+    teeColorName: 'Obsidian',
+    text: 'SEEN STUDIO',
+    font: 'bold',
+    textColor: '#f5f5f7',
+    motif: 'seen-crest',
+    scalePct: 100,
+    posY: 0,
+    stripBg: true
+  };
+
+  async function ensureUsrShadeCanvas(gender) {
+    if (usrShadeCache.has(gender)) return usrShadeCache.get(gender);
+    const { base, mask } = await ensureMannequinAssets(gender);
+    const shadeC = document.createElement('canvas');
+    shadeC.width = MODEL_W; shadeC.height = MODEL_H;
+    const sctx = shadeC.getContext('2d');
+    sctx.drawImage(base, 0, 0, MODEL_W, MODEL_H);
+    const imgD = sctx.getImageData(0, 0, MODEL_W, MODEL_H);
+    const d = imgD.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const lum = (0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2]) / 255;
+      const curved = Math.pow(Math.max(0.24, (lum - 0.03) / 0.89), 1.12);
+      const v = Math.max(66, Math.min(255, Math.round(curved * 255)));
+      d[i] = d[i + 1] = d[i + 2] = v;
+    }
+    sctx.putImageData(imgD, 0, 0);
+    const entry = { base, mask, shadeC };
+    usrShadeCache.set(gender, entry);
+    return entry;
+  }
+
+  function drawStudioMotif(ctx, motif, cx, cy, size, ink) {
+    if (!motif || motif === 'none') return;
+    ctx.save();
+    ctx.strokeStyle = ink;
+    ctx.fillStyle = ink;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    if (motif === 'seen-crest') {
+      ctx.lineWidth = Math.max(2, size * 0.028);
+      ctx.globalAlpha = 0.88;
+      ctx.beginPath();
+      ctx.arc(cx, cy, size * 0.44, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.globalAlpha = 0.96;
+      ctx.font = `900 ${Math.round(size * 0.52)}px "Cairo","Inter",sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('س', cx, cy + size * 0.02);
+    } else if (motif === 'prism') {
+      ctx.lineWidth = Math.max(2.2, size * 0.032);
+      ctx.globalAlpha = 0.92;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy - size * 0.46);
+      ctx.lineTo(cx + size * 0.42, cy + size * 0.04);
+      ctx.lineTo(cx, cy + size * 0.46);
+      ctx.lineTo(cx - size * 0.42, cy + size * 0.04);
+      ctx.closePath();
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(cx, cy - size * 0.46);
+      ctx.lineTo(cx, cy + size * 0.46);
+      ctx.moveTo(cx - size * 0.42, cy + size * 0.04);
+      ctx.lineTo(cx + size * 0.42, cy + size * 0.04);
+      ctx.stroke();
+    } else if (motif === 'star') {
+      ctx.globalAlpha = 0.94;
+      const rOut = size * 0.45, rIn = size * 0.13;
+      ctx.beginPath();
+      for (let i = 0; i < 8; i++) {
+        const ang = (i * Math.PI) / 4 - Math.PI / 2;
+        const r = i % 2 === 0 ? rOut : rIn;
+        const px = cx + Math.cos(ang) * r, py = cy + Math.sin(ang) * r;
+        if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+      ctx.fill();
+      ctx.lineWidth = Math.max(1.8, size * 0.022);
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, size * 0.54, size * 0.22, -0.35, 0, Math.PI * 2);
+      ctx.stroke();
+    } else if (motif === 'frame') {
+      ctx.lineWidth = Math.max(2, size * 0.026);
+      const rw = size * 0.96, rh = size * 0.62;
+      ctx.strokeRect(cx - rw / 2, cy - rh / 2, rw, rh);
+      ctx.globalAlpha = 0.55;
+      ctx.strokeRect(cx - rw / 2 + 7, cy - rh / 2 + 7, rw - 14, rh - 14);
+    } else if (motif === 'wave') {
+      ctx.lineWidth = Math.max(2.6, size * 0.036);
+      for (let w = -1; w <= 1; w++) {
+        const wy = cy + w * size * 0.17;
+        ctx.beginPath();
+        ctx.moveTo(cx - size * 0.52, wy);
+        ctx.bezierCurveTo(cx - size * 0.22, wy - size * 0.16, cx + size * 0.22, wy + size * 0.16, cx + size * 0.52, wy);
+        ctx.stroke();
+      }
+    }
+    ctx.restore();
+  }
+
+  let usrShirtOffscreen = null;
+  async function renderCustomStudioNow() {
+    if (!usrCtx) return;
+    try {
+      const { base, mask, shadeC } = await ensureUsrShadeCanvas(usrState.gender);
+      const TORSO = TORSO_BOX[usrState.gender];
+      if (!usrShirtOffscreen) {
+        usrShirtOffscreen = document.createElement('canvas');
+        usrShirtOffscreen.width = MODEL_W; usrShirtOffscreen.height = MODEL_H;
+      }
+      const sctx = usrShirtOffscreen.getContext('2d');
+      sctx.globalCompositeOperation = 'source-over';
+      sctx.clearRect(0, 0, MODEL_W, MODEL_H);
+      sctx.fillStyle = usrState.teeHex;
+      sctx.fillRect(0, 0, MODEL_W, MODEL_H);
+
+      const scale = usrState.scalePct / 100;
+      const cx = TORSO.x + TORSO.w * 0.5;
+      const baseChestY = TORSO.y + TORSO.h * 0.34 + usrState.posY;
+
+      // 1. Uploaded Artwork (if any)
+      if (usrUploadedImg) {
+        const src = usrState.stripBg && usrCleanedArt ? usrCleanedArt.cleanCanvas : usrUploadedImg;
+        const box = usrState.stripBg && usrCleanedArt ? usrCleanedArt.bbox : { x: 0, y: 0, w: usrUploadedImg.width, h: usrUploadedImg.height };
+        const maxW = TORSO.w * 0.44 * scale;
+        const maxH = TORSO.h * 0.42 * scale;
+        const sc = Math.min(maxW / box.w, maxH / box.h);
+        const dw = box.w * sc, dh = box.h * sc;
+        sctx.drawImage(src, box.x, box.y, box.w, box.h, cx - dw / 2, baseChestY - dh / 2, dw, dh);
+      } else if (usrState.motif && usrState.motif !== 'none') {
+        drawStudioMotif(sctx, usrState.motif, cx, baseChestY - (usrState.text ? 22 * scale : 0), 118 * scale, usrState.textColor);
+      }
+
+      // 2. Custom Chest Typography
+      const txt = (usrState.text || '').trim();
+      if (txt) {
+        sctx.save();
+        sctx.fillStyle = usrState.textColor;
+        sctx.textAlign = 'center';
+        sctx.textBaseline = 'middle';
+        const fontSize = Math.max(14, Math.min(46, Math.round((txt.length > 16 ? 22 : txt.length > 10 ? 27 : 33) * scale)));
+        const fontFam = usrState.font === 'editorial'
+          ? `700 ${fontSize}px Georgia,"Times New Roman",serif`
+          : usrState.font === 'mono'
+            ? `700 ${fontSize}px ui-monospace,"Consolas",monospace`
+            : usrState.font === 'cairo'
+              ? `900 ${Math.round(fontSize * 1.08)}px "Cairo","Inter",sans-serif`
+              : `900 ${fontSize}px "Inter",system-ui,sans-serif`;
+        sctx.font = fontFam;
+        const ty = usrUploadedImg
+          ? baseChestY + 86 * scale
+          : (usrState.motif && usrState.motif !== 'none' ? baseChestY + 56 * scale : baseChestY);
+        sctx.fillText(txt, cx, ty, TORSO.w * 0.56);
+        sctx.restore();
+      }
+
+      // 3. Apply Pre-computed 3D Cloth Fold Shading + Pen-Tool Mask
+      sctx.globalCompositeOperation = 'multiply';
+      sctx.drawImage(shadeC, 0, 0);
+      sctx.globalCompositeOperation = 'destination-in';
+      sctx.drawImage(mask, 0, 0, MODEL_W, MODEL_H);
+
+      // 4. Composite onto Sculptural Headless Mannequin
+      usrCtx.globalCompositeOperation = 'source-over';
+      usrCtx.clearRect(0, 0, MODEL_W, MODEL_H);
+      usrCtx.drawImage(base, 0, 0, MODEL_W, MODEL_H);
+      usrCtx.globalCompositeOperation = 'source-atop';
+      usrCtx.drawImage(usrShirtOffscreen, 0, 0);
+      usrCtx.globalCompositeOperation = 'source-over';
+
+      const gLbl = usrState.gender === 'men' ? "Men's Torso" : "Women's Torso";
+      $('usrLiveSpec').textContent = `${gLbl} · ${usrState.teeColorName} (${usrState.teeHex})`;
+      usrStudioReady = true;
+    } catch (_) {}
+  }
+
+  function scheduleCustomStudioRender() {
+    if (usrRafPending) return;
+    usrRafPending = true;
+    requestAnimationFrame(() => {
+      usrRafPending = false;
+      renderCustomStudioNow();
+    });
+  }
+
+  function exportStudioCardWebp() {
+    const TORSO = TORSO_BOX[usrState.gender];
+    const c = document.createElement('canvas');
+    c.width = 440; c.height = 440;
+    const g = c.getContext('2d');
+    if (usrShirtOffscreen) {
+      g.drawImage(usrShirtOffscreen, TORSO.x - 8, TORSO.y - 8, TORSO.w + 16, TORSO.h + 16, 36, 20, 368, 400);
+    }
+    try { const w = c.toDataURL('image/webp', 0.86); if (w.startsWith('data:image/webp')) return w; } catch (_) {}
+    return c.toDataURL('image/png');
+  }
+
+  async function saveUserDesignsToIDB() {
+    try {
+      const db = await openDB();
+      await new Promise((res, rej) => {
+        const tx = db.transaction(DB_STORE, 'readwrite');
+        tx.objectStore(DB_STORE).put(USER_DESIGNS, 'user_designs');
+        tx.oncomplete = res;
+        tx.onerror = rej;
+      });
+    } catch (_) {}
+  }
+
+  async function syncUserDesignsFromServer() {
+    try {
+      const r = await fetch('/api/user-designs', { cache: 'no-store' });
+      if (r.ok) {
+        const list = await r.json();
+        if (Array.isArray(list)) {
+          USER_DESIGNS = list;
+          if ($('admUserDesignsCount')) $('admUserDesignsCount').textContent = USER_DESIGNS.length;
+          saveUserDesignsToIDB();
+          return;
+        }
+      }
+    } catch (_) {}
+    // Fallback to local IndexedDB mirror
+    try {
+      const db = await openDB();
+      const saved = await new Promise((res, rej) => {
+        const tx = db.transaction(DB_STORE, 'readonly');
+        const req = tx.objectStore(DB_STORE).get('user_designs');
+        req.onsuccess = () => res(req.result);
+        req.onerror = rej;
+      });
+      if (Array.isArray(saved)) USER_DESIGNS = saved;
+    } catch (_) {}
+    if ($('admUserDesignsCount')) $('admUserDesignsCount').textContent = USER_DESIGNS.length;
+  }
+
+  async function archiveCustomUserDesign(actionType) {
+    if (!usrStudioReady) await renderCustomStudioNow();
+    const u = loadUser();
+    const creatorName = ($('usrCreatorName').value || (u && u.name) || 'Guest Designer').trim();
+    const creatorContact = u ? (u.email || u.phone || '') : '';
+    const title = ($('usrTitleInp').value || usrState.text || `${usrState.teeColorName} Custom Tee`).trim();
+    const ideaNote = ($('usrIdeaNote').value || '').trim();
+
+    let modelDataUrl = '';
+    try {
+      const w = usrCanvas.toDataURL('image/webp', 0.84);
+      modelDataUrl = w.startsWith('data:image/webp') ? w : usrCanvas.toDataURL('image/png');
+    } catch (_) {}
+    const cardDataUrl = exportStudioCardWebp();
+
+    const record = {
+      id: `UD-${Date.now()}-${Math.floor(Math.random() * 999)}`,
+      creatorName,
+      creatorContact,
+      gender: usrState.gender,
+      title,
+      teeHex: usrState.teeHex,
+      customText: usrState.text,
+      ideaNote,
+      motif: usrState.motif,
+      action: actionType,
+      modelDataUrl,
+      cardDataUrl,
+      createdAt: new Date().toISOString()
+    };
+
+    USER_DESIGNS.unshift(record);
+    if ($('admUserDesignsCount')) $('admUserDesignsCount').textContent = USER_DESIGNS.length;
+    await saveUserDesignsToIDB();
+
+    try {
+      await fetch('/api/user-designs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(record)
+      });
+    } catch (_) {}
+    return record;
+  }
+
+  function renderAdminUserDesigns() {
+    const box = $('admUserDesignsList');
+    if (!box) return;
+    if ($('admUserDesignsCount')) $('admUserDesignsCount').textContent = USER_DESIGNS.length;
+    box.innerHTML = '';
+    if (!USER_DESIGNS.length) {
+      box.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:30px;opacity:.7;font-size:13px">No user-created T-shirt designs yet. Designs created in the Custom Design Studio will automatically appear here.</div>`;
+      return;
+    }
+    USER_DESIGNS.forEach(d => {
+      const card = document.createElement('div');
+      card.className = 'ud-card';
+      const dtStr = d.createdAt ? new Date(d.createdAt).toLocaleString() : '';
+      card.innerHTML = `
+        <div class="ud-thumb"><img src="${d.modelDataUrl || d.cardDataUrl || ''}" alt="${String(d.title || 'User design').replace(/"/g, '&quot;')}"></div>
+        <div class="ud-meta">
+          <strong>${String(d.title || 'Custom Design').replace(/</g, '&lt;')}</strong>
+          <div>By: <b>${String(d.creatorName || 'Guest').replace(/</g, '&lt;')}</b>${d.creatorContact ? ` (${String(d.creatorContact).replace(/</g, '&lt;')})` : ''}</div>
+          <div>${d.gender === 'women' ? "Women's" : "Men's"} &middot; <span style="display:inline-block;width:9px;height:9px;border-radius:99px;background:${d.teeHex || '#18191e'};border:1px solid rgba(255,255,255,.4);vertical-align:middle"></span> ${d.teeHex || ''} &middot; ${d.action === 'submitted' ? 'Submitted Idea' : 'Downloaded'}</div>
+          ${d.customText ? `<div>Text: "${String(d.customText).replace(/</g, '&lt;')}"</div>` : ''}
+          ${d.ideaNote ? `<div style="opacity:.78">Note: ${String(d.ideaNote).replace(/</g, '&lt;')}</div>` : ''}
+          <div style="opacity:.58;font-size:10.5px;margin-top:2px">${dtStr}</div>
+        </div>
+        <div class="ud-acts">
+          <button type="button" data-act="dl">Download</button>
+          <button type="button" class="primary" data-act="pub">Publish</button>
+          <button type="button" class="danger" data-act="del">Delete</button>
+        </div>`;
+
+      card.querySelector('[data-act="dl"]').addEventListener('click', () => {
+        const a = document.createElement('a');
+        a.href = d.modelDataUrl || d.cardDataUrl;
+        a.download = `SEEN-User-${(d.title || 'Design').replace(/[^a-z0-9]+/gi, '-')}.webp`;
+        a.click();
+        showToast('Downloaded user design mockup');
+      });
+
+      card.querySelector('[data-act="pub"]').addEventListener('click', async () => {
+        const g = d.gender === 'women' ? 'women' : 'men';
+        CATALOGS[g].push({
+          id: `userpub-${Date.now()}-${Math.floor(Math.random() * 999)}`,
+          n: d.title || 'SEEN Community Edition Tee',
+          p: 58, bdt: 1890, fit: 'Limited Drop', fabric: '270 GSM Community Edition Cotton',
+          customCard: d.cardDataUrl || d.modelDataUrl,
+          customModel: d.modelDataUrl,
+          c: [['Custom Shade', d.teeHex || '#18191e'], ['Obsidian', '#18181a'], ['Pure White', '#f4f2ee']]
+        });
+        await saveStateToDB();
+        if (activeGender === g) rebuildArc();
+        renderAdminCatalog();
+        showToast(`Published "${d.title}" to live ${g === 'women' ? "Women's" : "Men's"} Store!`);
+      });
+
+      card.querySelector('[data-act="del"]').addEventListener('click', async () => {
+        USER_DESIGNS = USER_DESIGNS.filter(x => x.id !== d.id);
+        await saveUserDesignsToIDB();
+        fetch(`/api/user-designs?id=${encodeURIComponent(d.id)}`, { method: 'DELETE' }).catch(() => {});
+        renderAdminUserDesigns();
+        showToast('Removed from Created by Users');
+      });
+
+      box.appendChild(card);
+    });
+  }
+
+  // Bind Custom T-Shirt Design Studio Controls
+  if ($('usrGenderSeg')) {
+    $('usrGenderSeg').addEventListener('click', e => {
+      const btn = e.target.closest('button[data-g]');
+      if (!btn) return;
+      $('usrGenderSeg').querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      usrState.gender = btn.dataset.g;
+      scheduleCustomStudioRender();
+    });
+  }
+  if ($('usrColorSwatches')) {
+    $('usrColorSwatches').addEventListener('click', e => {
+      const btn = e.target.closest('button[data-hex]');
+      if (!btn) return;
+      $('usrColorSwatches').querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      usrState.teeHex = btn.dataset.hex;
+      usrState.teeColorName = btn.dataset.name || btn.dataset.hex;
+      $('usrTeeHex').value = usrState.teeHex;
+      scheduleCustomStudioRender();
+    });
+  }
+  if ($('usrTeeHex')) {
+    $('usrTeeHex').addEventListener('input', e => {
+      $('usrColorSwatches').querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+      usrState.teeHex = e.target.value;
+      usrState.teeColorName = 'Custom';
+      scheduleCustomStudioRender();
+    });
+  }
+  if ($('usrTextInp')) $('usrTextInp').addEventListener('input', e => { usrState.text = e.target.value; scheduleCustomStudioRender(); });
+  if ($('usrFontSel')) $('usrFontSel').addEventListener('change', e => { usrState.font = e.target.value; scheduleCustomStudioRender(); });
+  if ($('usrTextColor')) $('usrTextColor').addEventListener('input', e => { usrState.textColor = e.target.value; scheduleCustomStudioRender(); });
+  if ($('usrMotifs')) {
+    $('usrMotifs').addEventListener('click', e => {
+      const btn = e.target.closest('button[data-motif]');
+      if (!btn) return;
+      $('usrMotifs').querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      usrState.motif = btn.dataset.motif;
+      scheduleCustomStudioRender();
+    });
+  }
+  if ($('usrScale')) $('usrScale').addEventListener('input', e => { usrState.scalePct = Number(e.target.value) || 100; $('usrScaleVal').textContent = `${usrState.scalePct}%`; scheduleCustomStudioRender(); });
+  if ($('usrPosY')) $('usrPosY').addEventListener('input', e => { usrState.posY = Number(e.target.value) || 0; $('usrYVal').textContent = `${usrState.posY}px`; scheduleCustomStudioRender(); });
+  if ($('usrStripBg')) $('usrStripBg').addEventListener('change', e => { usrState.stripBg = e.target.value === '1'; scheduleCustomStudioRender(); });
+
+  if ($('usrArtFile')) {
+    $('usrArtFile').addEventListener('change', async e => {
+      const f = e.target.files[0];
+      if (!f) return;
+      try {
+        const url = await new Promise((res, rej) => { const fr = new FileReader(); fr.onload = () => res(fr.result); fr.onerror = rej; fr.readAsDataURL(f); });
+        usrUploadedImg = await loadImage(url);
+        usrCleanedArt = stripUploadedBackground(usrUploadedImg);
+        $('usrArtLabel').textContent = f.name.slice(0, 18);
+        $('usrClearArtBtn').style.display = 'inline-flex';
+        scheduleCustomStudioRender();
+        showToast('Custom artwork applied to live mannequin');
+      } catch (_) { showToast('Could not read artwork image'); }
+      e.target.value = '';
+    });
+  }
+  if ($('usrClearArtBtn')) {
+    $('usrClearArtBtn').addEventListener('click', () => {
+      usrUploadedImg = null;
+      usrCleanedArt = null;
+      $('usrArtLabel').textContent = 'Choose Logo / Art';
+      $('usrClearArtBtn').style.display = 'none';
+      scheduleCustomStudioRender();
+    });
+  }
+  if ($('usrDownloadBtn')) {
+    $('usrDownloadBtn').addEventListener('click', async () => {
+      if (!usrStudioReady) await renderCustomStudioNow();
+      const titleSlug = (($('usrTitleInp').value || usrState.text || 'Custom-Tee').trim()).replace(/[^a-z0-9]+/gi, '-').slice(0, 32) || 'Custom-Tee';
+      const a = document.createElement('a');
+      a.href = usrCanvas.toDataURL('image/png');
+      a.download = `SEEN-${titleSlug}-Mockup.png`;
+      a.click();
+      $('usrDesignStatus').textContent = 'Mockup downloaded as PNG! (Archived privately for SEEN Studio review.)';
+      showToast('Custom T-shirt mockup downloaded (PNG)');
+      archiveCustomUserDesign('download').catch(() => {});
+    });
+  }
+  if ($('usrSaveIdeaBtn')) {
+    $('usrSaveIdeaBtn').addEventListener('click', async () => {
+      $('usrDesignStatus').textContent = 'Saving your custom style idea...';
+      await archiveCustomUserDesign('submitted');
+      $('usrDesignStatus').textContent = 'Design idea submitted to SEEN Atelier! You can also download your PNG anytime.';
+      showToast('Custom design idea saved to SEEN Atelier');
+    });
+  }
+  if ($('usrResetBtn')) {
+    $('usrResetBtn').addEventListener('click', () => {
+      usrUploadedImg = null; usrCleanedArt = null;
+      usrState.teeHex = '#18191e'; usrState.teeColorName = 'Obsidian';
+      usrState.text = 'SEEN STUDIO'; usrState.font = 'bold'; usrState.textColor = '#f5f5f7';
+      usrState.motif = 'seen-crest'; usrState.scalePct = 100; usrState.posY = 0; usrState.stripBg = true;
+      $('usrTeeHex').value = '#18191e'; $('usrTextInp').value = 'SEEN STUDIO'; $('usrFontSel').value = 'bold';
+      $('usrTextColor').value = '#f5f5f7'; $('usrScale').value = 100; $('usrPosY').value = 0;
+      $('usrScaleVal').textContent = '100%'; $('usrYVal').textContent = '0px';
+      $('usrArtLabel').textContent = 'Choose Logo / Art'; $('usrClearArtBtn').style.display = 'none';
+      $('usrTitleInp').value = ''; $('usrIdeaNote').value = ''; $('usrDesignStatus').textContent = '';
+      $('usrColorSwatches').querySelectorAll('button').forEach((b, i) => b.classList.toggle('on', i === 0));
+      $('usrMotifs').querySelectorAll('button').forEach((b, i) => b.classList.toggle('on', i === 0));
+      scheduleCustomStudioRender();
+    });
+  }
+  if ($('refreshUserDesignsBtn')) {
+    $('refreshUserDesignsBtn').addEventListener('click', async () => {
+      await syncUserDesignsFromServer();
+      renderAdminUserDesigns();
+      showToast('Refreshed Created by Users folder');
+    });
+  }
+
+  // Lazy-render Custom Design Studio canvas when near viewport so initial load stays ultra-fast
+  if (usrCanvas && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some(en => en.isIntersecting)) {
+        scheduleCustomStudioRender();
+        io.disconnect();
+      }
+    }, { rootMargin: '250px' });
+    io.observe($('custom-design-studio'));
+  } else {
+    setTimeout(scheduleCustomStudioRender, 400);
+  }
 
   (async () => {
     const qpGender = new URLSearchParams(location.search).get('gender');
