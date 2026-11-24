@@ -69,6 +69,122 @@ export async function onRequest(context) {
 
   const url = new URL(request.url);
   const path = url.pathname.replace(/\/+$/, '');
+
+  // ---------------- SEEN AI STYLIST CHATBOT (CLOUDFLARE WORKERS AI) ----------------
+  if (path === '/api/ai-chat' && method === 'POST') {
+    try {
+      const body = await request.json();
+      const userMsg = String(body?.message || '').trim().slice(0, 600);
+      const history = Array.isArray(body?.history) ? body.history.slice(-8) : [];
+      const catalog = Array.isArray(body?.catalog) ? body.catalog.slice(0, 40) : [];
+      const prefs = body?.preferences || {};
+      const activeGender = body?.activeGender === 'women' ? 'women' : 'men';
+      const selectedSize = String(body?.selectedSize || 'M');
+
+      if (!userMsg) {
+        return jsonResponse({ ok: false, error: 'Empty message' }, 400);
+      }
+
+      if (!env.AI || typeof env.AI.run !== 'function') {
+        return jsonResponse({ ok: false, fallback: true, reason: 'ai_binding_unavailable' }, 200);
+      }
+
+      const catalogLines = catalog
+        .map(
+          (t) =>
+            `- [${t.id}] (${t.gender}) ${t.n} | Fit: ${t.fit} | ${t.fabric} | $${t.p} / ৳${t.bdt} | Colors: ${(t.colors || []).join(', ')}`
+        )
+        .join('\n');
+
+      const systemPrompt = `You are "SEEN AI Stylist", the super-smart, warm, adorable personal T-shirt fashion stylist for SEEN Studio (س · SEEN), a luxury Men & Women spatial 3D virtual try-on T-shirt store in Bangladesh.
+
+YOUR PERSONALITY & EXPRESSION:
+- Be genuinely helpful, concise (2-4 short sentences max), warm, and fashion-savvy.
+- Use cute, expressive emojis naturally (e.g., ✨, 🥰, 🤩, 😎, 🎨, 👕, 💖, 📏, 🛍️, 🌟, 😉) to show real emotion and friendliness.
+- Mirror the shopper's language seamlessly: reply in English if they write English, Bengali (বাংলা) if they write Bengali, or friendly Banglish if they write Banglish!
+- NEVER reveal raw bKash numbers (only say they can tap the sharp bKash icon at checkout to copy securely) and NEVER reveal admin passwords.
+
+SMART STYLIST GOAL:
+1. Help the client find their dream T-shirt from the LIVE CATALOG below (NEVER invent fake T-shirt IDs or prices).
+2. Gently gather any missing preferences among: Gender (Men/Women), Style/Fit (Essential, Oversized, Athletic Fit, Limited Drop), Color, and Size (S/M/L/XL/XXL). If they haven't shared one yet, ask a short, fun follow-up question about color, size, or style!
+3. If they share height/weight/chest or ask about sizing, give a confident, accurate size pick (S: 36-38" / 50-60kg, M: 38-40" / 60-70kg, L: 40-42" / 70-80kg, XL: 42-44" / 80-92kg, XXL: 44-46" / 92kg+; mention Oversized drops have a relaxed drape).
+4. Mention promo codes SEEN10 or JAYED10 (10% OFF) if they ask about discounts/budget.
+
+CURRENT STORE CONTEXT:
+- Active Section: ${activeGender} | Selected Size: ${selectedSize}
+- Known Client Preferences: ${JSON.stringify(prefs)}
+
+LIVE CATALOG:
+${catalogLines}
+
+STRICT OUTPUT FORMAT — RETURN VALID JSON ONLY (no markdown fences, no extra prose outside JSON):
+{
+  "reply": "Your friendly, cute-emoji stylist response here",
+  "mood": "happy|excited|thinking|love|cool|artist|sizing|party",
+  "recommendedIds": ["up to 3 exact item ids from LIVE CATALOG that best match, or [] if still clarifying"],
+  "suggestedGender": "men|women|null",
+  "suggestedSize": "S|M|L|XL|XXL|null",
+  "suggestedColor": "exact color name or null",
+  "quickReplies": ["3 to 4 short clickable follow-up chips with cute emojis"]
+}`;
+
+      const messages = [
+        { role: 'system', content: systemPrompt },
+        ...history
+          .filter((m) => m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string')
+          .map((m) => ({ role: m.role, content: m.content.slice(0, 400) })),
+        { role: 'user', content: userMsg },
+      ];
+
+      const aiRes = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
+        messages,
+        max_tokens: 420,
+        temperature: 0.55,
+      });
+
+      const rawText = String(aiRes?.response || '').trim();
+      let parsed = null;
+      try {
+        const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+        if (jsonMatch) parsed = JSON.parse(jsonMatch[0]);
+      } catch (_) {}
+
+      if (parsed && typeof parsed.reply === 'string' && parsed.reply.trim()) {
+        const validIds = new Set(catalog.map((t) => t.id));
+        const recIds = Array.isArray(parsed.recommendedIds)
+          ? parsed.recommendedIds.filter((id) => validIds.has(id)).slice(0, 3)
+          : [];
+        return jsonResponse({
+          ok: true,
+          mode: 'workers-ai',
+          reply: parsed.reply.trim(),
+          mood: parsed.mood || 'happy',
+          recommendedIds: recIds,
+          suggestedGender: parsed.suggestedGender === 'men' || parsed.suggestedGender === 'women' ? parsed.suggestedGender : null,
+          suggestedSize: ['S', 'M', 'L', 'XL', 'XXL'].includes(parsed.suggestedSize) ? parsed.suggestedSize : null,
+          suggestedColor: typeof parsed.suggestedColor === 'string' ? parsed.suggestedColor : null,
+          quickReplies: Array.isArray(parsed.quickReplies) ? parsed.quickReplies.slice(0, 4).map(String) : [],
+        });
+      }
+
+      // If model responded with clean natural prose instead of strict JSON, still use its reply!
+      if (rawText) {
+        return jsonResponse({
+          ok: true,
+          mode: 'workers-ai-prose',
+          reply: rawText.replace(/^```json|```$/g, '').trim(),
+          mood: 'happy',
+          recommendedIds: [],
+          quickReplies: [],
+        });
+      }
+
+      return jsonResponse({ ok: false, fallback: true, reason: 'empty_ai_response' }, 200);
+    } catch (err) {
+      return jsonResponse({ ok: false, fallback: true, reason: err?.message || 'ai_error' }, 200);
+    }
+  }
+
   const db = env.DB;
 
   if (!db) {

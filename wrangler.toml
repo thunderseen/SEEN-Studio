@@ -7,3 +7,7 @@ pages_build_output_dir = "."
 binding = "DB"
 database_name = "seen-studio-db"
 database_id = "cae972b0-adb1-40f8-a6af-38176682aadb"
+
+# Cloudflare Workers AI — Powers SEEN AI Stylist Chatbot (Free Edge LLM)
+[ai]
+binding = "AI"
